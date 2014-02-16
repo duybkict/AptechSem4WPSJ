@@ -136,12 +136,12 @@ header {
 }
 
 .btn-orange {
-	background-color: rgb(214, 105, 1);
+	background-color: rgb(228, 147, 3);
 	color: white;
 }
 
 .btn-orange:hover {
-	background-color: rgb(179, 40, 1);
+	background-color: rgb(203, 75, 0);
 	color: white !important;
 }
 
