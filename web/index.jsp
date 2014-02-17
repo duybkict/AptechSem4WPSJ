@@ -93,6 +93,7 @@
 					</ul>
 				</div>
 				<div class="col-xs-4">
+					<br/>
 					<a href="#"><img src="images/banner-1.jpg" alt="" /></a>
 				</div>
 			</div>

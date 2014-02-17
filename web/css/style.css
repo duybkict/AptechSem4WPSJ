@@ -113,6 +113,15 @@ blockquote {
 	font-weight: normal;
 }
 
+address {
+	line-height: 24px;
+}
+
+address span {
+	display: inline-block;
+	width: 79px;
+}
+
 hr {
 	border-color: transparent;
 	background: url('../images/pic-1.gif') repeat-x scroll 0px bottom transparent;

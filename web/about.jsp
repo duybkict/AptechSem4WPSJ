@@ -40,7 +40,7 @@
 						<h3>Why Choose Us</h3>
 						<p>
 							<strong>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias.</strong><br />
-							Excepturi sint occaecati <span class="text-orange">cupiditate non provident</span>, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio.
+							Excepturi sint occaecati <a href="contacts.jsp">get to us</a>, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio.
 						</p>
 						<div class="clearfix">
 							<div class="col-xs-6">
