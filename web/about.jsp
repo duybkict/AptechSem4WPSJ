@@ -45,7 +45,7 @@
 						<br />
 						<div class="clearfix">
 							<div class="col-xs-6">
-								<ul>
+								<ul class="list-arrow">
 									<li>Lorem ipsum dolor amet consectetur</li>
 									<li>Adipisicing eldo eiusmd tempor incididunt</li>
 									<li>Labore et dolore magna aliqua</li>
@@ -53,7 +53,7 @@
 								</ul>
 							</div>
 							<div class="col-xs-6">
-								<ul>
+								<ul class="list-arrow">
 									<li>Exercitation ullamco laboris nisi ut aliquip</li>
 									<li>Duis aute irure dolor reprehenderit</li>
 									<li>Voluptate vejlit esse cillum dolore eu fugiat</li>
@@ -68,13 +68,13 @@
 					<h3>Testimonials</h3>
 					<hr />
 
-					<blockquote>&quot;Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae&quot;</blockquote>
+					<blockquote>&quot;Sed ut perspiciatis unde omnis iste doloremque laudantium, totam rem aperiam, eaque ipsa quae&quot;</blockquote>
 					<div class="text-right">
 						<strong class="text-orange">Jane Bane</strong>
 					</div>
 					<br/>
 
-					<blockquote>&quot;Abillo inventore veritatis et quasi archi tationem ullam corporis suscipit laborio tecto beatae vitae dicta sunt explicabo. Nemo enim ipsam volup tatem quia voluptas sit aspernatur&quot;</blockquote>
+					<blockquote>&quot;Abillo inventore veritatis et quasi archi tationem ullam corporis suscipit laborio tecto beatae vitae dicta sunt explicabo.&quot;</blockquote>
 					<div class="text-right">
 						<strong class="text-orange">William Hampton</strong>
 					</div>

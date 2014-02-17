@@ -85,7 +85,7 @@
 				<div class="col-xs-8">
 					<h4 class="font-lobster"><strong>Welcome</strong> <em>to Our Site!</em></h4>
 					<p><strong>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan tium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas:</strong><br /></p>
-					<ul>
+					<ul class="list-arrow">
 						<li>Sit aspernatur aut odit aut fugit quia consequuntur</li>
 						<li>Magni dolores eos qui ratione voluptatem sequi nesciunt eque</li>
 						<li>Qui dolorem ipsum quia dolor sit amet, consectetur adipisci</li>

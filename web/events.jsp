@@ -1,5 +1,5 @@
 <%--
-    Document   : about
+    Document   : events
     Created on : Feb 16, 2014, 5:55:01 PM
     Author     : Duy
 --%>
@@ -48,7 +48,7 @@
 							<a class="btn btn-primary" href="#">Read More</a>
 						</div>
 
-						<div class="col-xs-12 events-preview-row">
+						<div class="col-xs-12 events-preview-row last">
 							<img class="pull-left img-thumbnail" src="images/page5-img4.jpg" alt="" />
 							<strong>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</strong>
 							<br />

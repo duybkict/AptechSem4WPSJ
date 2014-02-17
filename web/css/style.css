@@ -144,7 +144,7 @@ header {
 }
 
 .pager {
-	margin: 0px 5px;
+	margin: 20px 5px 0px;
 }
 
 .pager a {
@@ -229,6 +229,10 @@ ul.nav li a:hover {color:#ca4b00;}
 	z-index: 1;
 }
 
+.content > .row > .col-xs-4 {
+	padding-right: 26px;
+}
+
 .padding {
 	padding-left: 24px;
 	padding-right: 5px;
@@ -240,7 +244,7 @@ ul.nav li a:hover {color:#ca4b00;}
 	padding-bottom: 28px;
 }
 
-.bg p, .bg ul {
+.about-bg-row p, .about-bg-row ul {
 	margin-bottom: 0px;
 }
 
@@ -261,34 +265,47 @@ ul.nav li a:hover {color:#ca4b00;}
 	padding-top: 25px;
 }
 
-.home-preview-row ul, .about-bg-row ul {
+ul.list-arrow {
 	padding-left: 0px;
 }
 
-.home-preview-row ul li, .about-bg-row ul li {
+ul.list-arrow li {
 	line-height: 24px;
 	padding-left: 20px;
 	font-size: 12px;
 	background: url(../images/marker-1.png) 0 7px no-repeat;
 }
 
-.about-bg-row {
+ul.list-arrow li a {
+	color: #4C4C4C;
+	text-decoration: underline;
+}
+
+ul.list-arrow li a:hover {
+	text-decoration: none;
+}
+
+.about-bg-row, .courses-bg-row {
 	margin-top: 30px;
 	margin-left: -20px;
 	padding-right: 20px;
 }
 
-.about-bg-row .col-xs-6 {
+.about-bg-row .col-xs-6, .courses-brief-row .col-xs-6 {
 	padding: 0px;
 }
 
-.events-preview-row {
+.events-preview-row, .courses-preview-row {
 	margin-bottom: 30px;
 	padding: 0px;
 }
 
-.events-preview-row img {
+.events-preview-row img, .courses-preview-row img {
 	margin-right: 16px;
+}
+
+.events-preview-row.last, .courses-preview-row.last {
+	margin-bottom: 0px;
 }
 
 footer {
