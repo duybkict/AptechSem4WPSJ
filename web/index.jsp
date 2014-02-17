@@ -66,17 +66,17 @@
 			<div class="row home-articles-row padding bg">
 				<div class="col-xs-4">
 					<h3>Weight Loss Ideas</h3>
-					<p>Good Cook is one of <a class="link" href="http://blog.templatemonster.com/free-website-templates/" target="_blank">free website templates</a> created by TemplateMonster.com team. This template is optimized for 1280X1024 screen resolution. It is also XHTML &amp; CSS valid.</p>
+					<p>orem ipsum dolor sit amet, consectetur adipiscing elit. Donec leo sem, rhoncus in consequat eu, lobortis vel quam. Pellentesque sit amet sagittis sem, in volutpat lacus.</p>
 					<a class="btn btn-orange" href="#">Read More</a>
 				</div>
 				<div class="col-xs-4">
 					<h3>Fast Food. Yes or No?</h3>
-					<p>This <a class="link" href="http://blog.templatemonster.com/2011/09/26/free-website-template-slideshow-cooking/" target="_blank" rel="nofollow">Good Cook Template</a> goes with two pack ages – with PSD source files and without them. </p>
+					<p>Mauris a eros a urna tincidunt pulvinar. Maecenas consequat, ligula ac eleifend placerat, neque tellus pretium tortor, a tristique metus nisl eu augue.</p>
 					<a class="btn btn-orange" href="#">Read More</a>
 				</div>
 				<div class="col-xs-4 last">
 					<h3>Taste of Asia</h3>
-					<p>This web template has several pages: <a class="link" href="index.html">Main</a>, <a class="link" href="about.html">About Us</a>, <a class="link" href="courses.html">Courses</a>, <a class="link" href="recipes.html">New Recipes</a>, <a class="link" href="calendar.html">Calendar</a>, <a class="link" href="contacts.html">Contact Us</a> (please note that contact us form – doesn’t work).</p>
+					<p>Donec gravida lacus eu ipsum mattis, a aliquet eros varius. Sed aliquam pulvinar ligula. Donec sollicitudin sagittis odio non iaculis. </p>
 					<a class="btn btn-orange" href="#">Read More</a>
 				</div>
 			</div>

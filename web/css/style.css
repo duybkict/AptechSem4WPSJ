@@ -240,6 +240,10 @@ ul.nav li a:hover {color:#ca4b00;}
 	padding-bottom: 28px;
 }
 
+.bg p, .bg ul {
+	margin-bottom: 0px;
+}
+
 .home-articles-row {
 	margin: 0px !important;
 	width: 100%;
@@ -271,6 +275,7 @@ ul.nav li a:hover {color:#ca4b00;}
 .about-bg-row {
 	margin-top: 30px;
 	margin-left: -20px;
+	padding-right: 20px;
 }
 
 .about-bg-row .col-xs-6 {

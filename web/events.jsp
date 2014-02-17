@@ -66,7 +66,7 @@
 				</div>
 
 				<div class="col-xs-4">
-					<h3>New Recipes</h3>
+					<h3>Our Recipes</h3>
 					<hr />
 
 					<p>
