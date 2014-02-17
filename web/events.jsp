@@ -72,35 +72,35 @@
 					<p>
 						<strong>Sed perspiciatis unde </strong><br />
 						Omnis natus error sit voluptatem accusantium doloremque laudantium<br />
-						<a href="#"><strong>Read more</strong></a>
+						<a href="#">Read more</a>
 					</p>
 					<br/>
 
 					<p>
 						<strong>Sed perspiciatis unde </strong><br />
 						Omnis natus error sit voluptatem accusantium doloremque laudantium<br />
-						<a href="#"><strong>Read more</strong></a>
+						<a href="#">Read more</a>
 					</p>
 					<br/>
 
 					<p>
 						<strong>Abillo inventore veritatis </strong><br />
 						Et corporis suscipit laboriotecto beatae vitae dicta sunt explicabo.<br />
-						<a href="#"><strong>Read more</strong></a>
+						<a href="#">Read more</a>
 					</p>
 					<br/>
 
 					<p>
 						<strong>Aut oditut fugit sed quia </strong><br />
 						Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. <br />
-						<a href="#"><strong>Read more</strong></a>
+						<a href="#">Read more</a>
 					</p>
 					<br/>
 
 					<p>
 						<strong>Abillo inventore veritatis </strong><br />
 						Et corporis suscipit laboriotecto beatae vitae dicta sunt explicabo.<br />
-						<a href="#"><strong>Read more</strong></a>
+						<a href="#">Read more</a>
 					</p>
 					<br/>
 

@@ -12,7 +12,7 @@
 		<div class="row">
 			<div class="col-xs-12 text-center">
 				Lorem ipsum dolor sit amet, Consectetur adipiscing elit. <span class="text-orange">Inventore veritatis</span> et quasi ullamcorper ipsum.<br />
-				Copyright &copy; 2014 <span class="text-orange">GoodCook</span> International. All rights reserved.
+				Copyright &copy; 2014 by <span class="text-orange">GoodCook</span> International. All rights reserved.
 			</div>
 		</div>
 	</div>
