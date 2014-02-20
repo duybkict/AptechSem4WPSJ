@@ -72,7 +72,7 @@
 				<div class="col-xs-4">
 					<h3>Fast food. Yes or no?</h3>
 					<p>Mauris a eros a urna tincidunt pulvinar. Maecenas consequat, ligula ac eleifend placerat, neque tellus pretium tortor, a tristique metus nisl eu augue.</p>
-					<a class="btn btn-orange" href="events.jsp">Read More</a>
+					<a class="btn btn-orange" href="articles.jsp">Read More</a>
 				</div>
 				<div class="col-xs-4 last">
 					<h3>Taste of Asia</h3>

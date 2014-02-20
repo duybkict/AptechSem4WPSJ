@@ -1,5 +1,5 @@
 <%--
-    Document   : events
+    Document   : articles
     Created on : Feb 16, 2014, 5:55:01 PM
     Author     : Duy
 --%>
@@ -16,7 +16,7 @@
 
     <body>
         <jsp:include page="layout/navigation.jsp">
-			<jsp:param name="active" value="events" />
+			<jsp:param name="active" value="articles" />
 		</jsp:include>
 
 		<div class="container content" >
@@ -54,7 +54,7 @@
 									<li class="previous disabled" ><a>&larr; Newer</a></li>
 									</c:when>
 									<c:otherwise>
-									<li class="previous" ><a href="events.jsp?page=${page - 1}">&larr; Newer</a></li>
+									<li class="previous" ><a href="articles.jsp?page=${page - 1}">&larr; Newer</a></li>
 									</c:otherwise>
 								</c:choose>
 								<c:choose>
@@ -62,7 +62,7 @@
 									<li class="next disabled" ><a>Older &rarr;</a></li>
 									</c:when>
 									<c:otherwise>
-									<li class="next" ><a href="events.jsp?page=${page + 1}">Older &rarr;</a></li>
+									<li class="next" ><a href="articles.jsp?page=${page + 1}">Older &rarr;</a></li>
 									</c:otherwise>
 								</c:choose>
 						</ul>

@@ -13,12 +13,14 @@
 	<div class="container">
 		<div class="row">
 			<h1><a href="index.html">GoodCook</a></h1>
-			<ul class="list-social">
-				<li>Link to Us:</li>
-				<li><a title="facebook" href="#"></a></li>
-				<li><a title="twitter" href="#"></a></li>
-				<li><a title="linkedin" href="#"></a></li>
-			</ul>
+			<span class="navigation-control">
+				<a href="#">Register</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+				<a href="#">Sign In</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+				<a href="#" style="width: 145px; display: inline-block; text-align: right">
+					<span class="glyphicon glyphicon-shopping-cart"></span>
+					Shopping Cart (0)
+				</a>
+			</span>
 		</div>
 	</div>
 </header>
@@ -29,7 +31,7 @@
 				<li><a href="index.jsp" <c:if test="${active eq 'index'}"> class="active"</c:if> >Main</a></li>
 				<li><a href="about.jsp" <c:if test="${active eq 'about'}"> class="active"</c:if> >About Us</a></li>
 				<li><a href="courses.jsp" <c:if test="${active eq 'courses'}"> class="active"</c:if> >Courses</a></li>
-				<li><a href="events.jsp" <c:if test="${active eq 'events'}"> class="active"</c:if> >News & Events</a></li>
+				<li><a href="articles.jsp" <c:if test="${active eq 'articles'}"> class="active"</c:if> >News & Events</a></li>
 				<li><a href="contacts.jsp" <c:if test="${active eq 'contacts'}"> class="active"</c:if> >Contacts</a></li>
 			</ul>
 		</div>

@@ -22,6 +22,7 @@
 	<title><c:out value="${title}" /></title>
 
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+	<link rel="stylesheet" href="css/bootstrap-glyphicon.min.css" type="text/css" />
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
 	<link rel='stylesheet' href='css/font-lobster.css' type='text/css'>
 	<link rel='stylesheet' href='css/font-myriadpro.css' type='text/css'>

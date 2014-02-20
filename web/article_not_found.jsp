@@ -16,7 +16,7 @@
 
     <body>
         <jsp:include page="layout/navigation.jsp">
-			<jsp:param name="active" value="events" />
+			<jsp:param name="active" value="articles" />
 		</jsp:include>
 
 		<div class="container content" >
@@ -25,7 +25,7 @@
 					<div>
 						<h3>Article Not Found !!</h3>
 						<p>Lorem ipsum dolor <a href="index.jsp">GoodCook</a> sit amet, consectetur adipiscing elit. Suspendisse fermentum ipsum vel ligula condimentum, a facilisis nisl adipiscing. Phasellus dui elit, <a href="contacts.jsp">send us email</a> porttitor in pulvinar porta, congue varius risus.</p>
-						<p>Proin other <a href="events.jsp">News & Events</a> aliquet massa vel mauris ultricies, vehicula accumsan ipsum auctor.</p>
+						<p>Proin other <a href="articles.jsp">News & Events</a> aliquet massa vel mauris ultricies, vehicula accumsan ipsum auctor.</p>
 					</div>
 				</div>
 
