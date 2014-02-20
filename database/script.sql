@@ -1,0 +1,83 @@
+DROP DATABASE IF EXISTS AptechSem4WPSJ; 
+CREATE DATABASE AptechSem4WPSJ;
+USE AptechSem4WPSJ;
+
+CREATE TABLE articles (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	title VARCHAR(512) NOT NULL,
+	short_description VARCHAR(1024) NOT NULL,
+	content TEXT NOT NULL,
+	image VARCHAR(512),
+	category INT NOT NULL DEFAULT 1, -- 1: News & Events, 2: Recipes, 3: Courses
+	status INT NOT NULL DEFAULT 1, -- 1: Starting soon, 2: Ended, apply only for Courses
+	published BIT NOT NULL DEFAULT 1,
+	published_date DATETIME,
+	created_date DATETIME,
+	modified_date DATETIME
+);
+
+CREATE TABLE contacts (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	full_name VARCHAR(128),
+	email VARCHAR(128) NOT NULL,
+	message TEXT,
+	created_date DATETIME,
+	modified_date DATETIME
+);
+
+DROP TRIGGER IF EXISTS tgg_insert_ariticles;
+delimiter //
+CREATE TRIGGER tgg_insert_ariticles 
+BEFORE INSERT ON articles
+FOR EACH ROW 
+BEGIN
+	SET NEW.created_date = now();
+	SET NEW.modified_date = now();
+	IF NEW.published = 1 THEN
+		SET NEW.published_date = now();
+	END IF;
+END;//
+delimiter ;
+
+DROP TRIGGER IF EXISTS tgg_update_ariticles;
+delimiter //
+CREATE TRIGGER tgg_update_ariticles 
+BEFORE UPDATE ON articles
+FOR EACH ROW 
+BEGIN
+	SET NEW.modified_date = now();
+	IF NEW.published != OLD.published AND NEW.published = 1 THEN
+		SET NEW.published_date = now();
+	END IF;
+END;//
+delimiter ;
+
+INSERT INTO articles(title, short_description, content, image, category) 
+VALUES ('Sharp 100 years', 
+		'This entry is to celebrate the upcoming 100th Anniversary of Sharp, one of the Japanese Electronic Manufacturers that have shaped our lives and homes for as long as we can remember. It’s scary how even a technology company that is always “modern” and “futuristic” in our minds, could one day be a century old!', 
+		'<p>Our first color TV set is a Sharp TV. It was my Grandfather’s pride and joy. Even with the limited channels we could receive via antenna on the TV set, it was our family’s most precious asset. After being away from Vietnam for over 20 years, I was so glad to find the same TV set still standing in my Grandparents home. And believe or not, it’s still working!</p><p>Fast forward to today, Sharp is now part of our Kitchen Art workplace, with the Sharp Microwave that we religiously use everyday to heat up our lunchboxes from home. Yes, we might be conjuring up delicious and gorgeous dishes at Kitchen Art studio, but everyday, we still count on this little fellow here to feed us with the modest home meals packed by our family for us busy people at Kitchen Art.</p><p>So you probably expect a big party for Sharp’s 100th Anniversary. Trust me, you won’t be disappointed. Sharp launched an “Sharp 100 Years” campaign from now until 15 September 2012 to allow every person from Asia to Australia and Middle East to share your memorable Anniversary or other commemorative moments on the Sharp “Anniversary Share” website: http://share.sharp100years.com.</p><p>Logon now and start sharing photos or videos of your beautiful wedding day, graduation day, or the first time you sky-dived! Whatever it is, if it is memorable to you, Sharp will want it pinned on their anniversary photo collage to share with the rest of the world. And that’s not all: Sharp will create a memorable movie with all your images and video submissions, displayed on the website during the campaign period.</p><p>If that’s not enough, you can even stand a chance to win fabulous prizes just by submitting your memory!  Four people will be selected from all applicants to win a trip to the West Coast, USA, and submitters of the top five ranking pictures and videos will receive Sharp product prizes!</p><p>So if you want to keep something to remember, make your memory a part of Sharp 100 Years history today! </p>', 
+		'images/page5-img1.jpg', 
+		1);
+
+INSERT INTO articles(title, short_description, content, image, category) 
+VALUES ('Junior Chef Promotion For Children\'s Day', 
+		'Cooking and baking is now not only a grown-up’s hobby, but a recreational and bonding activity for both parents and children as well. ', 
+		'<p>While the latest season of Junior Masterchef just wrapped up, and with Children’s Day (1 June) just around the corner, Kitchen Art is proudly bringing to you the first ever “Junior Chef Promotion” program from 23 May until 1 June, with 10% discount on selected items. We have carefully chosen products that are safe and enjoyable to use, and also serve as a colorful addition to your Kitchen, making it a more exciting place for kids to get creative and involved in the art of cooking!</p>', 
+		'images/page5-img2.jpg', 
+		1);
+
+INSERT INTO articles(title, short_description, content, image, category) 
+VALUES ('GoodCook Vietnam sponsored the Disciples d’Escoffier Gala Dinner ', 
+		'Etiam eget gravida neque. Aliquam commodo luctus orci, sed vestibulum elit vehicula vel. Nam arcu tellus, dictum non scelerisque sit amet.', 
+		'<p>Suspendisse sit amet sagittis quam. Cras fermentum, nisi at lobortis feugiat, odio tortor vehicula massa, vel pharetra sapien magna nec sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam in risus posuere, pulvinar metus a, commodo purus. Quisque libero velit, laoreet vel lectus nec, cursus interdum enim. Nunc neque nisi, blandit sed venenatis dapibus, tincidunt sit amet neque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla facilisi. Etiam pulvinar nisl vel diam pellentesque, vitae tincidunt mauris auctor. Nam auctor dui a eros sollicitudin, at cursus tortor hendrerit. Curabitur eget dolor vel purus interdum placerat. </p><p>Quisque ac commodo tellus, et pellentesque libero. Sed in nunc dictum ipsum rutrum lobortis. Nunc id interdum mauris, non condimentum diam. Ut faucibus eros eget nisi dictum sodales. Pellentesque scelerisque, elit congue consectetur lacinia, leo orci bibendum est, vitae faucibus erat ligula vel dui. Praesent rutrum odio vulputate arcu accumsan, et convallis magna rutrum. Aliquam erat volutpat. Maecenas a sagittis metus. Suspendisse dapibus bibendum ante vitae ultrices. Praesent porta turpis ultrices sapien pretium mollis. Donec ac magna dolor. Cras ut ultricies lorem. Donec sed urna non nisl blandit dapibus. Etiam ut sem tellus. Sed interdum est sit amet magna tristique, suscipit blandit massa aliquet. Pellentesque sollicitudin sodales porta.</p>', 
+		'images/page5-img3.jpg', 
+		1);
+
+INSERT INTO articles(title, short_description, content, image, category) 
+VALUES ('Junior Chef Promotion For Children\'s Day', 
+		'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ut nisi enim. Ut placerat fermentum nulla eu imperdiet. Nam ante ante, molestie quis metus sit amet, pharetra consectetur magna. Donec a tortor ac nibh tincidunt rhoncus. Nullam at ante in ipsum luctus tempus.', 
+		'<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ut nisi enim. Ut placerat fermentum nulla eu imperdiet. Nam ante ante, molestie quis metus sit amet, pharetra consectetur magna. Donec a tortor ac nibh tincidunt rhoncus. Nullam at ante in ipsum luctus tempus. Vestibulum elit metus, malesuada non purus condimentum, ullamcorper pellentesque diam. Maecenas libero ligula, lacinia at dolor ut, interdum laoreet justo. Mauris tempor dictum nibh, ac egestas leo dapibus sed. Mauris arcu enim, pulvinar ac sollicitudin eu, fermentum sit amet nulla. Morbi quam dui, fringilla faucibus arcu sit amet, egestas consectetur dui. Ut at arcu elit. Sed non nulla sed purus pharetra mollis. </p><p>Maecenas semper aliquam mattis. Sed eget lobortis leo. Integer purus augue, ultrices ut varius commodo, accumsan vel felis. Donec sollicitudin iaculis dui, sit amet malesuada urna. Praesent felis velit, convallis semper libero vel, vulputate sodales ipsum. Nam bibendum tincidunt egestas. Nulla auctor pulvinar nunc id feugiat. Morbi posuere leo eget nibh porttitor ullamcorper. Etiam lorem massa, imperdiet vitae nisl id, dapibus dapibus orci. </p>', 
+		'images/page5-img4.jpg', 
+		1);
+
+-- SELECT * FROM articles
