@@ -30,7 +30,7 @@
 									<strong>Hot</strong><em>Recipe</em>
 								</strong>
 								<p class="p3">Lorem ipsum dolor sit amet consecteur adipising elit, sed do eiusmod tem por incididunt ut labore et dolore magna.</p>
-								<a class="btn btn-primary btn-lg" href="#">Read More</a>
+								<a class="btn btn-primary btn-lg" href="article.jsp?id=10">Read More</a>
 							</div>
 						</li>
 						<li>
@@ -40,7 +40,7 @@
 									<strong>Lorem</strong><em>Lipsum</em>
 								</strong>
 								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-								<a class="btn btn-primary btn-lg" href="#">Read More</a>
+								<a class="btn btn-primary btn-lg" href="article.jsp?id=8">Read More</a>
 							</div>
 						</li>
 						<li>
@@ -50,7 +50,7 @@
 									<strong>Sed</strong><em>Quia</em>
 								</strong>
 								<p>Neque porro quisquam estui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam.</p>
-								<a class="btn btn-primary btn-lg" href="#">Read More</a>
+								<a class="btn btn-primary btn-lg" href="article.jsp?id=9">Read More</a>
 							</div>
 						</li>
 					</ul>
@@ -65,12 +65,12 @@
 
 			<div class="row home-articles-row padding bg">
 				<div class="col-xs-4">
-					<h3>Weight Loss Ideas</h3>
+					<h3>Weight loss ideas</h3>
 					<p>orem ipsum dolor sit amet, consectetur adipiscing elit. Donec leo sem, rhoncus in consequat eu, lobortis vel quam. Pellentesque sit amet sagittis sem, in volutpat lacus.</p>
 					<a class="btn btn-orange" href="courses.jsp">Read More</a>
 				</div>
 				<div class="col-xs-4">
-					<h3>Fast Food. Yes or No?</h3>
+					<h3>Fast food. Yes or no?</h3>
 					<p>Mauris a eros a urna tincidunt pulvinar. Maecenas consequat, ligula ac eleifend placerat, neque tellus pretium tortor, a tristique metus nisl eu augue.</p>
 					<a class="btn btn-orange" href="events.jsp">Read More</a>
 				</div>
