@@ -1,0 +1,32 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	renamed:    web/events.jsp -> web/articles.jsp
+#
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#	modified:   web/article_not_found.jsp
+#	modified:   web/articles.jsp
+#	modified:   web/contacts.jsp
+#	modified:   web/css/style.css
+#	modified:   web/index.jsp
+#	modified:   web/layout/head.jsp
+#	modified:   web/layout/navigation.jsp
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#	src/java/controller/
+#	web/WEB-INF/tlds/regex.tld
+#	web/WEB-INF/web.xml
+#	web/css/bootstrap-glyphicon.min.css
+#	web/fonts/glyphiconshalflings-regular.eot
+#	web/fonts/glyphiconshalflings-regular.ttf
+#	web/fonts/glyphiconshalflings-regular.woff
+
