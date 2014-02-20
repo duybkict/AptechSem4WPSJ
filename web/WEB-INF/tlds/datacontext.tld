@@ -28,4 +28,9 @@
 		<function-class>model.DataContext</function-class>
 		<function-signature>java.util.ArrayList getRandomArticles(int )</function-signature>
 	</function>
+	<function>
+		<name>getArticleById</name>
+		<function-class>model.DataContext</function-class>
+		<function-signature>java.util.ArrayList getArticleById(int )</function-signature>
+	</function>
 </taglib>

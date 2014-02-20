@@ -27,7 +27,7 @@
 							<strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </strong><br />
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse fermentum ipsum vel ligula condimentum, a facilisis nisl adipiscing. Phasellus dui elit, porttitor in pulvinar porta, congue varius risus. Morbi non lorem lobortis, cursus lorem ac, tempor lectus. Sed hendrerit vehicula sollicitudin. Vivamus porta eu justo fringilla feugiat. Sed in leo mauris. Donec tincidunt magna mauris, nec elementum orci pulvinar commodo. Sed dictum, elit sed volutpat semper.
 						</p>
-						<img src="images/page2-img1.jpg" alt="" class="pull-left" style="margin-right: 20px;"/>
+						<img src="images/page2-img1.jpg" alt="" class="pull-left img-thumbnail" style="margin-right: 20px;"/>
 						<p>
 							<strong>Proin tincidunt vulputate ultricies. Curabitur iaculis dignissim laoreet. Morbi sed risus sodales.</strong><br/>
 							Phasellus eu nisi ligula. Ut imperdiet erat vitae velit interdum lobortis. Duis eu tortor lobortis justo viverra sagittis. Vestibulum at hendrerit diam. Aenean et justo nec nunc blandit congue. Ut ultricies convallis orci sed fringilla.

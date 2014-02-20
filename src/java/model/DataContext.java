@@ -183,4 +183,35 @@ public class DataContext
 		return list;
 	}
 
+	public static Article getArticleById(int id) {
+		Article article = null;
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"SELECT id, image, title, short_description, content, status, category "
+					+ "FROM articles "
+					+ "WHERE published = 1 AND id = ? "
+					+ "LIMIT 1 OFFSET 0");
+			pst.setInt(1, id);
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				article = new Article();
+				article.setId(rs.getInt(1));
+				article.setImage(rs.getString(2));
+				article.setTitle(rs.getString(3));
+				article.setShortDescription(rs.getString(4));
+				article.setContent(rs.getString(5));
+				article.setStatus(rs.getInt(6));
+				article.setCategory(rs.getInt(7));
+			}
+			rs.close();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return article;
+	}
+
 }

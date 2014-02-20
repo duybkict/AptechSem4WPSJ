@@ -58,7 +58,7 @@ ul {
 }
 
 body {
-	background: url(../images/bg-img3.jpg);
+	background: url(../images/bg-img3.jpg) fixed;
 }
 
 header {

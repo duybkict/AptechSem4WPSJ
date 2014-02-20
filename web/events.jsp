@@ -36,12 +36,13 @@
 						</c:choose>
 
 						<c:forEach var="event" items="${datacontext:getEvents(page)}">
+							<c:set var="link" value="article.jsp?id=${event.id}" />
 							<div class="col-xs-12 events-preview-row">
-								<img class="pull-left img-thumbnail" src="${event.image}" alt="" />
+								<a href="${link}"><img class="pull-left img-thumbnail" src="${event.image}" alt="" /></a>
 								<strong>${event.title}</strong>
 								<br />
 								${event.shortDescription}
-								<a class="btn btn-primary" href="#">Read More</a>
+								<a class="btn btn-primary" href="${link}">Read More</a>
 							</div>
 						</c:forEach>
 
@@ -73,14 +74,15 @@
 					<hr />
 
 					<c:forEach var="article" items="${datacontext:getRandomArticles(4)}">
+						<c:set var="link" value="article.jsp?id=${article.id}" />
 						<strong>${article.title}</strong>
-						${article.shortDescription}
-						<a href="#" class="pull-right">Read more</a>
+							${article.shortDescription}
+						<a href="${link}" class="pull-right">Read more</a>
 						<br/>
 						<br/>
 					</c:forEach>
 
-					<a href="#" class="center-block">
+					<a href="courses.jsp">
 						<img alt="" src="images/banner-1.jpg" style="display: block; width: 100%;"/>
 					</a>
 				</div>

@@ -52,12 +52,13 @@
 						<h3>Available Courses</h3>
 
 						<c:forEach var="course" items="${datacontext:getAvailableCourses()}">
+							<c:set var="link" value="article.jsp?id=${course.id}" />
 							<div class="col-xs-12 courses-preview-row">
-								<img class="pull-left img-thumbnail" src="${course.image}" alt="" />
+								<a href="${link}"><img class="pull-left img-thumbnail" src="${course.image}" alt="" /></a>
 								<strong>${course.title}</strong>
 								<br />
 								${course.shortDescription}
-								<a class="btn btn-primary" href="#">Read More</a>
+								<a class="btn btn-primary" href="${link}">Read More</a>
 							</div>
 						</c:forEach>
 
@@ -79,7 +80,7 @@
 					<br />
 					<ul class="list-arrow">
 						<c:forEach var="course" items="${datacontext:getStartingSoonCourses()}" varStatus="status">
-							<li><a href="#">${course.title}</a></li>
+							<li><a href="article.jsp?id=${course.id}">${course.title}</a></li>
 							<c:if test="${((status.index + 1) % 5) eq 0}" ><br /></c:if>
 						</c:forEach>
 					</ul>

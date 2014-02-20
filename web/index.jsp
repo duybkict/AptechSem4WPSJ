@@ -95,7 +95,7 @@
 				</div>
 				<div class="col-xs-4">
 					<br/>
-					<a href="#"><img src="images/banner-1.jpg" alt="" style="display: block; width: 100%;" /></a>
+					<a href="courses.jsp"><img src="images/banner-1.jpg" alt="" style="display: block; width: 100%;" /></a>
 				</div>
 			</div>
 		</div>

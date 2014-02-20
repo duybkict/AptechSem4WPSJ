@@ -105,7 +105,7 @@ VALUES ('Praesent feugiat ac sapien eu sodales',
 -- Courses
 -- 1
 INSERT INTO articles(title, short_description, content, image, category, status) 
-VALUES ('Crispy tofu with salted egg-Vegetable spring roll-Vegetable stew with tofu', 
+VALUES ('Crispy tofu with salted egg', 
 		'<p>Phasellus a justo lorem. Nullam commodo nunc nunc, eu facilisis augue porttitor at. Proin eu dignissim quam. In vitae accumsan neque. Nullam sit amet luctus urna, euismod pulvinar massa.</p>', 
 		'<p>Sed convallis vestibulum nisl eu vehicula. Quisque vulputate mi sed libero interdum, et dictum justo fermentum. Donec sollicitudin aliquam aliquet. Nunc id pellentesque risus. Suspendisse est sapien, consectetur vel turpis nec, ultrices sodales erat. Aliquam erat volutpat. Pellentesque laoreet metus sed sodales laoreet. Nullam sed diam quis mi sollicitudin tristique in sit amet mauris. Vivamus vitae est tempor, ultricies nunc ut, ullamcorper dolor. Nulla vitae lacus vitae metus ullamcorper aliquet non id purus. Aenean dictum blandit felis, eget ultricies felis hendrerit sed. Integer egestas, dolor in malesuada pretium, nisl dui sollicitudin risus, in blandit lectus nulla a turpis. Cras tempor augue eu sem auctor convallis. </p>', 
 		'images/page5-img2.jpg', 
@@ -119,21 +119,21 @@ VALUES ('Butter mochi - Cupcake bouquet',
 		2, 1);
 -- 3
 INSERT INTO articles(title, short_description, content, image, category, status) 
-VALUES ('Tempura-Eel rice-Japanese tofu with seaweed', 
+VALUES ('Tempura - Eel rice - Japanese tofu with seaweed', 
 		'<p>Aliquam id erat elementum nibh tristique vulputate. Nullam vitae varius nisi. Nunc sed rutrum quam. Nullam vitae velit sit amet neque mollis euismod in eu nulla.</p>', 
 		'<p>Pellentesque turpis lacus, hendrerit non ullamcorper sit amet, mollis a nibh. Etiam nec dui ac quam elementum iaculis id eget quam. Proin quam ante, ultrices eu mollis vel, pharetra quis velit. Cras id enim semper, lobortis arcu non, tincidunt augue. Donec non velit at libero aliquet viverra. Nunc pellentesque diam eu tortor pharetra, vel ornare massa commodo. Vestibulum tincidunt et nunc eget ullamcorper. Morbi et posuere metus. Morbi porttitor augue non dui congue, et vulputate massa vulputate. </p>', 
 		'images/page5-img2.jpg', 
 		2, 1);
 -- 4
 INSERT INTO articles(title, short_description, content, image, category, status) 
-VALUES ('Tuscan Pork Ragu with handmade olive pasta-Hot Chocolate fondant with white chocolate ', 
+VALUES ('Tuscan Pork Ragu with handmade olive pasta', 
 		'<p>Tuscan Pork Ragu with milk, wine, celery and carrots tossed with handmade olive pasta. Hot Chocolate fondant with white chocolate rumball centers</p>', 
 		'<p>In at dictum lectus. Sed scelerisque odio in pharetra egestas. Pellentesque laoreet imperdiet fringilla. Fusce in vehicula sapien, ut facilisis nisi. Integer at porttitor neque, eu posuere nisl. Mauris ullamcorper mi non arcu pretium pulvinar. Ut egestas, odio nec faucibus lacinia, enim ante suscipit augue, ac varius justo massa vitae est. In vel sapien sed sapien porta convallis. Nulla ac metus in nunc elementum ullamcorper. Praesent ut ultrices magna. Praesent volutpat eleifend erat, nec feugiat turpis imperdiet nec. Aliquam eu sem massa. Ut feugiat ac tortor in volutpat. Nam accumsan ultricies nisl congue consectetur. </p>', 
 		'images/page5-img2.jpg', 
 		2, 2);
 -- 5
 INSERT INTO articles(title, short_description, content, image, category, status) 
-VALUES ('Food photography workshop by Kitchen Art team', 
+VALUES ('Chicken red pepper and parmesan roulade - Pumpkin pie', 
 		'<p>Food photography 101: Basic ideas, basic knowledge to use your camera in food photograpy (ISO, shutter speed, aperture)</p>', 
 		'<p>Integer tempor ligula vel eros cursus, sit amet vehicula risus eleifend. Vivamus rhoncus massa non dolor molestie aliquet. Vivamus tincidunt turpis orci, id tempus felis adipiscing quis. Vestibulum sem ipsum, semper et suscipit vitae, imperdiet ut massa. Vivamus euismod neque magna, sed commodo elit eleifend a. Ut sodales mauris porta, posuere nisi sit amet, dictum dui. Donec semper elit dolor, eget laoreet libero fringilla ut. Aenean a sagittis odio. In magna justo, rhoncus hendrerit leo eget, imperdiet gravida enim. Donec dictum tellus vitae mi commodo, sollicitudin ultricies erat lobortis. Praesent non arcu urna. Maecenas nec felis feugiat, egestas ipsum faucibus, aliquam mauris. Ut eget blandit magna. Fusce vitae lectus adipiscing, iaculis tortor a, tristique mauris. In hac habitasse platea dictumst. Donec vestibulum lectus dolor, in condimentum lacus ultrices ut. </p>', 
 		'images/page5-img2.jpg', 
@@ -171,6 +171,13 @@ INSERT INTO articles(title, short_description, content, image, category, status)
 VALUES ('King prawn bisque soup - Cinnamon and chili Churros ', 
 		'<p>King prawn bisque soup with curry spiced tail. Cinnamon and chili Churros (spanish dougnuts) with chocolate sauce.</p>', 
 		'<p>Maecenas semper diam quis vehicula sollicitudin. Aenean accumsan dui et turpis mattis iaculis non condimentum dui. Vivamus at facilisis enim. Vestibulum vel nibh et dolor fermentum consectetur. Aliquam erat volutpat. Phasellus id leo purus. Pellentesque id nisi ac tellus pulvinar volutpat. Cras lacinia dolor nec ullamcorper vestibulum. Proin ultricies suscipit tempus. Sed sollicitudin porta egestas. Nulla vel ipsum vitae nibh vehicula lobortis et id felis. Vivamus sit amet dapibus felis, non egestas elit. Nullam sed lorem augue. Nunc et nisl metus. .</p>', 
+		'images/page5-img2.jpg', 
+		2, 2);
+-- 11
+INSERT INTO articles(title, short_description, content, image, category, status) 
+VALUES ('Chocolate cookies - Love candle cake - Chocolate leaf', 
+		'<p>Vivamus varius condimentum sagittis. Nullam suscipit leo id adipiscing egestas. Duis quis nisl cursus, vehicula sapien sed, placerat augue. Sed sit amet egestas odio.</p>', 
+		'<p>Integer nec elit at odio suscipit congue at vel mauris. Sed nec tellus vel dui imperdiet aliquam. Sed feugiat blandit tortor. Suspendisse metus lectus, fringilla a posuere ornare, fringilla et ligula. Cras nec pretium leo, eu semper tellus. Quisque quis nibh sed lacus vulputate dictum. Cras rutrum, turpis in consectetur placerat, magna purus sagittis mauris, non posuere nulla ipsum non lectus. Ut leo neque, pellentesque et pulvinar non, rutrum a risus. Nullam ultricies quam non cursus congue. Sed ullamcorper lacus vitae enim scelerisque ultricies. Aenean molestie quis lacus at mattis. Vivamus molestie facilisis velit, ut imperdiet nibh.</p>', 
 		'images/page5-img2.jpg', 
 		2, 2);
 
