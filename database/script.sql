@@ -17,7 +17,7 @@ CREATE TABLE articles (
 	modified_date DATETIME
 );
 
-CREATE TABLE contacts (
+CREATE TABLE feedback (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	full_name VARCHAR(128),
 	email VARCHAR(128) NOT NULL,
@@ -53,10 +53,10 @@ BEGIN
 END;//
 delimiter ;
 
-DROP TRIGGER IF EXISTS tgg_insert_contacts;
+DROP TRIGGER IF EXISTS tgg_insert_feedback;
 delimiter //
-CREATE TRIGGER tgg_insert_contacts 
-BEFORE INSERT ON contacts
+CREATE TRIGGER tgg_insert_feedback 
+BEFORE INSERT ON feedback
 FOR EACH ROW 
 BEGIN
 	SET NEW.created_date = now();
@@ -64,10 +64,10 @@ BEGIN
 END;//
 delimiter ;
 
-DROP TRIGGER IF EXISTS tgg_update_contacts;
+DROP TRIGGER IF EXISTS tgg_update_feedback;
 delimiter //
-CREATE TRIGGER tgg_update_contacts 
-BEFORE UPDATE ON contacts
+CREATE TRIGGER tgg_update_feedback
+BEFORE UPDATE ON feedback
 FOR EACH ROW 
 BEGIN
 	SET NEW.modified_date = now();
@@ -204,3 +204,4 @@ VALUES ('Chocolate cookies - Love candle cake - Chocolate leaf',
 		2, 2, 100.0);
 
 -- SELECT * FROM articles LIMIT 2 OFFSET 4
+-- SELECT * FROM feedback

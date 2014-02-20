@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="/WEB-INF/tlds/datacontext.tld" prefix="datacontext"%>
 <%@taglib uri="/WEB-INF/tlds/regex.tld" prefix="regex"%>
 <!DOCTYPE html>
 
@@ -33,7 +34,7 @@
 		<div class="container content" >
 			<div class="row padding">
 				<div class="col-xs-8">
-					<div>
+					<div style="height: 383px">
 						<h3>Contact form</h3>
 
 						<c:if test="${pageContext.request.method eq 'POST'}">
@@ -68,7 +69,8 @@
 						</c:if>
 
 						<c:if test="${hasErrors eq false}">
-							<c:redirect url="contacts.jsp" />
+							${datacontext:insertFeedback(fullname, email, message)}
+							<c:redirect url="contacts_success.jsp" />
 						</c:if>
 
 						<form class="form-horizontal" action="contacts.jsp" method="post">

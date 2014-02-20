@@ -217,4 +217,21 @@ public class DataContext
 		return article;
 	}
 
+	public static boolean insertFeedback(String fullname, String email, String message) {
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"INSERT INTO feedback(full_name, email, message) VALUES (?, ?, ?) ");
+			pst.setString(1, fullname);
+			pst.setString(2, email);
+			pst.setString(3, message);
+
+			pst.executeUpdate();
+		} catch (SQLException ex) {
+			return false;
+		}
+
+		return true;
+	}
+
 }
