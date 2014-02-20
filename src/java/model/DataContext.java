@@ -6,13 +6,10 @@ package model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -21,30 +18,97 @@ import java.util.logging.Logger;
 public class DataContext
 {
 
-	public Connection getConnection() {
-		Connection conn = null;
+	private static Connection connection;
+	private static String DRIVER = "com.mysql.jdbc.Driver";
+	private static String URL = "jdbc:mysql://localhost:3306/aptechsem4wpsj";
+	private static String USER = "root";
+	private static String PASSWORD = "";
+	private static int PAGE_LIMIT = 5;
+
+	private static Connection getConnection() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306;database=AptechSem4WPSJ";
-			String user = "root";
-			String pass = "";
-			conn = DriverManager.getConnection(url, user, pass);
+			if (connection == null || connection.isClosed()) {
+				Class.forName(DRIVER);
+				connection = DriverManager.getConnection(URL, USER, PASSWORD);
+			}
 		} catch (SQLException ex) {
 			// TODO
 		} catch (ClassNotFoundException ex) {
 			// TODO
 		}
-		return conn;
+
+		return connection;
 	}
 
-	public ArrayList<Article> getEvents() {
+	public static ArrayList<Article> getEvents(int page) {
 		ArrayList<Article> list = new ArrayList<Article>();
-		String sql = "SELECT id, image, title, short_description, content "
-				+ "FROM articles "
-				+ "WHERE published = 1 AND category = 1";
 
 		try {
-			ResultSet rs = getConnection().createStatement().executeQuery(sql);
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"SELECT id, image, title, short_description, content "
+					+ "FROM articles "
+					+ "WHERE published = 1 AND category = 1 "
+					+ "ORDER BY published_date DESC "
+					+ "LIMIT ? OFFSET ?");
+			pst.setInt(1, PAGE_LIMIT);
+			pst.setInt(2, (page - 1) * PAGE_LIMIT);
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				Article article = new Article();
+				article.setId(rs.getInt(1));
+				article.setImage(rs.getString(2));
+				article.setTitle(rs.getString(3));
+				article.setShortDescription(rs.getString(4));
+				article.setContent(rs.getString(5));
+
+				list.add(article);
+			}
+			rs.close();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return list;
+	}
+
+	public static int getEventsPages() {
+		int pages = 0;
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"SELECT COUNT(id) "
+					+ "FROM articles "
+					+ "WHERE published = 1 AND category = 1 ");
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				pages = (rs.getInt(1) - 1) / PAGE_LIMIT;
+			}
+			rs.close();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return pages;
+	}
+
+	public static ArrayList<Article> getRandomArticles(int count) {
+		ArrayList<Article> list = new ArrayList<Article>();
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"SELECT id, image, title, short_description, content "
+					+ "FROM articles "
+					+ "WHERE published = 1 "
+					+ "ORDER BY RAND() "
+					+ "LIMIT ? OFFSET 0");
+			pst.setInt(1, count);
+
+			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
 				Article article = new Article();
 				article.setId(rs.getInt(1));

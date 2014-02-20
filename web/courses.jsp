@@ -48,7 +48,7 @@
 					<div class="clearfix"></div>
 
 					<div class="bg padding courses-bg-row">
-						<h3>Starting Soon</h3>
+						<h3>Available Courses</h3>
 
 						<div class="col-xs-12 courses-preview-row">
 							<img class="pull-left img-thumbnail" src="images/page5-img2.jpg" alt="" />
@@ -71,7 +71,7 @@
 				</div>
 
 				<div class="col-xs-4">
-					<h3>All Courses</h3>
+					<h3>Starting Soon</h3>
 					<hr />
 
 					<p class="text-justify">

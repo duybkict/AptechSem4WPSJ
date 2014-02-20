@@ -5,7 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="datacontext" uri="/WEB-INF/tlds/datacontext.tld" %>
 <!DOCTYPE html>
 
 <html>
@@ -24,88 +25,63 @@
 					<div class="bg padding" style="margin-left: -20px; padding-right: 20px">
 						<h3>News & Events</h3>
 
-						<div class="col-xs-12 events-preview-row">
-							<img class="pull-left img-thumbnail" src="images/page5-img1.jpg" alt="" />
-							<strong>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</strong>
-							<br />
-							<p>Totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.</p>
-							<a class="btn btn-primary" href="#">Read More</a>
-						</div>
+						<c:choose>
+							<c:when test="${empty param.page}" >
+								<c:set var="page" value="1" />
+							</c:when>
 
-						<div class="col-xs-12 events-preview-row">
-							<img class="pull-left img-thumbnail" src="images/page5-img2.jpg" alt="" />
-							<strong>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</strong>
-							<br />
-							<p>Totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.</p>
-							<a class="btn btn-primary" href="#">Read More</a>
-						</div>
+							<c:otherwise>
+								<c:set var="page" value="${param.page}" />
+							</c:otherwise>
+						</c:choose>
 
-						<div class="col-xs-12 events-preview-row">
-							<img class="pull-left img-thumbnail" src="images/page5-img3.jpg" alt="" />
-							<strong>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</strong>
-							<br />
-							<p>Totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.</p>
-							<a class="btn btn-primary" href="#">Read More</a>
-						</div>
-
-						<div class="col-xs-12 events-preview-row last">
-							<img class="pull-left img-thumbnail" src="images/page5-img4.jpg" alt="" />
-							<strong>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</strong>
-							<br />
-							<p>Totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.</p>
-							<a class="btn btn-primary" href="#">Read More</a>
-						</div>
+						<c:forEach var="event" items="${datacontext:getEvents(page)}">
+							<div class="col-xs-12 events-preview-row">
+								<img class="pull-left img-thumbnail" src="${event.image}" alt="" />
+								<strong>${event.title}</strong>
+								<br />
+								${event.shortDescription}
+								<a class="btn btn-primary" href="#">Read More</a>
+							</div>
+						</c:forEach>
 
 						<div class="clearfix"></div>
 
 						<ul class="pager">
-							<li class="previous disabled"><a href="#">&larr; Newer</a></li>
-							<li class="next"><a href="#">Older &rarr;</a></li>
+							<c:choose>
+								<c:when test="${page le 1}">
+									<li class="previous disabled" ><a>&larr; Newer</a></li>
+									</c:when>
+									<c:otherwise>
+									<li class="previous" ><a href="events.jsp?page=${page - 1}">&larr; Newer</a></li>
+									</c:otherwise>
+								</c:choose>
+								<c:choose>
+									<c:when test="${page gt datacontext:getEventsPages()}">
+									<li class="next disabled" ><a>Older &rarr;</a></li>
+									</c:when>
+									<c:otherwise>
+									<li class="next" ><a href="events.jsp?page=${page + 1}">Older &rarr;</a></li>
+									</c:otherwise>
+								</c:choose>
 						</ul>
 					</div>
 				</div>
 
 				<div class="col-xs-4">
-					<h3>Our Recipes</h3>
+					<h3>What May Interest You</h3>
 					<hr />
 
-					<p>
-						<strong>Sed perspiciatis unde </strong><br />
-						Omnis natus error sit voluptatem accusantium doloremque laudantium<br />
-						<a href="#">Read more</a>
-					</p>
-					<br/>
+					<c:forEach var="article" items="${datacontext:getRandomArticles(4)}">
+						<strong>${article.title}</strong>
+						${article.shortDescription}
+						<a href="#" class="pull-right">Read more</a>
+						<br/>
+						<br/>
+					</c:forEach>
 
-					<p>
-						<strong>Sed perspiciatis unde </strong><br />
-						Omnis natus error sit voluptatem accusantium doloremque laudantium<br />
-						<a href="#">Read more</a>
-					</p>
-					<br/>
-
-					<p>
-						<strong>Abillo inventore veritatis </strong><br />
-						Et corporis suscipit laboriotecto beatae vitae dicta sunt explicabo.<br />
-						<a href="#">Read more</a>
-					</p>
-					<br/>
-
-					<p>
-						<strong>Aut oditut fugit sed quia </strong><br />
-						Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. <br />
-						<a href="#">Read more</a>
-					</p>
-					<br/>
-
-					<p>
-						<strong>Abillo inventore veritatis </strong><br />
-						Et corporis suscipit laboriotecto beatae vitae dicta sunt explicabo.<br />
-						<a href="#">Read more</a>
-					</p>
-					<br/>
-
-					<a href="#">
-						<img alt="" src="images/banner-1.jpg" />
+					<a href="#" class="center-block">
+						<img alt="" src="images/banner-1.jpg" style="display: block; width: 100%;"/>
 					</a>
 				</div>
 

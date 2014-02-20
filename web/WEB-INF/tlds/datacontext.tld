@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib version="2.1" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+	<tlib-version>1.0</tlib-version>
+	<short-name>datacontext</short-name>
+	<uri>/WEB-INF/tlds/datacontext</uri>
+	<function>
+		<name>getEvents</name>
+		<function-class>model.DataContext</function-class>
+		<function-signature>java.util.ArrayList getEvents(int )</function-signature>
+	</function>
+	<function>
+		<name>getEventsPages</name>
+		<function-class>model.DataContext</function-class>
+		<function-signature>int getEventsPages( )</function-signature>
+	</function>
+	<function>
+		<name>getRandomArticles</name>
+		<function-class>model.DataContext</function-class>
+		<function-signature>java.util.ArrayList getRandomArticles(int )</function-signature>
+	</function>
+</taglib>
