@@ -46,7 +46,7 @@ public class DataContext
 		try {
 			Connection con = getConnection();
 			PreparedStatement pst = con.prepareStatement(
-					"SELECT id, image, title, short_description, content "
+					"SELECT id, image, title, short_description "
 					+ "FROM articles "
 					+ "WHERE published = 1 AND category = 1 "
 					+ "ORDER BY published_date DESC "
@@ -61,7 +61,6 @@ public class DataContext
 				article.setImage(rs.getString(2));
 				article.setTitle(rs.getString(3));
 				article.setShortDescription(rs.getString(4));
-				article.setContent(rs.getString(5));
 
 				list.add(article);
 			}
@@ -95,13 +94,71 @@ public class DataContext
 		return pages;
 	}
 
+	public static ArrayList<Article> getAvailableCourses() {
+		ArrayList<Article> list = new ArrayList<Article>();
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"SELECT id, image, title, short_description "
+					+ "FROM articles "
+					+ "WHERE published = 1 AND category = 2 AND status = 1 "
+					+ "ORDER BY published_date DESC ");
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				Article article = new Article();
+				article.setId(rs.getInt(1));
+				article.setImage(rs.getString(2));
+				article.setTitle(rs.getString(3));
+				article.setShortDescription(rs.getString(4));
+
+				list.add(article);
+			}
+			rs.close();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return list;
+	}
+
+	public static ArrayList<Article> getStartingSoonCourses() {
+		ArrayList<Article> list = new ArrayList<Article>();
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"SELECT id, image, title, short_description "
+					+ "FROM articles "
+					+ "WHERE published = 1 AND category = 2 AND status = 2 "
+					+ "ORDER BY published_date DESC ");
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				Article article = new Article();
+				article.setId(rs.getInt(1));
+				article.setImage(rs.getString(2));
+				article.setTitle(rs.getString(3));
+				article.setShortDescription(rs.getString(4));
+
+				list.add(article);
+			}
+			rs.close();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return list;
+	}
+
 	public static ArrayList<Article> getRandomArticles(int count) {
 		ArrayList<Article> list = new ArrayList<Article>();
 
 		try {
 			Connection con = getConnection();
 			PreparedStatement pst = con.prepareStatement(
-					"SELECT id, image, title, short_description, content "
+					"SELECT id, image, title, short_description "
 					+ "FROM articles "
 					+ "WHERE published = 1 "
 					+ "ORDER BY RAND() "
@@ -115,7 +172,6 @@ public class DataContext
 				article.setImage(rs.getString(2));
 				article.setTitle(rs.getString(3));
 				article.setShortDescription(rs.getString(4));
-				article.setContent(rs.getString(5));
 
 				list.add(article);
 			}

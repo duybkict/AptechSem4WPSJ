@@ -5,7 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="datacontext" uri="/WEB-INF/tlds/datacontext.tld" %>
 <!DOCTYPE html>
 
 <html>
@@ -50,21 +51,15 @@
 					<div class="bg padding courses-bg-row">
 						<h3>Available Courses</h3>
 
-						<div class="col-xs-12 courses-preview-row">
-							<img class="pull-left img-thumbnail" src="images/page5-img2.jpg" alt="" />
-							<strong>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</strong>
-							<br />
-							<p>Totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.</p>
-							<a class="btn btn-primary" href="#">Read More</a>
-						</div>
-
-						<div class="col-xs-12 courses-preview-row last">
-							<img class="pull-left img-thumbnail" src="images/page5-img2.jpg" alt="" />
-							<strong>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</strong>
-							<br />
-							<p>Totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas.</p>
-							<a class="btn btn-primary" href="#">Read More</a>
-						</div>
+						<c:forEach var="course" items="${datacontext:getAvailableCourses()}">
+							<div class="col-xs-12 courses-preview-row">
+								<img class="pull-left img-thumbnail" src="${course.image}" alt="" />
+								<strong>${course.title}</strong>
+								<br />
+								${course.shortDescription}
+								<a class="btn btn-primary" href="#">Read More</a>
+							</div>
+						</c:forEach>
 
 						<div class="clearfix"></div>
 					</div>
@@ -83,20 +78,10 @@
 
 					<br />
 					<ul class="list-arrow">
-						<li><a href="#">Similique sunt in culpa qui officia</a></li>
-						<li><a href="#">Saepe eveniet voluptates repudian</a></li>
-						<li><a href="#">Deserunt mollitia animi id est</a></li>
-						<li><a href="#">Laborum et dolorum fugait harum</a></li>
-						<li><a href="#">Quidem rerum facilis expedita</a></li>
-						<li><a href="#">Nam libero tempore cum soluta</a></li>
-					</ul>
-					<ul class="list-arrow">
-						<li><a href="#">Nobis eligendi optio cumque nihil</a></li>
-						<li><a href="#">Impedit quo minus id quod maxime</a></li>
-						<li><a href="#">Placeat facere possimus, omnis</a></li>
-						<li><a href="#">Voluptas assumenda omnis dolor</a></li>
-						<li><a href="#">Temporibus autem quibusdam</a></li>
-						<li><a href="#">Officiis debitis rerum necessitati</a></li>
+						<c:forEach var="course" items="${datacontext:getStartingSoonCourses()}" varStatus="status">
+							<li><a href="#">${course.title}</a></li>
+							<c:if test="${((status.index + 1) % 5) eq 0}" ><br /></c:if>
+						</c:forEach>
 					</ul>
 				</div>
 

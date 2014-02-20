@@ -54,7 +54,7 @@
 							</div>
 						</li>
 					</ul>
-					<a class="banner-2" href="#"></a>
+					<span class="banner-2" href="#"></span>
 				</div>
 				<ul class="pags">
 					<li><a href="#">1</a></li>
@@ -67,34 +67,35 @@
 				<div class="col-xs-4">
 					<h3>Weight Loss Ideas</h3>
 					<p>orem ipsum dolor sit amet, consectetur adipiscing elit. Donec leo sem, rhoncus in consequat eu, lobortis vel quam. Pellentesque sit amet sagittis sem, in volutpat lacus.</p>
-					<a class="btn btn-orange" href="#">Read More</a>
+					<a class="btn btn-orange" href="courses.jsp">Read More</a>
 				</div>
 				<div class="col-xs-4">
 					<h3>Fast Food. Yes or No?</h3>
 					<p>Mauris a eros a urna tincidunt pulvinar. Maecenas consequat, ligula ac eleifend placerat, neque tellus pretium tortor, a tristique metus nisl eu augue.</p>
-					<a class="btn btn-orange" href="#">Read More</a>
+					<a class="btn btn-orange" href="events.jsp">Read More</a>
 				</div>
 				<div class="col-xs-4 last">
 					<h3>Taste of Asia</h3>
 					<p>Donec gravida lacus eu ipsum mattis, a aliquet eros varius. Sed aliquam pulvinar ligula. Donec sollicitudin sagittis odio non iaculis. </p>
-					<a class="btn btn-orange" href="#">Read More</a>
+					<a class="btn btn-orange" href="contacts.jsp">Read More</a>
 				</div>
 			</div>
 
 			<div class="row home-preview-row padding">
 				<div class="col-xs-8">
 					<h4 class="font-lobster"><strong>Welcome</strong> <em>to Our Site!</em></h4>
-					<p><strong>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan tium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas:</strong><br /></p>
+					<p><strong>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudan tium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo nemo enim ipsam voluptatem quia voluptas. Nulla vestibulum venenatis pharetra. Curabitur viverra vitae nibh ac gravida:</strong><br /></p>
 					<ul class="list-arrow">
 						<li>Sit aspernatur aut odit aut fugit quia consequuntur</li>
 						<li>Magni dolores eos qui ratione voluptatem sequi nesciunt eque</li>
+						<li>Maecenas sollicitudin sagittis ligula</li>
 						<li>Qui dolorem ipsum quia dolor sit amet, consectetur adipisci</li>
 						<li>Sed quia non numquam eius modi tempora incidunt</li>
 					</ul>
 				</div>
 				<div class="col-xs-4">
 					<br/>
-					<a href="#"><img src="images/banner-1.jpg" alt="" /></a>
+					<a href="#"><img src="images/banner-1.jpg" alt="" style="display: block; width: 100%;" /></a>
 				</div>
 			</div>
 		</div>

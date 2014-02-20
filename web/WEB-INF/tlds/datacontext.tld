@@ -14,6 +14,16 @@
 		<function-signature>int getEventsPages( )</function-signature>
 	</function>
 	<function>
+		<name>getAvailableCourses</name>
+		<function-class>model.DataContext</function-class>
+		<function-signature>java.util.ArrayList getAvailableCourses( )</function-signature>
+	</function>
+	<function>
+		<name>getStartingSoonCourses</name>
+		<function-class>model.DataContext</function-class>
+		<function-signature>java.util.ArrayList getStartingSoonCourses( )</function-signature>
+	</function>
+	<function>
 		<name>getRandomArticles</name>
 		<function-class>model.DataContext</function-class>
 		<function-signature>java.util.ArrayList getRandomArticles(int )</function-signature>
