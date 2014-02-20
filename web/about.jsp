@@ -22,7 +22,7 @@
 			<div class="row padding">
 				<div class="col-xs-8">
 					<div>
-						<h3>A Few Words About Us</h3>
+						<h3>A few words about us</h3>
 						<p>
 							<strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </strong><br />
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse fermentum ipsum vel ligula condimentum, a facilisis nisl adipiscing. Phasellus dui elit, porttitor in pulvinar porta, congue varius risus. Morbi non lorem lobortis, cursus lorem ac, tempor lectus. Sed hendrerit vehicula sollicitudin. Vivamus porta eu justo fringilla feugiat. Sed in leo mauris. Donec tincidunt magna mauris, nec elementum orci pulvinar commodo. Sed dictum, elit sed volutpat semper.
@@ -37,7 +37,7 @@
 					<div class="clearfix"></div>
 
 					<div class="bg padding about-bg-row">
-						<h3>Why Choose Us</h3>
+						<h3>Why choose us</h3>
 						<p>
 							<strong>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias.</strong><br />
 							Excepturi sint occaecati <a href="contacts.jsp">get to us</a>, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio.

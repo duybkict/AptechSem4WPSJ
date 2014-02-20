@@ -10,6 +10,7 @@ CREATE TABLE articles (
 	image VARCHAR(512),
 	category INT NOT NULL DEFAULT 1, -- 1: News & Events, 2: Courses
 	status INT NOT NULL DEFAULT 1, -- 1: Available, 2: Starting soon, apply only for Courses
+	price float, -- Apply only for Courses
 	published BIT NOT NULL DEFAULT 1,
 	published_date DATETIME,
 	created_date DATETIME,
@@ -49,6 +50,27 @@ BEGIN
 	IF NEW.published != OLD.published AND NEW.published = 1 THEN
 		SET NEW.published_date = now();
 	END IF;
+END;//
+delimiter ;
+
+DROP TRIGGER IF EXISTS tgg_insert_contacts;
+delimiter //
+CREATE TRIGGER tgg_insert_contacts 
+BEFORE INSERT ON contacts
+FOR EACH ROW 
+BEGIN
+	SET NEW.created_date = now();
+	SET NEW.modified_date = now();
+END;//
+delimiter ;
+
+DROP TRIGGER IF EXISTS tgg_update_contacts;
+delimiter //
+CREATE TRIGGER tgg_update_contacts 
+BEFORE UPDATE ON contacts
+FOR EACH ROW 
+BEGIN
+	SET NEW.modified_date = now();
 END;//
 delimiter ;
 
@@ -104,81 +126,81 @@ VALUES ('Praesent feugiat ac sapien eu sodales',
 
 -- Courses
 -- 1
-INSERT INTO articles(title, short_description, content, image, category, status) 
+INSERT INTO articles(title, short_description, content, image, category, status, price) 
 VALUES ('Crispy tofu with salted egg', 
 		'<p>Phasellus a justo lorem. Nullam commodo nunc nunc, eu facilisis augue porttitor at. Proin eu dignissim quam. In vitae accumsan neque. Nullam sit amet luctus urna, euismod pulvinar massa.</p>', 
 		'<p>Sed convallis vestibulum nisl eu vehicula. Quisque vulputate mi sed libero interdum, et dictum justo fermentum. Donec sollicitudin aliquam aliquet. Nunc id pellentesque risus. Suspendisse est sapien, consectetur vel turpis nec, ultrices sodales erat. Aliquam erat volutpat. Pellentesque laoreet metus sed sodales laoreet. Nullam sed diam quis mi sollicitudin tristique in sit amet mauris. Vivamus vitae est tempor, ultricies nunc ut, ullamcorper dolor. Nulla vitae lacus vitae metus ullamcorper aliquet non id purus. Aenean dictum blandit felis, eget ultricies felis hendrerit sed. Integer egestas, dolor in malesuada pretium, nisl dui sollicitudin risus, in blandit lectus nulla a turpis. Cras tempor augue eu sem auctor convallis. </p>', 
 		'images/page5-img2.jpg', 
-		2, 1);
+		2, 1, 200.0);
 -- 2
-INSERT INTO articles(title, short_description, content, image, category, status) 
+INSERT INTO articles(title, short_description, content, image, category, status, price) 
 VALUES ('Butter mochi - Cupcake bouquet', 
 		'<p>Vestibulum rutrum libero non faucibus tincidunt. Etiam velit eros, lacinia vel nisl id, interdum scelerisque elit. Vivamus faucibus, sapien at faucibus tristique.</p>', 
 		'<p>Vestibulum rutrum libero non faucibus tincidunt. Etiam velit eros, lacinia vel nisl id, interdum scelerisque elit. Vivamus faucibus, sapien at faucibus tristique, diam nulla posuere sem, id sollicitudin erat metus a purus. Morbi vitae magna non libero ornare rutrum id vitae lorem. Sed nec posuere nibh. Nunc sollicitudin convallis nisi non condimentum. Donec mi ante, fermentum a accumsan sit amet, euismod vitae sapien. In vehicula eu lacus id placerat. Integer a risus id erat consectetur imperdiet ac nec ante. Vestibulum et neque vehicula, consectetur massa et, adipiscing nisl. Suspendisse sed pulvinar est. Etiam aliquet felis dui, nec rhoncus mi placerat et. Aliquam ac fringilla nunc. In vel ornare velit. Duis mollis elit sit amet velit dignissim facilisis. </p>', 
 		'images/page5-img2.jpg', 
-		2, 1);
+		2, 1, 150.0);
 -- 3
-INSERT INTO articles(title, short_description, content, image, category, status) 
+INSERT INTO articles(title, short_description, content, image, category, status, price) 
 VALUES ('Tempura - Eel rice - Japanese tofu with seaweed', 
 		'<p>Aliquam id erat elementum nibh tristique vulputate. Nullam vitae varius nisi. Nunc sed rutrum quam. Nullam vitae velit sit amet neque mollis euismod in eu nulla.</p>', 
 		'<p>Pellentesque turpis lacus, hendrerit non ullamcorper sit amet, mollis a nibh. Etiam nec dui ac quam elementum iaculis id eget quam. Proin quam ante, ultrices eu mollis vel, pharetra quis velit. Cras id enim semper, lobortis arcu non, tincidunt augue. Donec non velit at libero aliquet viverra. Nunc pellentesque diam eu tortor pharetra, vel ornare massa commodo. Vestibulum tincidunt et nunc eget ullamcorper. Morbi et posuere metus. Morbi porttitor augue non dui congue, et vulputate massa vulputate. </p>', 
 		'images/page5-img2.jpg', 
-		2, 1);
+		2, 1, 100.0);
 -- 4
-INSERT INTO articles(title, short_description, content, image, category, status) 
+INSERT INTO articles(title, short_description, content, image, category, status, price) 
 VALUES ('Tuscan Pork Ragu with handmade olive pasta', 
 		'<p>Tuscan Pork Ragu with milk, wine, celery and carrots tossed with handmade olive pasta. Hot Chocolate fondant with white chocolate rumball centers</p>', 
 		'<p>In at dictum lectus. Sed scelerisque odio in pharetra egestas. Pellentesque laoreet imperdiet fringilla. Fusce in vehicula sapien, ut facilisis nisi. Integer at porttitor neque, eu posuere nisl. Mauris ullamcorper mi non arcu pretium pulvinar. Ut egestas, odio nec faucibus lacinia, enim ante suscipit augue, ac varius justo massa vitae est. In vel sapien sed sapien porta convallis. Nulla ac metus in nunc elementum ullamcorper. Praesent ut ultrices magna. Praesent volutpat eleifend erat, nec feugiat turpis imperdiet nec. Aliquam eu sem massa. Ut feugiat ac tortor in volutpat. Nam accumsan ultricies nisl congue consectetur. </p>', 
 		'images/page5-img2.jpg', 
-		2, 2);
+		2, 2, 100.0);
 -- 5
-INSERT INTO articles(title, short_description, content, image, category, status) 
+INSERT INTO articles(title, short_description, content, image, category, status, price) 
 VALUES ('Chicken red pepper and parmesan roulade - Pumpkin pie', 
 		'<p>Food photography 101: Basic ideas, basic knowledge to use your camera in food photograpy (ISO, shutter speed, aperture)</p>', 
 		'<p>Integer tempor ligula vel eros cursus, sit amet vehicula risus eleifend. Vivamus rhoncus massa non dolor molestie aliquet. Vivamus tincidunt turpis orci, id tempus felis adipiscing quis. Vestibulum sem ipsum, semper et suscipit vitae, imperdiet ut massa. Vivamus euismod neque magna, sed commodo elit eleifend a. Ut sodales mauris porta, posuere nisi sit amet, dictum dui. Donec semper elit dolor, eget laoreet libero fringilla ut. Aenean a sagittis odio. In magna justo, rhoncus hendrerit leo eget, imperdiet gravida enim. Donec dictum tellus vitae mi commodo, sollicitudin ultricies erat lobortis. Praesent non arcu urna. Maecenas nec felis feugiat, egestas ipsum faucibus, aliquam mauris. Ut eget blandit magna. Fusce vitae lectus adipiscing, iaculis tortor a, tristique mauris. In hac habitasse platea dictumst. Donec vestibulum lectus dolor, in condimentum lacus ultrices ut. </p>', 
 		'images/page5-img2.jpg', 
-		2, 2);
+		2, 2, 100.0);
 -- 6
-INSERT INTO articles(title, short_description, content, image, category, status) 
+INSERT INTO articles(title, short_description, content, image, category, status, price) 
 VALUES ('Cake decoration with Fondant', 
 		'<p>Fusce varius eros in aliquet elementum. Praesent bibendum sollicitudin felis a sodales.</p>', 
 		'<p>Fusce varius eros in aliquet elementum. Praesent bibendum sollicitudin felis a sodales. Etiam tempor est eu massa blandit egestas. Curabitur porttitor justo non arcu placerat, in tincidunt tortor aliquet. Etiam ut libero auctor, tincidunt ante ac, lobortis arcu. Sed vel convallis purus. Sed adipiscing, lacus in sagittis hendrerit, felis massa volutpat est, ut egestas leo erat imperdiet erat. Nulla commodo ante a nibh viverra tempus. Praesent eu congue est. Sed vulputate tellus non metus vehicula tempus. Donec vitae tortor placerat, malesuada risus eget, venenatis nibh. Ut et porttitor lorem. Vestibulum at pretium lectus. Suspendisse id bibendum leo, id viverra neque. Duis vel ante tortor. </p>', 
 		'images/page5-img2.jpg', 
-		2, 2);
+		2, 2, 100.0);
 -- 7
-INSERT INTO articles(title, short_description, content, image, category, status) 
+INSERT INTO articles(title, short_description, content, image, category, status, price) 
 VALUES ('Chocolate cream pie - Almond cake', 
 		'<p>Nam sit amet molestie ante. Morbi congue enim sed libero porta mattis. In sed porttitor risus. Mauris posuere ullamcorper venenatis.</p>', 
 		'<p>Nullam nec diam ligula. Maecenas bibendum, lacus et posuere egestas, enim urna gravida tortor, eu egestas lectus metus vel enim. Nunc sodales purus elit, a porttitor elit pretium a. Duis feugiat nisl neque, ac porta nisl accumsan ac. Proin adipiscing sapien eget sollicitudin vehicula. Morbi quis lacus sodales, facilisis velit ut, pretium metus. Praesent scelerisque risus non nunc iaculis, a sagittis lorem consectetur. Pellentesque tincidunt nec lorem ornare venenatis. Maecenas varius orci ut magna dictum mattis. Vestibulum rhoncus lorem ac vehicula blandit. Etiam sed tincidunt odio, pulvinar commodo dui. Nulla facilisi. </p>', 
 		'images/page5-img2.jpg', 
-		2, 2);
+		2, 2, 100.0);
 -- 8
-INSERT INTO articles(title, short_description, content, image, category, status) 
+INSERT INTO articles(title, short_description, content, image, category, status, price) 
 VALUES ('Zebra cake - Strawberry tart', 
 		'<p>Donec interdum metus id leo malesuada posuere. Quisque eu ultricies nisi. Fusce accumsan leo tristique, tempus eros vitae, ultricies dolor.</p>', 
 		'<p>Nunc malesuada consectetur dui et ultrices. Proin id nisl venenatis, congue turpis non, semper ligula. Nullam a urna erat. Mauris porttitor rutrum interdum. Donec interdum metus id leo malesuada posuere. Quisque eu ultricies nisi. Fusce accumsan leo tristique, tempus eros vitae, ultricies dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque enim est, fringilla et eros in, sagittis porta elit. Nullam scelerisque ac felis a varius. Nam rhoncus urna est, eu lacinia erat aliquet ut. </p>', 
 		'images/page5-img2.jpg', 
-		2, 2);
+		2, 2, 100.0);
 -- 9
-INSERT INTO articles(title, short_description, content, image, category, status) 
+INSERT INTO articles(title, short_description, content, image, category, status, price) 
 VALUES ('Black forest cheesecake - Egg tart', 
 		'<p>Praesent fermentum, tortor nec adipiscing feugiat, justo odio faucibus sem, vitae viverra tellus lorem ac lacus. Aenean eleifend semper ornare. </p>', 
 		'<p>Praesent fermentum, tortor nec adipiscing feugiat, justo odio faucibus sem, vitae viverra tellus lorem ac lacus. Aenean eleifend semper ornare. Cras luctus lacus diam, quis eleifend purus rhoncus at. Sed purus turpis, laoreet in neque sed, malesuada tristique arcu. Quisque pulvinar odio tortor, ac viverra ipsum malesuada non. Mauris ornare faucibus eros sit amet luctus. Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mattis, elit sed vestibulum pretium, leo nibh consectetur nulla, non vestibulum leo mi at nibh. Vestibulum vitae iaculis odio, ut rhoncus lorem. Praesent mattis quis orci ut aliquet. Nunc blandit, turpis sed aliquam adipiscing, sapien felis facilisis nisl, vel accumsan eros orci ac dui. Nulla convallis commodo tellus, at cursus neque posuere vel. Quisque pulvinar lorem sit amet vestibulum vestibulum. Sed mollis suscipit ante, ac egestas tortor rhoncus vel. Vivamus varius, ante et vulputate mollis, dui nisi porttitor nisl, quis molestie eros augue a nisi. </p>', 
 		'images/page5-img2.jpg', 
-		2, 2);
+		2, 2, 100.0);
 -- 10
-INSERT INTO articles(title, short_description, content, image, category, status) 
+INSERT INTO articles(title, short_description, content, image, category, status, price) 
 VALUES ('King prawn bisque soup - Cinnamon and chili Churros ', 
 		'<p>King prawn bisque soup with curry spiced tail. Cinnamon and chili Churros (spanish dougnuts) with chocolate sauce.</p>', 
 		'<p>Maecenas semper diam quis vehicula sollicitudin. Aenean accumsan dui et turpis mattis iaculis non condimentum dui. Vivamus at facilisis enim. Vestibulum vel nibh et dolor fermentum consectetur. Aliquam erat volutpat. Phasellus id leo purus. Pellentesque id nisi ac tellus pulvinar volutpat. Cras lacinia dolor nec ullamcorper vestibulum. Proin ultricies suscipit tempus. Sed sollicitudin porta egestas. Nulla vel ipsum vitae nibh vehicula lobortis et id felis. Vivamus sit amet dapibus felis, non egestas elit. Nullam sed lorem augue. Nunc et nisl metus. .</p>', 
 		'images/page5-img2.jpg', 
-		2, 2);
+		2, 2, 100.0);
 -- 11
-INSERT INTO articles(title, short_description, content, image, category, status) 
+INSERT INTO articles(title, short_description, content, image, category, status, price) 
 VALUES ('Chocolate cookies - Love candle cake - Chocolate leaf', 
 		'<p>Vivamus varius condimentum sagittis. Nullam suscipit leo id adipiscing egestas. Duis quis nisl cursus, vehicula sapien sed, placerat augue. Sed sit amet egestas odio.</p>', 
 		'<p>Integer nec elit at odio suscipit congue at vel mauris. Sed nec tellus vel dui imperdiet aliquam. Sed feugiat blandit tortor. Suspendisse metus lectus, fringilla a posuere ornare, fringilla et ligula. Cras nec pretium leo, eu semper tellus. Quisque quis nibh sed lacus vulputate dictum. Cras rutrum, turpis in consectetur placerat, magna purus sagittis mauris, non posuere nulla ipsum non lectus. Ut leo neque, pellentesque et pulvinar non, rutrum a risus. Nullam ultricies quam non cursus congue. Sed ullamcorper lacus vitae enim scelerisque ultricies. Aenean molestie quis lacus at mattis. Vivamus molestie facilisis velit, ut imperdiet nibh.</p>', 
 		'images/page5-img2.jpg', 
-		2, 2);
+		2, 2, 100.0);
 
 -- SELECT * FROM articles LIMIT 2 OFFSET 4

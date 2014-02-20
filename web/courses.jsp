@@ -49,7 +49,7 @@
 					<div class="clearfix"></div>
 
 					<div class="bg padding courses-bg-row">
-						<h3>Available Courses</h3>
+						<h3>Available courses</h3>
 
 						<c:forEach var="course" items="${datacontext:getAvailableCourses()}">
 							<c:set var="link" value="article.jsp?id=${course.id}" />
@@ -67,7 +67,7 @@
 				</div>
 
 				<div class="col-xs-4">
-					<h3>Starting Soon</h3>
+					<h3>Starting soon</h3>
 					<hr />
 
 					<p class="text-justify">

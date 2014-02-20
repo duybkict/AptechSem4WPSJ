@@ -45,17 +45,25 @@
 						<div class="bg padding courses-bg-row">
 							<c:choose>
 								<c:when test="${article.status eq 1}" >
-									<h3 class="pull-left" style="margin-top: 7px">Course Is Now Available</h3>
+									<h3 class="pull-left" style="margin-top: 7px">Course is now available</h3>
 									<a href="#" class="btn btn-orange pull-right col-xs-4 btn-lg">Enroll Now</a>
 								</c:when>
 								<c:otherwise>
-									<h3 class="pull-left" style="margin-top: 7px">Coming Soon</h3>
+									<h3 class="pull-left" style="margin-top: 7px">Coming soon</h3>
 									<a class="btn btn-default pull-right col-xs-4 btn-lg" disabled="disabled">Now Unavailable</a>
 								</c:otherwise>
 							</c:choose>
 
 							<div class="clearfix"></div>
 							<br />
+							<c:choose>
+								<c:when test="${article.price gt 0.0}">
+									<strong>Price: </strong>&dollar;${article.price}
+								</c:when>
+								<c:otherwise>
+									<strong>Price: </strong>N/A
+								</c:otherwise>
+							</c:choose>
 							<p>Course is not open for enrollment at the moment. Sed nec tellus vel dui imperdiet aliquam. Sed feugiat blandit tortor. <a href="contacts.jsp">Contact us</a> suspendisse metus lectus, fringilla a posuere ornare.</p>
 						</div>
 
@@ -65,7 +73,7 @@
 					<div class="bg padding courses-bg-row">
 						<c:choose>
 							<c:when test="${article.category eq 2 && article.status eq 1}" >
-								<h3>Another Courses</h3>
+								<h3>Another courses</h3>
 
 								<c:forEach var="course" items="${datacontext:getAvailableCourses()}">
 									<c:if test="${article.id ne course.id}" >
@@ -81,7 +89,7 @@
 								</c:forEach>
 							</c:when>
 							<c:otherwise>
-								<h3>Available Courses</h3>
+								<h3>Available courses</h3>
 
 								<c:forEach var="course" items="${datacontext:getAvailableCourses()}">
 									<c:set var="link" value="article.jsp?id=${course.id}" />
@@ -101,7 +109,7 @@
 				</div>
 
 				<div class="col-xs-4">
-					<h3>What May Interest You</h3>
+					<h3>What may interest you</h3>
 					<hr />
 
 					<c:forEach var="article" items="${datacontext:getRandomArticles(4)}">

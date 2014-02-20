@@ -70,7 +70,7 @@
 				</div>
 
 				<div class="col-xs-4">
-					<h3>What May Interest You</h3>
+					<h3>What may interest you</h3>
 					<hr />
 
 					<c:forEach var="article" items="${datacontext:getRandomArticles(4)}">

@@ -22,7 +22,7 @@
 			<div class="row padding">
 				<div class="col-xs-8">
 					<div>
-						<h3>Contact Form</h3>
+						<h3>Contact form</h3>
 						<form class="form-horizontal">
 							<div class="form-group">
 								<label for="fullname" class="col-xs-2 control-label">Full Name:</label>
@@ -54,13 +54,13 @@
 					<div class="clearfix"></div>
 
 					<div class="bg padding about-bg-row">
-						<h3>Miscellaneous Info</h3>
+						<h3>Miscellaneous info</h3>
 						<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
 					</div>
 				</div>
 
 				<div class="col-xs-4">
-					<h3>Our Contacts</h3>
+					<h3>Our contacts</h3>
 					<hr />
 
 					<address>

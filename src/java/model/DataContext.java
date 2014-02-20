@@ -100,7 +100,7 @@ public class DataContext
 		try {
 			Connection con = getConnection();
 			PreparedStatement pst = con.prepareStatement(
-					"SELECT id, image, title, short_description "
+					"SELECT id, image, title, short_description, price "
 					+ "FROM articles "
 					+ "WHERE published = 1 AND category = 2 AND status = 1 "
 					+ "ORDER BY published_date DESC ");
@@ -112,6 +112,7 @@ public class DataContext
 				article.setImage(rs.getString(2));
 				article.setTitle(rs.getString(3));
 				article.setShortDescription(rs.getString(4));
+				article.setPrice(rs.getFloat(5));
 
 				list.add(article);
 			}
@@ -129,7 +130,7 @@ public class DataContext
 		try {
 			Connection con = getConnection();
 			PreparedStatement pst = con.prepareStatement(
-					"SELECT id, image, title, short_description "
+					"SELECT id, image, title, short_description, price "
 					+ "FROM articles "
 					+ "WHERE published = 1 AND category = 2 AND status = 2 "
 					+ "ORDER BY published_date DESC ");
@@ -141,6 +142,7 @@ public class DataContext
 				article.setImage(rs.getString(2));
 				article.setTitle(rs.getString(3));
 				article.setShortDescription(rs.getString(4));
+				article.setPrice(rs.getFloat(5));
 
 				list.add(article);
 			}
@@ -189,7 +191,7 @@ public class DataContext
 		try {
 			Connection con = getConnection();
 			PreparedStatement pst = con.prepareStatement(
-					"SELECT id, image, title, short_description, content, status, category "
+					"SELECT id, image, title, short_description, content, status, category, price "
 					+ "FROM articles "
 					+ "WHERE published = 1 AND id = ? "
 					+ "LIMIT 1 OFFSET 0");
@@ -205,6 +207,7 @@ public class DataContext
 				article.setContent(rs.getString(5));
 				article.setStatus(rs.getInt(6));
 				article.setCategory(rs.getInt(7));
+				article.setPrice(rs.getFloat(8));
 			}
 			rs.close();
 		} catch (SQLException ex) {

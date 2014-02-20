@@ -20,6 +20,7 @@ public class Article
 	private String image;
 	private int category; // 1: News & Events, 2: Recipes, 3: Courses
 	private int status; // 1: Starting soon, 2: Ended, apply only for Courses
+	private float price; // Apply only for Courses
 	private boolean published;
 	private Date publishedDate;
 	private Date createdDate;
@@ -114,6 +115,14 @@ public class Article
 
 	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
+	}
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
 	}
 
 }
