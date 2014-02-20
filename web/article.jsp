@@ -25,8 +25,13 @@
 	</jsp:include>
 
     <body>
+		<c:set var="active" value="articles" />
+		<c:if test="${article.category eq 2}">
+			<c:set var="active" value="courses" />
+		</c:if>
+
         <jsp:include page="layout/navigation.jsp">
-			<jsp:param name="active" value="events" />
+			<jsp:param name="active" value="${active}" />
 		</jsp:include>
 
 		<div class="container content" >
