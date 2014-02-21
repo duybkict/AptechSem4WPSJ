@@ -72,7 +72,10 @@
 														var selectBox = '#select-itemnum-${id}';
 
 														jQuery(selectBox).val(${itemnum});
-														jQuery(selectBox).change(function() {jQuery('#input-itemnum-${id}').val(jQuery(this).val());jQuery('#form-update-${id}').submit();});
+														jQuery(selectBox).change(function() {
+															jQuery('#input-itemnum-${id}').val(jQuery(this).val());
+															jQuery('#form-update-${id}').submit();
+														});
 													</script>
 												</td>
 												<td>&dollar;${item.price * itemnum}</td>
@@ -118,15 +121,17 @@
 									</tr>
 								</table>
 								<br/>
-								<button class="btn btn-orange btn-lg"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Checkout</button>
+								<form action="ShoppingCart" method="post">
+									<input type="hidden" name="itemid" value="0" />
+									<input type="hidden" name="action" value="checkout" />
+									<button class="btn btn-orange btn-lg"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Checkout</button>
+								</form>
 							</c:when>
 							<c:otherwise>
 								<h3 class="pull-left">Total</h3>
 								<span class="total pull-right">$0</span>
-
 								<div class="clearfix"></div>
 								<hr />
-
 								You have to <a href="members.jsp">Sign In</a> first if you want to Checkout<br/>
 								Don't have an account yet? <a href="members.jsp">Create one</a>.
 								<br/>

@@ -118,6 +118,27 @@ BEGIN
 END;//
 delimiter ;
 
+DROP TRIGGER IF EXISTS tgg_insert_orders;
+delimiter //
+CREATE TRIGGER tgg_insert_orders
+BEFORE INSERT ON orders
+FOR EACH ROW 
+BEGIN
+	SET NEW.created_date = now();
+	SET NEW.modified_date = now();
+END;//
+delimiter ;
+
+DROP TRIGGER IF EXISTS tgg_update_orders;
+delimiter //
+CREATE TRIGGER tgg_update_orders
+BEFORE UPDATE ON orders
+FOR EACH ROW 
+BEGIN
+	SET NEW.modified_date = now();
+END;//
+delimiter ;
+
 -- 1
 INSERT INTO articles(title, short_description, content, image, category) 
 VALUES ('Sharp 100 years', 

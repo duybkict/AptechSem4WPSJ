@@ -7,6 +7,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.Iterator;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -86,6 +87,20 @@ public class ShoppingCart extends HttpServlet
 			if (shoppingCart.containsKey(id)) {
 				shoppingCart.put(id, itemnum);
 			}
+		} else if (action.equals("checkout")) {
+			User user = (User) request.getSession().getAttribute("loginUser");
+			int orderId = DataContext.insertOrder(user.getId());
+
+			for (Integer itemId : shoppingCart.keySet()) {
+				Article item = DataContext.getArticleById(itemId);
+				DataContext.insertOrderItem(orderId, itemId, shoppingCart.get(itemId), item.getPrice());
+			}
+
+			request.getSession().removeAttribute("shoppingCart");
+			response.sendRedirect("index.jsp");
+
+			processRequest(request, response);
+			return;
 		}
 
 		request.getSession().setAttribute("shoppingCart", shoppingCart);

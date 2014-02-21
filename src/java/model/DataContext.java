@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 /**
@@ -280,6 +281,45 @@ public class DataContext
 		}
 
 		return user;
+	}
+
+	public static int insertOrder(int userId) {
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"INSERT INTO orders(user_id) VALUES (?) ",
+					Statement.RETURN_GENERATED_KEYS);
+			pst.setInt(1, userId);
+
+			pst.executeUpdate();
+			ResultSet generatedKeys = pst.getGeneratedKeys();
+
+			if (generatedKeys.next()) {
+				return generatedKeys.getInt(1);
+			}
+		} catch (SQLException ex) {
+			return Integer.MIN_VALUE;
+		}
+
+		return Integer.MIN_VALUE;
+	}
+
+	public static boolean insertOrderItem(int orderId, int itemId, int itemNum, float price) {
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"INSERT INTO order_items(order_id, item_id, item_num, price) VALUES (?, ?, ?, ?) ");
+			pst.setInt(1, orderId);
+			pst.setInt(2, itemId);
+			pst.setInt(3, itemNum);
+			pst.setFloat(4, price);
+
+			pst.executeUpdate();
+		} catch (SQLException ex) {
+			return false;
+		}
+
+		return true;
 	}
 
 }
