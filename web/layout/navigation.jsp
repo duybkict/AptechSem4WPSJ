@@ -23,7 +23,7 @@
 						&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 					</c:when>
 					<c:otherwise>
-						Welcome, ${user.fullName}
+						Hello, ${user.fullName}
 						&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 						<a href="#" onclick="jQuery('#form_logout').submit()">Sign Out</a>
 						&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
