@@ -53,5 +53,6 @@
 </nav>
 
 <form id="form_logout" style="display:hidden" action="Login" method="post">
+	<input type="hidden" name="url" value="${pageContext.request.requestURL}?${pageContext.request.queryString}" />
 	<input type="hidden" name="action" value="logout" />
 </form>

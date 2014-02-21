@@ -51,7 +51,15 @@
 							<c:choose>
 								<c:when test="${article.status eq 1}" >
 									<h3 class="pull-left" style="margin-top: 5px">Course is now available</h3>
-									<a href="#" class="btn btn-orange pull-right col-xs-4 btn-lg">Enroll Now</a>
+									<c:set var="user" value="${sessionScope.login_user}" />
+									<c:choose>
+										<c:when test="${not empty user}">
+											<a href="index.jsp" class="btn btn-orange pull-right col-xs-4 btn-lg">Enroll Now</a>
+										</c:when>
+										<c:otherwise>
+											<button class="btn btn-orange pull-right col-xs-4 btn-lg" disabled="disabled">Sign In to Enroll</button>
+										</c:otherwise>
+									</c:choose>
 								</c:when>
 								<c:otherwise>
 									<h3 class="pull-left" style="margin-top: 5px">Coming soon</h3>

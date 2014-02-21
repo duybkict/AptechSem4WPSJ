@@ -74,8 +74,13 @@ public class Login extends HttpServlet
 				response.sendRedirect("members.jsp?errorLogin=true");
 			}
 		} else if (action.equals("logout")) {
+			String url = request.getParameter("url");
+			if (url == null) {
+				url = "index.jsp";
+			}
+
 			request.getSession().removeAttribute("login_user");
-			response.sendRedirect("index.jsp");
+			response.sendRedirect(url);
 		}
 
 		processRequest(request, response);
