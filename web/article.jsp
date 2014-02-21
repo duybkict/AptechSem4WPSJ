@@ -81,7 +81,7 @@
 									<strong>Price: </strong>N/A
 								</c:otherwise>
 							</c:choose>
-							<p>Course is not open for enrollment at the moment. Sed nec tellus vel dui imperdiet aliquam. Sed feugiat blandit tortor. <a href="contacts.jsp">Contact us</a> suspendisse metus lectus, fringilla a posuere ornare.</p>
+							<p>Sed nec tellus vel dui imperdiet aliquam. Sed nec tellus vel dui imperdiet aliquam. Sed feugiat blandit tortor. <a href="contacts.jsp">Contact us</a> suspendisse metus lectus, fringilla a posuere ornare.</p>
 						</div>
 
 						<div class="clearfix"></div>
@@ -138,7 +138,7 @@
 						<br/>
 					</c:forEach>
 
-					<a href="#" class="center-block">
+					<a href="courses.jsp" class="center-block">
 						<img alt="" src="images/banner-1.jpg" style="display: block; width: 100%;"/>
 					</a>
 				</div>
