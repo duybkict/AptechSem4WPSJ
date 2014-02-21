@@ -26,10 +26,13 @@
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
 	<link rel='stylesheet' href='css/font-lobster.css' type='text/css'>
 	<link rel='stylesheet' href='css/font-myriadpro.css' type='text/css'>
-
-	<script src="js/jquery-1.6.3.min.js" type="text/javascript"></script>
-	<script src="js/jquery.easing.1.3.js" type="text/javascript"></script>
-	<script src="js/tms-0.3.js" type="text/javascript"></script>
-	<script src="js/tms_presets.js" type="text/javascript"></script>
-	<script src="js/bootstrap.min.js" type="text/javascript"></script>
 </head>
+
+<script src="js/jquery-1.6.3.min.js" type="text/javascript"></script>
+<script src="js/jquery.easing.1.3.js" type="text/javascript"></script>
+<script src="js/tms-0.3.js" type="text/javascript"></script>
+<script src="js/tms_presets.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$.noConflict();
+</script>

@@ -25,7 +25,7 @@
 					<c:otherwise>
 						Welcome, ${user.fullName}
 						&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-						<a href="#" onclick="$('#form_logout').submit()">Sign Out</a>
+						<a href="#" onclick="jQuery('#form_logout').submit()">Sign Out</a>
 						&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 					</c:otherwise>
 				</c:choose>

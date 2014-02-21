@@ -35,6 +35,20 @@ CREATE TABLE users (
 	modified_date DATETIME
 );
 
+CREATE TABLE orders (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	user_id INT,
+	created_date DATETIME,
+	modified_date DATETIME
+);
+
+CREATE TABLE order_items (
+	item_id INT,
+	order_id INT,
+	item_num INT,
+	price float
+);
+
 DROP TRIGGER IF EXISTS tgg_insert_ariticles;
 delimiter //
 CREATE TRIGGER tgg_insert_ariticles 

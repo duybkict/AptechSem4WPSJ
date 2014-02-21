@@ -103,8 +103,8 @@
 		<jsp:include page="layout/footer.jsp" />
 
 		<script type="text/javascript">
-			$(window).load(function() {
-				$('.slider')._TMS({
+			jQuery(window).load(function() {
+				jQuery('.slider')._TMS({
 					duration: 1000,
 					easing: 'easeOutQuart',
 					preset: 'simpleFade',

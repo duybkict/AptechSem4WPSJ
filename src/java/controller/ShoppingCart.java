@@ -78,7 +78,14 @@ public class ShoppingCart extends HttpServlet
 				shoppingCart.put(id, 1);
 			}
 		} else if (action.equals("delete")) {
-
+			if (shoppingCart.containsKey(id)) {
+				shoppingCart.remove(id);
+			}
+		} else if (action.equals("update")) {
+			int itemnum = Integer.parseInt(request.getParameter("itemnum"));
+			if (shoppingCart.containsKey(id)) {
+				shoppingCart.put(id, itemnum);
+			}
 		}
 
 		request.getSession().setAttribute("shoppingCart", shoppingCart);
