@@ -274,3 +274,5 @@ INSERT INTO users(email, password, full_name) VALUE ('admin@email.com', 'admin',
 -- SELECT * FROM articles LIMIT 2 OFFSET 4
 -- SELECT * FROM feedback
 -- SELECT * FROM users
+-- SELECT * FROM orders
+-- SELECT * FROM order_items
