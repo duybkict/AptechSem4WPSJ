@@ -8,7 +8,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:set var="active" value="${param.active}" />
-<c:set var="user" value="${sessionScope.login_user}" />
+<c:set var="user" value="${sessionScope.loginUser}" />
 
 <header role="banner">
 	<div class="container">
@@ -30,9 +30,17 @@
 					</c:otherwise>
 				</c:choose>
 
-				<a href="#" style="width: 145px; display: inline-block; text-align: right">
+				<a href="checkout.jsp" style="width: 145px; display: inline-block; text-align: right">
 					<span class="glyphicon glyphicon-shopping-cart"></span>
-					Shopping Cart (0)
+					<c:choose>
+						<c:when test="${empty sessionScope.shoppingCart}">
+							<c:set var="cartSize" value="0" />
+						</c:when>
+						<c:otherwise>
+							<c:set var="cartSize" value="${sessionScope.shoppingCart.size()}" />
+						</c:otherwise>
+					</c:choose>
+					Shopping Cart (${cartSize})
 				</a>
 			</span>
 		</div>

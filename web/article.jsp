@@ -51,10 +51,14 @@
 							<c:choose>
 								<c:when test="${article.status eq 1}" >
 									<h3 class="pull-left" style="margin-top: 5px">Course is now available</h3>
-									<c:set var="user" value="${sessionScope.login_user}" />
+									<c:set var="user" value="${sessionScope.loginUser}" />
 									<c:choose>
 										<c:when test="${not empty user}">
-											<a href="index.jsp" class="btn btn-orange pull-right col-xs-4 btn-lg">Enroll Now</a>
+											<form action="ShoppingCart" method="post">
+												<input type="hidden" name="action" value="add" />
+												<input type="hidden" name="itemid" value="${article.id}" />
+												<button type="submit" class="btn btn-orange pull-right col-xs-4 btn-lg">Enroll Now</button>
+											</form>
 										</c:when>
 										<c:otherwise>
 											<button class="btn btn-orange pull-right col-xs-4 btn-lg" disabled="disabled">Sign In to Enroll</button>

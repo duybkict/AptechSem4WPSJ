@@ -5,10 +5,13 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Article;
 import model.DataContext;
 import model.User;
 
@@ -16,7 +19,7 @@ import model.User;
  *
  * @author Duy
  */
-public class Login extends HttpServlet
+public class ShoppingCart extends HttpServlet
 {
 
 	/**
@@ -62,27 +65,24 @@ public class Login extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
-		String email = request.getParameter("email_signin");
-		String password = request.getParameter("password_signin");
+		int id = Integer.parseInt(request.getParameter("itemid"));
 
-		if (action.equals("login")) {
-			User user = DataContext.checkLogin(email, password);
-			if (user != null) {
-				request.getSession().setAttribute("loginUser", user);
-				response.sendRedirect("success.jsp?action=login");
-			} else {
-				response.sendRedirect("members.jsp?errorLogin=true");
-			}
-		} else if (action.equals("logout")) {
-			String url = request.getParameter("url");
-			if (url == null) {
-				url = "index.jsp";
-			}
-
-			request.getSession().removeAttribute("loginUser");
-			request.getSession().removeAttribute("shoppingCart");
-			response.sendRedirect(url);
+		HashMap<Integer, Integer> shoppingCart;
+		shoppingCart = (HashMap<Integer, Integer>) request.getSession().getAttribute("shoppingCart");
+		if (shoppingCart == null) {
+			shoppingCart = new HashMap<Integer, Integer>();
 		}
+
+		if (action.equals("add")) {
+			if (!shoppingCart.containsKey(id)) {
+				shoppingCart.put(id, 1);
+			}
+		} else if (action.equals("delete")) {
+
+		}
+
+		request.getSession().setAttribute("shoppingCart", shoppingCart);
+		response.sendRedirect("checkout.jsp");
 
 		processRequest(request, response);
 	}

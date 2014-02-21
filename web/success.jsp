@@ -10,7 +10,7 @@
 
 <html>
     <jsp:include page="layout/head.jsp">
-		<jsp:param name="title" value="Contacts | GoodCook" />
+		<jsp:param name="title" value="Success | GoodCook" />
 	</jsp:include>
 
     <body>
@@ -19,7 +19,7 @@
 			<div class="container content" >
 				<div class="row padding">
 					<div class="col-xs-8">
-						<div style="height: 383px">
+						<div style="min-height: 383px">
 						<c:set var="action" value="${param.action}" />
 						<c:choose>
 							<c:when test='${action eq "contacts"}'>
@@ -31,7 +31,7 @@
 							</c:when>
 
 							<c:when test='${action eq "login"}'>
-								<h3>Welcome, <c:out value="${sessionScope.login_user.fullName}" /></h3>
+								<h3>Welcome, <c:out value="${sessionScope.loginUser.fullName}" /></h3>
 							</c:when>
 						</c:choose>
 

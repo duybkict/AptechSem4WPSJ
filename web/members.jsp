@@ -12,7 +12,7 @@
 
 <html>
     <jsp:include page="layout/head.jsp">
-		<jsp:param name="title" value="Contacts | GoodCook" />
+		<jsp:param name="title" value="Members | GoodCook" />
 	</jsp:include>
 
     <body>
@@ -37,7 +37,7 @@
 		<div class="container content" >
 			<div class="row padding">
 				<div class="col-xs-6">
-					<div style="height: 383px">
+					<div style="min-height: 383px">
 						<h3>Register for new account</h3>
 
 						<c:if test="${pageContext.request.method eq 'POST'}">

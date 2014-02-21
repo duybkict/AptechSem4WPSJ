@@ -32,7 +32,7 @@
 		<div class="container content" >
 			<div class="row padding">
 				<div class="col-xs-8">
-					<div style="height: 383px">
+					<div style="min-height: 383px">
 						<h3>Contact form</h3>
 
 						<c:if test="${pageContext.request.method eq 'POST'}">

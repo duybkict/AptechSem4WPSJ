@@ -344,3 +344,49 @@ footer {
 .form-horizontal .form-group label {
 	text-align: left;
 }
+
+.box-total {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.box-total h3 {
+	display: inline-block;
+}
+
+.box-total hr {
+	margin: 10px 0px 15px;
+}
+
+.box-total .total {
+	line-height: 35px;
+	margin-top: 2px;
+	display: inline-block;
+	font-size: 28px;
+	color: #006837;
+	font-weight: bold;
+	font-family: 'MyriadProRegular', serif;
+}
+
+.box-total button {
+	margin-top: 10px;
+	width: 100%;
+}
+
+.table-cart {
+	margin-top: 20px;
+}
+
+.table-cart tr td, .table-cart tr th {
+	text-align: center;
+}
+
+.table-cart tr td:first-child, .table-cart tr th:first-child {
+	text-align: left;
+}
+
+.table-cart tbody tr td a {
+	text-align: center;
+	display: block;
+	min-height: 35px;
+}
