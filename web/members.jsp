@@ -88,7 +88,7 @@
 						</c:if>
 
 						<c:if test="${hasErrors eq false}">
-							<c:redirect url="contacts_success.jsp" />
+							<c:redirect url="success.jsp?action=register" />
 						</c:if>
 
 							<form class="form-horizontal" action="members.jsp" method="post">

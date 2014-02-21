@@ -68,7 +68,7 @@
 
 						<c:if test="${hasErrors eq false}">
 							${datacontext:insertFeedback(fullname, email, message)}
-							<c:redirect url="contacts_success.jsp" />
+							<c:redirect url="success.jsp?action=contacts" />
 						</c:if>
 
 						<form class="form-horizontal" action="contacts.jsp" method="post">
