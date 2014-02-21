@@ -68,23 +68,31 @@ public class ShoppingCart extends HttpServlet
 		String action = request.getParameter("action");
 		int id = Integer.parseInt(request.getParameter("itemid"));
 
-		HashMap<Integer, Integer> shoppingCart;
-		shoppingCart = (HashMap<Integer, Integer>) request.getSession().getAttribute("shoppingCart");
+		HashMap<Integer, Integer> shoppingCart = (HashMap<Integer, Integer>) request.getSession().getAttribute("shoppingCart");
+		Integer shoppingCartSize = (Integer) request.getSession().getAttribute("shoppingCartSize");
+
 		if (shoppingCart == null) {
 			shoppingCart = new HashMap<Integer, Integer>();
+		}
+
+		if (shoppingCartSize == null) {
+			shoppingCartSize = 0;
 		}
 
 		if (action.equals("add")) {
 			if (!shoppingCart.containsKey(id)) {
 				shoppingCart.put(id, 1);
+				shoppingCartSize++;
 			}
 		} else if (action.equals("delete")) {
 			if (shoppingCart.containsKey(id)) {
+				shoppingCartSize -= shoppingCart.get(id);
 				shoppingCart.remove(id);
 			}
 		} else if (action.equals("update")) {
 			int itemnum = Integer.parseInt(request.getParameter("itemnum"));
 			if (shoppingCart.containsKey(id)) {
+				shoppingCartSize = shoppingCartSize + itemnum - shoppingCart.get(id);
 				shoppingCart.put(id, itemnum);
 			}
 		} else if (action.equals("checkout")) {
@@ -97,13 +105,15 @@ public class ShoppingCart extends HttpServlet
 			}
 
 			request.getSession().removeAttribute("shoppingCart");
-			response.sendRedirect("index.jsp");
+			request.getSession().removeAttribute("shoppingCartSize");
+			response.sendRedirect("success.jsp?action=checkout");
 
 			processRequest(request, response);
 			return;
 		}
 
 		request.getSession().setAttribute("shoppingCart", shoppingCart);
+		request.getSession().setAttribute("shoppingCartSize", shoppingCartSize.intValue());
 		response.sendRedirect("checkout.jsp");
 
 		processRequest(request, response);

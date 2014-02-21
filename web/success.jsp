@@ -33,6 +33,11 @@
 							<c:when test='${action eq "login"}'>
 								<h3>Welcome, <c:out value="${sessionScope.loginUser.fullName}" /></h3>
 							</c:when>
+
+							<c:when test='${action eq "checkout"}'>
+								<h3>Checkout successfully !!</h3>
+								<p>We will contact you soon for blah blah blah.</p>
+							</c:when>
 						</c:choose>
 
 						<p>Lorem ipsum dolor <a href="index.jsp">GoodCook</a> sit amet, consectetur adipiscing elit. Suspendisse fermentum ipsum vel ligula condimentum, a facilisis nisl adipiscing. Phasellus dui elit, <a href="courses.jsp">latest courses</a> porttitor in pulvinar porta, congue varius risus.</p>

@@ -29,6 +29,7 @@
 					<div style="min-height: 383px">
 						<h3>Shopping Cart</h3>
 
+						<c:set var="totalPrice" value="0" />
 						<c:choose>
 							<c:when test="${not empty shoppingCart}">
 								<table class="table table-condensed table-cart">
@@ -42,7 +43,6 @@
 										</tr>
 									</thead>
 									<tbody>
-										<c:set var="totalPrice" value="0" />
 										<c:forEach var="id" items="${shoppingCart.keySet()}">
 											<c:set var="item" value="${datacontext:getArticleById(id)}" />
 											<c:set var="itemnum" value="${shoppingCart.get(id)}" />

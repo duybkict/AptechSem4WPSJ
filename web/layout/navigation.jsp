@@ -33,11 +33,11 @@
 				<a href="checkout.jsp" style="width: 145px; display: inline-block; text-align: right">
 					<span class="glyphicon glyphicon-shopping-cart"></span>
 					<c:choose>
-						<c:when test="${empty sessionScope.shoppingCart}">
+						<c:when test="${empty sessionScope.shoppingCartSize}">
 							<c:set var="cartSize" value="0" />
 						</c:when>
 						<c:otherwise>
-							<c:set var="cartSize" value="${sessionScope.shoppingCart.size()}" />
+							<c:set var="cartSize" value="${sessionScope.shoppingCartSize}" />
 						</c:otherwise>
 					</c:choose>
 					Shopping Cart (${cartSize})
