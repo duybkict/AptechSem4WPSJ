@@ -5,7 +5,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -74,6 +73,9 @@ public class Login extends HttpServlet
 			} else {
 				response.sendRedirect("members.jsp?errorLogin=true");
 			}
+		} else if (action.equals("logout")) {
+			request.getSession().removeAttribute("login_user");
+			response.sendRedirect("index.jsp");
 		}
 
 		processRequest(request, response);

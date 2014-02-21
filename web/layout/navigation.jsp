@@ -8,14 +8,28 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:set var="active" value="${param.active}" />
+<c:set var="user" value="${sessionScope.login_user}" />
 
 <header role="banner">
 	<div class="container">
 		<div class="row">
 			<h1><a href="index.html">GoodCook</a></h1>
 			<span class="navigation-control">
-				<a href="members.jsp">Register</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-				<a href="members.jsp">Sign In</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+				<c:choose>
+					<c:when test="${empty user}">
+						<a href="members.jsp">Register</a>
+						&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+						<a href="members.jsp">Sign In</a>
+						&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+					</c:when>
+					<c:otherwise>
+						Welcome, ${user.fullName}
+						&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+						<a href="#" onclick="$('#form_logout').submit()">Sign Out</a>
+						&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+					</c:otherwise>
+				</c:choose>
+
 				<a href="#" style="width: 145px; display: inline-block; text-align: right">
 					<span class="glyphicon glyphicon-shopping-cart"></span>
 					Shopping Cart (0)
@@ -37,3 +51,7 @@
 		</div>
 	</div>
 </nav>
+
+<form id="form_logout" style="display:hidden" action="Login" method="post">
+	<input type="hidden" name="action" value="logout" />
+</form>

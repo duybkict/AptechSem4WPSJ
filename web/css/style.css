@@ -130,11 +130,12 @@ header {
 	position: absolute;
 	top: -4px;
 	right: 24px;
-	color: #2A6496;
+	font-size: 14px;
+	color: white;
 }
 
 .navigation-control a {
-	font-size: 14px;
+
 	color: white;
 }
 
