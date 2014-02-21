@@ -50,11 +50,11 @@
 						<div class="bg padding courses-bg-row">
 							<c:choose>
 								<c:when test="${article.status eq 1}" >
-									<h3 class="pull-left" style="margin-top: 7px">Course is now available</h3>
+									<h3 class="pull-left" style="margin-top: 5px">Course is now available</h3>
 									<a href="#" class="btn btn-orange pull-right col-xs-4 btn-lg">Enroll Now</a>
 								</c:when>
 								<c:otherwise>
-									<h3 class="pull-left" style="margin-top: 7px">Coming soon</h3>
+									<h3 class="pull-left" style="margin-top: 5px">Coming soon</h3>
 									<a class="btn btn-default pull-right col-xs-4 btn-lg" disabled="disabled">Now Unavailable</a>
 								</c:otherwise>
 							</c:choose>

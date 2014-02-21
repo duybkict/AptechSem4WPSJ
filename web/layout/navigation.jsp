@@ -14,8 +14,8 @@
 		<div class="row">
 			<h1><a href="index.html">GoodCook</a></h1>
 			<span class="navigation-control">
-				<a href="#">Register</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-				<a href="#">Sign In</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+				<a href="members.jsp">Register</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+				<a href="members.jsp">Sign In</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 				<a href="#" style="width: 145px; display: inline-block; text-align: right">
 					<span class="glyphicon glyphicon-shopping-cart"></span>
 					Shopping Cart (0)

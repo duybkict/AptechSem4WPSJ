@@ -339,3 +339,7 @@ footer {
 .pags li a:hover,
 .pags li.current a {background-position:left top;}
 .pags li.current a {cursor:default;}
+
+.form-horizontal .form-group label {
+	text-align: left;
+}
