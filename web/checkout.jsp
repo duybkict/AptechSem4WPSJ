@@ -124,7 +124,7 @@
 								<form action="ShoppingCart" method="post">
 									<input type="hidden" name="itemid" value="0" />
 									<input type="hidden" name="action" value="checkout" />
-									<button class="btn btn-orange btn-lg"><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Checkout</button>
+									<button class="btn btn-orange btn-lg" <c:if test="${empty sessionScope.shoppingCartSize || sessionScope.shoppingCartSize le 0}" >disabled="disabled"</c:if> ><span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;Checkout</button>
 								</form>
 							</c:when>
 							<c:otherwise>

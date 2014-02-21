@@ -50,7 +50,7 @@
 	<div class="container">
 		<div class="row">
 			<ul class="nav navbar-nav">
-				<li><a href="index.jsp" <c:if test="${active eq 'index'}"> class="active"</c:if> >Main</a></li>
+				<li><a href="index.jsp" <c:if test="${active eq 'index'}"> class="active"</c:if> >Home</a></li>
 				<li><a href="about.jsp" <c:if test="${active eq 'about'}"> class="active"</c:if> >About Us</a></li>
 				<li><a href="courses.jsp" <c:if test="${active eq 'courses'}"> class="active"</c:if> >Courses</a></li>
 				<li><a href="articles.jsp" <c:if test="${active eq 'articles'}"> class="active"</c:if> >News & Events</a></li>
