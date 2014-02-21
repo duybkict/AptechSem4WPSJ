@@ -88,6 +88,7 @@
 						</c:if>
 
 						<c:if test="${hasErrors eq false}">
+							${datacontext:insertUser(fullname, email, password)}
 							<c:redirect url="success.jsp?action=register" />
 						</c:if>
 
@@ -144,7 +145,7 @@
 							</div>
 							</c:if>
 
-							<form class="form-horizontal" action="contacts.jsp" method="post">
+							<form class="form-horizontal" action="Login" method="post">
 								<div class="form-group">
 									<label for="email_signin" class="col-xs-3 control-label">Email</label>
 									<div class="col-xs-8">
@@ -157,9 +158,10 @@
 										<input type="password" required="required" class="form-control input-sm" id="password_signin" name="password_signin" value="<c:if test="${not empty fullname}" >${fullname}</c:if>" />
 									</div>
 								</div>
+								<input type="hidden" name="action" value="login" />
 								<div class="form-group">
 									<div class="col-xs-offset-3 col-xs-8">
-										<button type="submit" class="btn btn-primary" disabled="disabled">Sign In</button>
+										<button type="submit" class="btn btn-primary" >Sign In</button>
 										<button type="reset" class="btn btn-default">Clear</button>
 									</div>
 								</div>

@@ -19,9 +19,18 @@ CREATE TABLE articles (
 
 CREATE TABLE feedback (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	full_name VARCHAR(128),
-	email VARCHAR(128) NOT NULL,
+	full_name VARCHAR(512),
+	email VARCHAR(512) NOT NULL,
 	message TEXT,
+	created_date DATETIME,
+	modified_date DATETIME
+);
+
+CREATE TABLE users (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	full_name VARCHAR(512),
+	email VARCHAR(512) NOT NULL,
+	password VARCHAR(512) NOT NULL,
 	created_date DATETIME,
 	modified_date DATETIME
 );
@@ -68,6 +77,27 @@ DROP TRIGGER IF EXISTS tgg_update_feedback;
 delimiter //
 CREATE TRIGGER tgg_update_feedback
 BEFORE UPDATE ON feedback
+FOR EACH ROW 
+BEGIN
+	SET NEW.modified_date = now();
+END;//
+delimiter ;
+
+DROP TRIGGER IF EXISTS tgg_insert_users;
+delimiter //
+CREATE TRIGGER tgg_insert_users
+BEFORE INSERT ON users
+FOR EACH ROW 
+BEGIN
+	SET NEW.created_date = now();
+	SET NEW.modified_date = now();
+END;//
+delimiter ;
+
+DROP TRIGGER IF EXISTS tgg_update_users;
+delimiter //
+CREATE TRIGGER tgg_update_users
+BEFORE UPDATE ON users
 FOR EACH ROW 
 BEGIN
 	SET NEW.modified_date = now();
@@ -202,6 +232,9 @@ VALUES ('Chocolate cookies - Love candle cake - Chocolate leaf',
 		'<p>Integer nec elit at odio suscipit congue at vel mauris. Sed nec tellus vel dui imperdiet aliquam. Sed feugiat blandit tortor. Suspendisse metus lectus, fringilla a posuere ornare, fringilla et ligula. Cras nec pretium leo, eu semper tellus. Quisque quis nibh sed lacus vulputate dictum. Cras rutrum, turpis in consectetur placerat, magna purus sagittis mauris, non posuere nulla ipsum non lectus. Ut leo neque, pellentesque et pulvinar non, rutrum a risus. Nullam ultricies quam non cursus congue. Sed ullamcorper lacus vitae enim scelerisque ultricies. Aenean molestie quis lacus at mattis. Vivamus molestie facilisis velit, ut imperdiet nibh.</p>', 
 		'images/page5-img2.jpg', 
 		2, 2, 100.0);
+
+-- users
+INSERT INTO users(email, password, full_name) VALUE ('admin@email.com', 'admin', 'admin')
 
 -- SELECT * FROM articles LIMIT 2 OFFSET 4
 -- SELECT * FROM feedback

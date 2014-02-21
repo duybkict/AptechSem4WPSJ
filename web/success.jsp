@@ -14,30 +14,30 @@
 	</jsp:include>
 
     <body>
-        <jsp:include page="layout/navigation.jsp">
-			<jsp:param name="active" value="contacts" />
-		</jsp:include>
+        <jsp:include page="layout/navigation.jsp"></jsp:include>
 
-		<div class="container content" >
-			<div class="row padding">
-				<div class="col-xs-8">
-					<div style="height: 383px">
+			<div class="container content" >
+				<div class="row padding">
+					<div class="col-xs-8">
+						<div style="height: 383px">
 						<c:set var="action" value="${param.action}" />
 						<c:choose>
 							<c:when test='${action eq "contacts"}'>
 								<h3>Message sent successfully !!</h3>
-								<p>Lorem ipsum dolor <a href="index.jsp">GoodCook</a> sit amet, consectetur adipiscing elit. Suspendisse fermentum ipsum vel ligula condimentum, a facilisis nisl adipiscing. Phasellus dui elit, <a href="courses.jsp">latest courses</a> porttitor in pulvinar porta, congue varius risus.</p>
-								<p>Proin other <a href="articles.jsp">News & Events</a> aliquet massa vel mauris ultricies, vehicula accumsan ipsum auctor.</p>
-								<p>Quisque quis nibh sed lacus vulputate dictum. Cras rutrum, turpis in consectetur placerat, magna purus sagittis mauris, non posuere nulla ipsum non lectus. Ut leo neque, pellentesque et pulvinar non, rutrum a risus. Nullam ultricies quam non cursus congue. Sed ullamcorper lacus vitae enim scelerisque ultricies. Aenean molestie quis lacus at mattis. Vivamus molestie facilisis velit, ut imperdiet nibh. </p>
 							</c:when>
 
-								<c:when test='${action eq "register"}'>
+							<c:when test='${action eq "register"}'>
 								<h3>Account registered successfully !!</h3>
-								<p>Lorem ipsum dolor <a href="index.jsp">GoodCook</a> sit amet, consectetur adipiscing elit. Suspendisse fermentum ipsum vel ligula condimentum, a facilisis nisl adipiscing. Phasellus dui elit, <a href="courses.jsp">latest courses</a> porttitor in pulvinar porta, congue varius risus.</p>
-								<p>Proin other <a href="articles.jsp">News & Events</a> aliquet massa vel mauris ultricies, vehicula accumsan ipsum auctor.</p>
-								<p>Quisque quis nibh sed lacus vulputate dictum. Cras rutrum, turpis in consectetur placerat, magna purus sagittis mauris, non posuere nulla ipsum non lectus. Ut leo neque, pellentesque et pulvinar non, rutrum a risus. Nullam ultricies quam non cursus congue. Sed ullamcorper lacus vitae enim scelerisque ultricies. Aenean molestie quis lacus at mattis. Vivamus molestie facilisis velit, ut imperdiet nibh. </p>
+							</c:when>
+
+							<c:when test='${action eq "login"}'>
+								<h3>Welcome, <c:out value="${sessionScope.login_user.fullName}" /></h3>
 							</c:when>
 						</c:choose>
+
+						<p>Lorem ipsum dolor <a href="index.jsp">GoodCook</a> sit amet, consectetur adipiscing elit. Suspendisse fermentum ipsum vel ligula condimentum, a facilisis nisl adipiscing. Phasellus dui elit, <a href="courses.jsp">latest courses</a> porttitor in pulvinar porta, congue varius risus.</p>
+						<p>Proin other <a href="articles.jsp">News & Events</a> aliquet massa vel mauris ultricies, vehicula accumsan ipsum auctor.</p>
+						<p>Quisque quis nibh sed lacus vulputate dictum. Cras rutrum, turpis in consectetur placerat, magna purus sagittis mauris, non posuere nulla ipsum non lectus. Ut leo neque, pellentesque et pulvinar non, rutrum a risus. Nullam ultricies quam non cursus congue. Sed ullamcorper lacus vitae enim scelerisque ultricies. Aenean molestie quis lacus at mattis. Vivamus molestie facilisis velit, ut imperdiet nibh. </p>
 
 					</div>
 

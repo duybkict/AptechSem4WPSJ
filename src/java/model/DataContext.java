@@ -234,4 +234,52 @@ public class DataContext
 		return true;
 	}
 
+	public static boolean insertUser(String fullname, String email, String password) {
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"INSERT INTO users(full_name, email, password) VALUES (?, ?, ?) ");
+			pst.setString(1, fullname);
+			pst.setString(2, email);
+			pst.setString(3, password);
+
+			pst.executeUpdate();
+		} catch (SQLException ex) {
+			return false;
+		}
+
+		return true;
+	}
+
+
+	public static User checkLogin(String email, String password) {
+		User user = null;
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"SELECT id, full_name, email, password "
+					+ "FROM users "
+					+ "WHERE email = ? AND password = ? "
+					+ "LIMIT 1 OFFSET 0");
+			pst.setString(1, email);
+			pst.setString(2, password);
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				user = new User();
+				user.setId(rs.getInt(1));
+				user.setFullName(rs.getString(2));
+				user.setEmail(rs.getString(3));
+				user.setPassword(rs.getString(4));
+			}
+
+			rs.close();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return user;
+	}
+
 }
