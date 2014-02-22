@@ -270,7 +270,7 @@ VALUES ('Chocolate cookies - Love candle cake - Chocolate leaf',
 		2, 2, 100.0);
 
 -- users
-INSERT INTO users(email, password, full_name) VALUE ('admin@email.com', 'admin', 'admin');
+INSERT INTO users(email, password, full_name, type) VALUE ('admin@email.com', 'admin', 'admin', 2);
 
 -- SELECT * FROM articles LIMIT 2 OFFSET 4
 -- SELECT * FROM feedback
