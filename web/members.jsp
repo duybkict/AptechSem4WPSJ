@@ -140,7 +140,7 @@
 							<c:if test="${errorLogin eq true}">
 							<div class="alert alert-danger">
 								<ul>
-									<li><label for="email_signin"><strong>Login failed</strong> due to wrong email or password.</label></li>
+									<li><label for="email_signin"><strong>Login failed</strong> due to invalid email or password.</label></li>
 								</ul>
 							</div>
 							</c:if>

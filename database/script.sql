@@ -31,6 +31,7 @@ CREATE TABLE users (
 	full_name VARCHAR(512),
 	email VARCHAR(512) NOT NULL,
 	password VARCHAR(512) NOT NULL,
+	type int DEFAULT 1, -- 1: user, 2: admin
 	created_date DATETIME,
 	modified_date DATETIME
 );
