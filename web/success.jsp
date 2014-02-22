@@ -31,6 +31,10 @@
 							</c:when>
 
 							<c:when test='${action eq "login"}'>
+								<c:if test="${empty sessionScope.loginUser}">
+									<c:redirect url="members.jsp" />
+								</c:if>
+
 								<h3>Welcome, <c:out value="${sessionScope.loginUser.fullName}" /></h3>
 							</c:when>
 
@@ -38,6 +42,10 @@
 								<h3>Checkout successfully !!</h3>
 								<p>We will contact you soon for blah blah blah.</p>
 							</c:when>
+
+							<c:otherwise>
+								<c:redirect url="index.jsp" />
+							</c:otherwise>
 						</c:choose>
 
 						<p>Lorem ipsum dolor <a href="index.jsp">GoodCook</a> sit amet, consectetur adipiscing elit. Suspendisse fermentum ipsum vel ligula condimentum, a facilisis nisl adipiscing. Phasellus dui elit, <a href="courses.jsp">latest courses</a> porttitor in pulvinar porta, congue varius risus.</p>

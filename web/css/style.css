@@ -129,7 +129,7 @@ header {
 .navigation-control {
 	position: absolute;
 	top: -4px;
-	right: 24px;
+	right: 7px;
 	font-size: 14px;
 	color: white;
 }
@@ -141,6 +141,19 @@ header {
 
 .navigation-control a:hover {
 	color: #2A6496;
+}
+
+.navigation-search {
+	position: absolute;
+	top: 38px;
+	right: 1px;
+	font-size: 14px;
+	color: white;
+	width: 260px;
+}
+
+.navigation-search #input-search {
+
 }
 
 ul.nav {

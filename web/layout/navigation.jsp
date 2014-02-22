@@ -43,6 +43,16 @@
 					Shopping Cart (${cartSize})
 				</a>
 			</span>
+			<div class="navigation-search">
+				<form class="form-inline">
+					<div class="input-group input-group-sm">
+						<input type="text" class="form-control" name="search" id="input-search" placeholder="Search our site">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+						</span>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 </header>
@@ -55,12 +65,12 @@
 				<li><a href="courses.jsp" <c:if test="${active eq 'courses'}"> class="active"</c:if> >Courses</a></li>
 				<li><a href="articles.jsp" <c:if test="${active eq 'articles'}"> class="active"</c:if> >News & Events</a></li>
 				<li><a href="contacts.jsp" <c:if test="${active eq 'contacts'}"> class="active"</c:if> >Contacts</a></li>
-			</ul>
+				</ul>
+			</div>
 		</div>
-	</div>
-</nav>
+	</nav>
 
-<form id="form_logout" style="display:hidden" action="Login" method="post">
-	<input type="hidden" name="url" value="${pageContext.request.requestURL}?${pageContext.request.queryString}" />
+	<form id="form_logout" style="display:hidden" action="Login" method="post">
+		<input type="hidden" name="url" value="${pageContext.request.requestURL}?${pageContext.request.queryString}" />
 	<input type="hidden" name="action" value="logout" />
 </form>
