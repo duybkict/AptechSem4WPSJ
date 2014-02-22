@@ -44,11 +44,11 @@
 				</a>
 			</span>
 			<div class="navigation-search">
-				<form class="form-inline">
+				<form class="form-inline" action="articles.jsp" method="get">
 					<div class="input-group input-group-sm">
-						<input type="text" class="form-control" name="search" id="input-search" placeholder="Search our site">
+						<input type="text" class="form-control" name="search" id="input-search" placeholder="Search our site" value="${param.search.trim()}">
 						<span class="input-group-btn">
-							<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+							<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
 						</span>
 					</div>
 				</form>

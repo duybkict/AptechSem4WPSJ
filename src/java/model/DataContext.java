@@ -73,7 +73,7 @@ public class DataContext
 		return list;
 	}
 
-	public static int getEventsPages() {
+	public static int getArticlesPages() {
 		int pages = 0;
 
 		try {
@@ -82,6 +82,68 @@ public class DataContext
 					"SELECT COUNT(id) "
 					+ "FROM articles "
 					+ "WHERE published = 1 AND category = 1 ");
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				pages = (rs.getInt(1) - 1) / PAGE_LIMIT;
+			}
+			rs.close();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return pages;
+	}
+
+	public static ArrayList<Article> getArticles(String query, int page) {
+		ArrayList<Article> list = new ArrayList<Article>();
+		query = '%' + query.trim() + '%';
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"SELECT id, image, title, short_description "
+					+ "FROM articles "
+					+ "WHERE published = 1 AND (title LIKE ? OR short_description LIKE ? OR content LIKE ?) "
+					+ "ORDER BY published_date DESC "
+					+ "LIMIT ? OFFSET ?");
+			pst.setString(1, query);
+			pst.setString(2, query);
+			pst.setString(3, query);
+			pst.setInt(4, PAGE_LIMIT);
+			pst.setInt(5, (page - 1) * PAGE_LIMIT);
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				Article article = new Article();
+				article.setId(rs.getInt(1));
+				article.setImage(rs.getString(2));
+				article.setTitle(rs.getString(3));
+				article.setShortDescription(rs.getString(4));
+
+				list.add(article);
+			}
+			rs.close();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return list;
+	}
+
+	public static int getArticlesPages(String query) {
+		int pages = 0;
+		query = '%' + query.trim() + '%';
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"SELECT COUNT(id) "
+					+ "FROM articles "
+					+ "WHERE published = 1 AND (title LIKE ? OR short_description LIKE ? OR content LIKE ?) ");
+			pst.setString(1, query);
+			pst.setString(2, query);
+			pst.setString(3, query);
 
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {

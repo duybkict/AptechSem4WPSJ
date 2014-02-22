@@ -9,9 +9,19 @@
 		<function-signature>java.util.ArrayList getEvents(int )</function-signature>
 	</function>
 	<function>
-		<name>getEventsPages</name>
+		<name>getArticlesPages</name>
 		<function-class>model.DataContext</function-class>
-		<function-signature>int getEventsPages( )</function-signature>
+		<function-signature>int getArticlesPages( )</function-signature>
+	</function>
+	<function>
+		<name>getArticles</name>
+		<function-class>model.DataContext</function-class>
+		<function-signature>java.util.ArrayList getArticles(java.lang.String, int )</function-signature>
+	</function>
+	<function>
+		<name>getArticlesPagesWithQuery</name>
+		<function-class>model.DataContext</function-class>
+		<function-signature>int getArticlesPages(java.lang.String )</function-signature>
 	</function>
 	<function>
 		<name>getAvailableCourses</name>
