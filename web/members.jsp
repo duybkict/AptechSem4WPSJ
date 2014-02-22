@@ -146,6 +146,9 @@
 							</c:if>
 
 							<form class="form-horizontal" action="Login" method="post">
+								<span class="col-xs-11 text-right" style="padding-right: 0px;">
+									Forgot your password? <a href="contacts.jsp">Contact us.</a>
+								</span>
 								<div class="form-group">
 									<label for="email_signin" class="col-xs-3 control-label">Email</label>
 									<div class="col-xs-8">
@@ -161,7 +164,7 @@
 								<input type="hidden" name="action" value="login" />
 								<div class="form-group">
 									<div class="col-xs-offset-3 col-xs-8">
-										<button type="submit" class="btn btn-primary" >Sign In</button>
+										<button type="submit" class="btn btn-primary">Sign In</button>
 										<button type="reset" class="btn btn-default">Clear</button>
 									</div>
 								</div>
