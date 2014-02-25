@@ -1,5 +1,9 @@
 body {
-	background: #6C5296;
+	background: url('../images/tiny_grid.png') repeat scroll 0px 0px #E9E9E9;
+}
+
+.content {
+	background: #fff;
 }
 
 .alert.alert-danger ul {

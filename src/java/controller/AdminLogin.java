@@ -70,9 +70,9 @@ public class AdminLogin extends HttpServlet
 			if (user != null) {
 				request.getSession().setAttribute("loginUser", user);
 				// TODO:
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("main.jsp");
 			} else {
-				response.sendRedirect("index.jsp?errorLogin=true");
+				response.sendRedirect("index.jsp?error=login");
 			}
 		} else if (action.equals("logout")) {
 			String url = request.getParameter("url");

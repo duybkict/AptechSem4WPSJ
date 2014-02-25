@@ -6,6 +6,10 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<c:if test="${not empty sessionScope.loginUser}">
+	<c:redirect url="main.jsp" />
+</c:if>
 <!DOCTYPE html>
 <html>
     <jsp:include page="layout/head.jsp">
@@ -14,19 +18,27 @@
 
     <body>
 		<div class="container">
-			<div class="" style="float: none; width: 400px; margin: 80px auto;">
-				<div class="panel panel-default">
+			<div class="" style="float: none; width: 400px; margin: 110px auto;">
+				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">Administrator Login</h3>
 					</div>
 					<div class="panel-body">
 						<form class="form-horizontal" action="AdminLogin" method="post">
-							<c:if test="${param.errorLogin eq true}">
-							<div class="alert alert-danger">
-								<ul>
-									<li><label for="email"><strong>Login failed</strong> due to invalid email or password.</label></li>
-								</ul>
-							</div>
+							<c:if test="${not empty param.error}">
+								<div class="alert alert-danger">
+									<ul>
+										<c:choose>
+											<c:when test="${param.error eq 'login'}">
+												<li><label for="email"><strong>Login failed</strong> due to invalid email or password.</label></li>
+											</c:when>
+
+											<c:when test="${param.error eq 'authentication'}">
+												<li><label for="email"><strong>Authentication failed</strong>. You must login first.</label></li>
+											</c:when>
+										</c:choose>
+									</ul>
+								</div>
 							</c:if>
 							<div class="form-group">
 								<label for="email" class="col-xs-3 control-label">Email</label>
