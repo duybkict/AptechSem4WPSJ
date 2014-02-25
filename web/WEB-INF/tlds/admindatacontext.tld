@@ -8,4 +8,29 @@
 		<function-class>model.AdminDataContext</function-class>
 		<function-signature>java.util.ArrayList getFeedbacks(int )</function-signature>
 	</function>
+	<function>
+		<name>getFeedbacksPages</name>
+		<function-class>model.AdminDataContext</function-class>
+		<function-signature>int getFeedbacksPages( )</function-signature>
+	</function>
+	<function>
+		<name>getEvents</name>
+		<function-class>model.AdminDataContext</function-class>
+		<function-signature>java.util.ArrayList getEvents(int )</function-signature>
+	</function>
+	<function>
+		<name>getEventsPages</name>
+		<function-class>model.AdminDataContext</function-class>
+		<function-signature>int getEventsPages( )</function-signature>
+	</function>
+	<function>
+		<name>getCourses</name>
+		<function-class>model.AdminDataContext</function-class>
+		<function-signature>java.util.ArrayList getCourses(int )</function-signature>
+	</function>
+	<function>
+		<name>getCoursesPages</name>
+		<function-class>model.AdminDataContext</function-class>
+		<function-signature>int getCoursesPages( )</function-signature>
+	</function>
 </taglib>

@@ -1,5 +1,5 @@
 <%--
-    Document   : feedback
+    Document   : courses
     Created on : Feb 25, 2014, 11:29:12 AM
     Author     : Duy
 --%>
@@ -11,12 +11,12 @@
 <!DOCTYPE html>
 <html>
     <jsp:include page="layout/head.jsp">
-		<jsp:param name="title" value="Feedback | Administrator" />
+		<jsp:param name="title" value="Courses | Administrator" />
 	</jsp:include>
 
     <body>
 		<jsp:include page="layout/navigation.jsp">
-			<jsp:param name="active" value="feedback" />
+			<jsp:param name="active" value="courses" />
 		</jsp:include>
 
 		<c:choose>
@@ -29,32 +29,52 @@
 			</c:otherwise>
 		</c:choose>
 
-		<c:set var="feedback" value="${datacontext:getFeedbacks(page)}" />
+		<c:set var="courses" value="${datacontext:getCourses(page)}" />
 
 		<div class="container content">
 			<div class="col-xs-12">
-				<h3>Feedback Management</h3>
+				<h3>Courses Management</h3>
 
 				<c:choose>
-					<c:when test="${not empty feedback}">
+					<c:when test="${not empty courses}">
 						<table class="table table-bordered table-hover">
 							<thead>
 								<tr>
 									<th>#</th>
-									<th>Full Name</th>
-									<th>Email</th>
-									<th>Message</th>
+									<th>Image</th>
+									<th>Title</th>
+									<th>Price</th>
+									<th>Status</th>
+									<th>Published</th>
 									<th>Created Date</th>
 									<th>Modified Date</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="i" items="${feedback}" >
+								<c:forEach var="i" items="${courses}" >
 									<tr>
 										<td>${i.id}</td>
-										<td>${i.fullName}</td>
-										<td>${i.email}</td>
-										<td class="col-xs-5">${i.message}</td>
+										<td><img src="${pageContext.request.contextPath}/${i.image}" /></td>
+										<td class="col-xs-3">${i.title}</td>
+										<td>&dollar;${i.price}</td>
+										<td class="text-center">
+											<c:choose>
+												<c:when test="${i.status eq 1}">
+													<span class="label label-primary">available</span>
+												</c:when>
+
+												<c:otherwise><span class="label label-default">coming soon</span></c:otherwise>
+											</c:choose>
+										</td>
+										<td class="text-center">
+											<c:choose>
+												<c:when test="${i.published eq true}">
+													<span class="label label-primary">yes</span>
+												</c:when>
+
+												<c:otherwise><span class="label label-default">no</span></c:otherwise>
+											</c:choose>
+										</td>
 										<td><fmt:formatDate value="${i.createdDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 										<td><fmt:formatDate value="${i.modifiedDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 									</tr>
@@ -72,7 +92,7 @@
 									</c:otherwise>
 								</c:choose>
 								<c:choose>
-									<c:when test="${page gt datacontext:getFeedbacksPages()}">
+									<c:when test="${page gt datacontext:getEventsPages()}">
 									<li class="disabled" ><a>Next</a></li>
 									</c:when>
 									<c:otherwise>

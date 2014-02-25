@@ -74,7 +74,7 @@ public class DataContext
 	}
 
 	public static int getArticlesPages() {
-		int pages = 0;
+		int pages = 1;
 
 		try {
 			Connection con = getConnection();
