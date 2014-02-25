@@ -24,10 +24,10 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="#">Courses</a></li>
-				<li><a href="#">News & Events</a></li>
-				<li><a href="#">Orders</a></li>
-				<li><a href="#">Feedback</a></li>
+				<li <c:if test="${active eq 'courses'}"> class="active"</c:if>><a href="courses.jsp">Courses</a></li>
+				<li <c:if test="${active eq 'events'}"> class="active"</c:if>><a href="events.jsp">News & Events</a></li>
+				<li <c:if test="${active eq 'orders'}"> class="active"</c:if>><a href="orders.jsp">Orders</a></li>
+				<li <c:if test="${active eq 'feedback'}"> class="active"</c:if> ><a href="feedback.jsp" >Feedback</a></li>
 			</ul>
 			<form action="AdminLogin" method="post">
 				<input type="hidden" name="action" value="logout" />
