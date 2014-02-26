@@ -36,34 +36,34 @@
 						<h3>Contact form</h3>
 
 						<c:if test="${pageContext.request.method eq 'POST'}">
-						<div class="alert alert-danger">
-							<ul>
+							<div class="alert alert-danger">
+								<ul>
 
-							<c:if test="${empty fullname}" >
-								<li><label for="fullname"><strong>Full Name</strong> must not be left blank.</label></li>
-								<c:set var="hasErrors" value="true" />
-							</c:if>
+									<c:if test="${empty fullname}" >
+										<li><label for="fullname"><strong>Full Name</strong> must not be left blank.</label></li>
+											<c:set var="hasErrors" value="true" />
+										</c:if>
 
-							<c:choose>
-								<c:when test="${empty email}" >
-									<li><label for="email"><strong>Email</strong> must not be left blank.</label></li>
-									<c:set var="hasErrors" value="true" />
-								</c:when>
-								<c:otherwise>
-									<c:if test="${not regex:matches(regexEmail, email)}" >
-										<li><label for="email"><strong>Email</strong> is not valid.</label></li>
-										<c:set var="hasErrors" value="true" />
-									</c:if>
-								</c:otherwise>
-							</c:choose>
+									<c:choose>
+										<c:when test="${empty email}" >
+											<li><label for="email"><strong>Email</strong> must not be left blank.</label></li>
+												<c:set var="hasErrors" value="true" />
+											</c:when>
+											<c:otherwise>
+												<c:if test="${not regex:matches(regexEmail, email)}" >
+												<li><label for="email"><strong>Email</strong> is not valid.</label></li>
+													<c:set var="hasErrors" value="true" />
+												</c:if>
+											</c:otherwise>
+										</c:choose>
 
-							<c:if test="${empty message}" >
-								<li><label for="message"><strong>Message</strong> must not be left blank.</label></li>
-								<c:set var="hasErrors" value="true" />
-							</c:if>
+									<c:if test="${empty message}" >
+										<li><label for="message"><strong>Message</strong> must not be left blank.</label></li>
+											<c:set var="hasErrors" value="true" />
+										</c:if>
 
-							</ul>
-						</div>
+								</ul>
+							</div>
 						</c:if>
 
 						<c:if test="${hasErrors eq false}">
@@ -75,19 +75,25 @@
 							<div class="form-group">
 								<label for="fullname" class="col-xs-2 control-label">Full Name</label>
 								<div class="col-xs-7">
-									<input type="text" required="required" class="form-control input-sm" id="fullname" name="fullname" value="<c:if test="${not empty fullname}" >${fullname}</c:if>" />
-									</div>
+									<c:choose>
+										<c:when test="${not empty sessionScope.loginUser}"><p class="form-control-static">${sessionScope.loginUser.fullName}</p></c:when>
+										<c:otherwise><input type="text" required="required" class="form-control input-sm" id="fullname" name="fullname" value="<c:if test="${not empty fullname}" >${fullname}</c:if>" /></c:otherwise>
+									</c:choose>
 								</div>
-								<div class="form-group">
-									<label for="email" class="col-xs-2 control-label">Email</label>
-									<div class="col-xs-7">
-										<input type="email" required="required" class="form-control input-sm" id="email" name="email" value="<c:if test="${not empty email}" >${email}</c:if>" >
-									</div>
+							</div>
+							<div class="form-group">
+								<label for="email" class="col-xs-2 control-label">Email</label>
+								<div class="col-xs-7">
+									<c:choose>
+										<c:when test="${not empty sessionScope.loginUser}"><p class="form-control-static">${sessionScope.loginUser.email}</p></c:when>
+										<c:otherwise><input type="email" required="required" class="form-control input-sm" id="email" name="email" value="<c:if test="${not empty email}" >${email}</c:if>" ></c:otherwise>
+									</c:choose>
 								</div>
-								<div class="form-group">
-									<label for="message" class="col-xs-2 control-label">Message</label>
-									<div class="col-xs-10">
-										<textarea required="required" class="form-control input-sm" id="message" rows="10" name="message" ><c:if test="${not empty message}" >${message}</c:if></textarea>
+							</div>
+							<div class="form-group">
+								<label for="message" class="col-xs-2 control-label">Message</label>
+								<div class="col-xs-10">
+									<textarea required="required" class="form-control input-sm" id="message" rows="10" name="message" ><c:if test="${not empty message}" >${message}</c:if></textarea>
 									</div>
 								</div>
 								<div class="form-group">
