@@ -33,4 +33,14 @@
 		<function-class>model.AdminDataContext</function-class>
 		<function-signature>int getCoursesPages( )</function-signature>
 	</function>
+	<function>
+		<name>getOrders</name>
+		<function-class>model.AdminDataContext</function-class>
+		<function-signature>java.util.ArrayList getOrders(int )</function-signature>
+	</function>
+	<function>
+		<name>getOrdersPages</name>
+		<function-class>model.AdminDataContext</function-class>
+		<function-signature>int getOrdersPages( )</function-signature>
+	</function>
 </taglib>

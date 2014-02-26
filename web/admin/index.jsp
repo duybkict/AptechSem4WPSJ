@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:if test="${not empty sessionScope.loginUser}">
+<c:if test="${not empty sessionScope.adminUser}">
 	<c:redirect url="main.jsp" />
 </c:if>
 <!DOCTYPE html>

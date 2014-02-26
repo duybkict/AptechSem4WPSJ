@@ -17,7 +17,7 @@
 			<jsp:param name="active" value="" />
 		</jsp:include>
 
-		<div class="container content" style="height:400px">
+		<div class="container content" style="">
 			<div class="col-xs-12">
 				<h3>Administrator</h3>
 			</div>

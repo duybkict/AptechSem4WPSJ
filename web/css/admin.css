@@ -4,6 +4,7 @@ body {
 
 .content {
 	background: #fff;
+	min-height: 400px;
 }
 
 .alert.alert-danger ul {

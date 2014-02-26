@@ -1,5 +1,5 @@
 <%--
-    Document   : events
+    Document   : orders
     Created on : Feb 25, 2014, 11:29:12 AM
     Author     : Duy
 --%>
@@ -16,7 +16,7 @@
 
     <body>
 		<jsp:include page="layout/navigation.jsp">
-			<jsp:param name="active" value="events" />
+			<jsp:param name="active" value="orders" />
 		</jsp:include>
 
 		<c:choose>
@@ -29,40 +29,40 @@
 			</c:otherwise>
 		</c:choose>
 
-		<c:set var="events" value="${datacontext:getEvents(page)}" />
+		<c:set var="orders" value="${datacontext:getOrders(page)}" />
 
 		<div class="container content">
 			<div class="col-xs-12">
 				<h3>Orders Management</h3>
 
 				<c:choose>
-					<c:when test="${not empty events}">
+					<c:when test="${not empty orders}">
 						<table class="table table-bordered table-hover">
 							<thead>
 								<tr>
 									<th>#</th>
-									<th>Image</th>
-									<th>Title</th>
-									<th>Short Description</th>
-									<th>Published</th>
+									<th>User</th>
+									<th class="col-xs-1 text-center">Status</th>
 									<th>Created Date</th>
 									<th>Modified Date</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="i" items="${events}" >
+								<c:forEach var="i" items="${orders}" >
 									<tr>
 										<td>${i.id}</td>
-										<td><img src="${pageContext.request.contextPath}/${i.image}" /></td>
-										<td>${i.title}</td>
-										<td class="col-xs-3">${i.shortDescription}</td>
+										<td>${i.user.fullName}</td>
 										<td class="text-center">
 											<c:choose>
-												<c:when test="${i.published eq true}">
-													<span class="label label-primary">yes</span>
+												<c:when test="${i.status eq 1}">
+													<span class="label label-primary">pending</span>
 												</c:when>
 
-												<c:otherwise><span class="label label-default">no</span></c:otherwise>
+												<c:when test="${i.status eq 2}">
+													<span class="label label-success">confirmed</span>
+												</c:when>
+
+												<c:otherwise><span class="label label-default">canceled</span></c:otherwise>
 											</c:choose>
 										</td>
 										<td><fmt:formatDate value="${i.createdDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
@@ -78,15 +78,15 @@
 									<li class="disabled" ><a>Prev</a></li>
 									</c:when>
 									<c:otherwise>
-									<li><a href="events.jsp?page=${page - 1}">Prev</a></li>
+									<li><a href="orders.jsp?page=${page - 1}">Prev</a></li>
 									</c:otherwise>
 								</c:choose>
 								<c:choose>
-									<c:when test="${page gt datacontext:getEventsPages()}">
+									<c:when test="${page gt datacontext:getOrdersPages()}">
 									<li class="disabled" ><a>Next</a></li>
 									</c:when>
 									<c:otherwise>
-									<li><a href="events.jsp?page=${page + 1}">Next</a></li>
+									<li><a href="orders.jsp?page=${page + 1}">Next</a></li>
 									</c:otherwise>
 								</c:choose>
 						</ul>

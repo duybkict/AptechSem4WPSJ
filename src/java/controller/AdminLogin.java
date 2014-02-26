@@ -68,21 +68,15 @@ public class AdminLogin extends HttpServlet
 		if (action.equals("login")) {
 			User user = AdminDataContext.checkLogin(email, password);
 			if (user != null) {
-				request.getSession().setAttribute("loginUser", user);
+				request.getSession().setAttribute("adminUser", user);
 				// TODO:
 				response.sendRedirect("main.jsp");
 			} else {
 				response.sendRedirect("index.jsp?error=login");
 			}
 		} else if (action.equals("logout")) {
-			String url = request.getParameter("url");
-			if (url == null) {
-				url = "index.jsp";
-			}
-
-			request.getSession().removeAttribute("loginUser");
-			request.getSession().removeAttribute("shoppingCart");
-			response.sendRedirect(url);
+			request.getSession().removeAttribute("adminUser");
+			response.sendRedirect("index.jsp");
 		}
 
 		processRequest(request, response);

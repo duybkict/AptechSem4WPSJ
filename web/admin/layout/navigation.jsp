@@ -8,7 +8,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:set var="active" value="${param.active}" />
-<c:set var="user" value="${sessionScope.loginUser}" />
+<c:set var="user" value="${sessionScope.adminUser}" />
 
 <c:if test="${empty user}">
 	<jsp:forward page="../index.jsp?error=authentication" />

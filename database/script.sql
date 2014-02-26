@@ -39,6 +39,7 @@ CREATE TABLE users (
 CREATE TABLE orders (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	user_id INT,
+	status INT DEFAULT 1, -- 1: pending, 2: confirmed, 3: canceled
 	created_date DATETIME,
 	modified_date DATETIME
 );

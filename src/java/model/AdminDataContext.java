@@ -245,6 +245,89 @@ public class AdminDataContext
 		return pages;
 	}
 
+	public static ArrayList<Order> getOrders(int page) {
+		ArrayList<Order> list = new ArrayList<Order>();
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"SELECT id, user_id, status, created_date, modified_date "
+					+ "FROM orders "
+					+ "ORDER BY modified_date DESC "
+					+ "LIMIT ? OFFSET ?");
+			pst.setInt(1, PAGE_LIMIT);
+			pst.setInt(2, (page - 1) * PAGE_LIMIT);
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				Order order = new Order();
+				order.setId(rs.getInt(1));
+				order.setUserId(rs.getInt(2));
+				order.setStatus(rs.getInt(3));
+				order.setCreatedDate(getFormatedDate(rs, 4));
+				order.setModifiedDate(getFormatedDate(rs, 5));
+				order.setUser(getUserById(order.getId()));
+
+				list.add(order);
+			}
+			rs.close();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return list;
+	}
+
+	public static int getOrdersPages() {
+		int pages = 1;
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"SELECT COUNT(id) "
+					+ "FROM orders ");
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				pages = (rs.getInt(1) - 1) / PAGE_LIMIT;
+			}
+			rs.close();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return pages;
+	}
+
+	private static User getUserById(int id) {
+		User user = null;
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"SELECT id, full_name, email, password "
+					+ "FROM users "
+					+ "WHERE id = ? "
+					+ "LIMIT 1 OFFSET 0");
+			pst.setInt(1, id);
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				user = new User();
+				user.setId(rs.getInt(1));
+				user.setFullName(rs.getString(2));
+				user.setEmail(rs.getString(3));
+				user.setPassword(rs.getString(4));
+			}
+
+			rs.close();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return user;
+	}
+
 	private static Date getFormatedDate(ResultSet rs, int colIndex) throws SQLException {
 		Date date = rs.getDate(colIndex);
 		Date time = rs.getTime(colIndex);
