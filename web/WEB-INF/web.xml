@@ -16,6 +16,10 @@
         <servlet-name>AdminCourses</servlet-name>
         <servlet-class>controller.AdminCourses</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminUsers</servlet-name>
+        <servlet-class>controller.AdminUsers</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>AdminCourses</servlet-name>
         <url-pattern>/admin/AdminCourses</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminUsers</servlet-name>
+        <url-pattern>/admin/AdminUsers</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -11,14 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.AdminDataContext;
-import model.Article;
-import model.User;
 
 /**
  *
  * @author Duy
  */
-public class AdminCourses extends HttpServlet
+public class AdminUsers extends HttpServlet
 {
 
 	/**
@@ -33,6 +31,22 @@ public class AdminCourses extends HttpServlet
 	 */
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		try {
+			/* TODO output your page here. You may use following sample code. */
+			out.println("<!DOCTYPE html>");
+			out.println("<html>");
+			out.println("<head>");
+			out.println("<title>Servlet AdminUsers</title>");
+			out.println("</head>");
+			out.println("<body>");
+			out.println("<h1>Servlet AdminUsers at " + request.getContextPath() + "</h1>");
+			out.println("</body>");
+			out.println("</html>");
+		} finally {
+			out.close();
+		}
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -67,40 +81,27 @@ public class AdminCourses extends HttpServlet
 		boolean result = true;
 
 		try {
-			if (action.equals("insert")) {
-				String image = request.getParameter("image");
-				String title = request.getParameter("title");
-				String shortDescription = request.getParameter("short_description");
-				String content = request.getParameter("content");
-				boolean published = Boolean.parseBoolean(request.getParameter("published"));
-				int status = Integer.parseInt(request.getParameter("status"));
-				float price = Float.parseFloat(request.getParameter("price"));
-
-				result = AdminDataContext.insertCourse(image, title, shortDescription, content, published, status, price);
-			} else if (action.equals("update")) {
-				int id = Integer.parseInt(request.getParameter("id"));
-				String image = request.getParameter("image");
-				String title = request.getParameter("title");
-				String shortDescription = request.getParameter("short_description");
-				String content = request.getParameter("content");
-				boolean published = Boolean.parseBoolean(request.getParameter("published"));
-				int status = Integer.parseInt(request.getParameter("status"));
-				float price = Float.parseFloat(request.getParameter("price"));
-
-				result = AdminDataContext.updareCourse(id, image, title, shortDescription, content, published, status, price);
-			} else if (action.equals("delete")) {
+			if (action.equals("reset")) {
 				int id = Integer.parseInt(request.getParameter("id"));
 
-				result = AdminDataContext.deleteCourse(id);
+				result = AdminDataContext.resetUser(id);
+			} else if (action.equals("setadmin")) {
+				int id = Integer.parseInt(request.getParameter("id"));
+
+				result = AdminDataContext.setAdmin(id);
+			} else if (action.equals("unsetadmin")) {
+				int id = Integer.parseInt(request.getParameter("id"));
+
+				result = AdminDataContext.unsetAdmin(id);
 			}
 		} catch (Exception e) {
 			result = false;
 		}
 
 		if (result) {
-			response.sendRedirect("courses.jsp?success=" + action);
+			response.sendRedirect("users.jsp?success=" + action);
 		} else {
-			response.sendRedirect("courses.jsp?error=" + action);
+			response.sendRedirect("users.jsp?error=" + action);
 		}
 
 		processRequest(request, response);

@@ -402,6 +402,118 @@ public class AdminDataContext
 		return pages;
 	}
 
+	public static ArrayList<User> getUsers(int page) {
+		ArrayList<User> list = new ArrayList<User>();
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"SELECT id, full_name, email, password, type, created_date, modified_date "
+					+ "FROM users "
+					+ "ORDER BY modified_date DESC "
+					+ "LIMIT ? OFFSET ?");
+			pst.setInt(1, PAGE_LIMIT);
+			pst.setInt(2, (page - 1) * PAGE_LIMIT);
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				User user = new User();
+				user.setId(rs.getInt(1));
+				user.setFullName(rs.getString(2));
+				user.setEmail(rs.getString(3));
+				user.setPassword(rs.getString(4));
+				user.setType(rs.getInt(5));
+				user.setCreatedDate(getFormatedDate(rs, 6));
+				user.setModifiedDate(getFormatedDate(rs, 7));
+
+				list.add(user);
+			}
+			rs.close();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return list;
+	}
+
+	public static int getUsersPages() {
+		int pages = 1;
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"SELECT COUNT(id) "
+					+ "FROM users ");
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				pages = (rs.getInt(1) - 1) / PAGE_LIMIT;
+			}
+			rs.close();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return pages;
+	}
+
+	public static boolean resetUser(int id) {
+		int r = 0;
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"UPDATE users "
+					+ "SET password = '0' "
+					+ "WHERE id = ? ");
+			pst.setInt(1, id);
+
+			r = pst.executeUpdate();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return r > 0;
+	}
+
+	public static boolean setAdmin(int id) {
+		int r = 0;
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"UPDATE users "
+					+ "SET type = 2 "
+					+ "WHERE id = ? ");
+			pst.setInt(1, id);
+
+			r = pst.executeUpdate();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return r > 0;
+	}
+
+	public static boolean unsetAdmin(int id) {
+		int r = 0;
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"UPDATE users "
+					+ "SET type = 1 "
+					+ "WHERE id = ? ");
+			pst.setInt(1, id);
+
+			r = pst.executeUpdate();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return r > 0;
+	}
+
 	private static User getUserById(int id) {
 		User user = null;
 

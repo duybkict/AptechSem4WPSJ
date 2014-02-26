@@ -27,17 +27,15 @@
 						<form class="form-horizontal" action="AdminLogin" method="post">
 							<c:if test="${not empty param.error}">
 								<div class="alert alert-danger">
-									<ul>
-										<c:choose>
-											<c:when test="${param.error eq 'login'}">
-												<li><label for="email"><strong>Login failed</strong> due to invalid email or password.</label></li>
-											</c:when>
+									<c:choose>
+										<c:when test="${param.error eq 'login'}">
+											<label for="email"><strong>Login failed</strong> due to invalid email or password.</label>
+										</c:when>
 
-											<c:when test="${param.error eq 'authentication'}">
-												<li><label for="email"><strong>Authentication failed</strong>. You must login first.</label></li>
-											</c:when>
-										</c:choose>
-									</ul>
+										<c:when test="${param.error eq 'authentication'}">
+											<label for="email"><strong>Authentication failed</strong>. You must login first.</label>
+										</c:when>
+									</c:choose>
 								</div>
 							</c:if>
 							<div class="form-group">

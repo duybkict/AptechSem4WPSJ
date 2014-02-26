@@ -9,12 +9,12 @@ body {
 	min-height: 400px;
 }
 
-.alert.alert-danger ul {
+.alert.alert-danger {
 	list-style: disc;
 	padding-left: 10px;
 }
 
-.alert.alert-danger ul li label {
+.alert.alert-danger label {
 	font-weight: normal;
 	cursor: pointer;
 }

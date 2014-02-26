@@ -16,6 +16,7 @@ public class User
 	private String fullName;
 	private String email;
 	private String password;
+	private int type;
 	private Date createdDate;
 	private Date modifiedDate;
 
@@ -68,6 +69,14 @@ public class User
 
 	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 
 }

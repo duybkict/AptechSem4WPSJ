@@ -48,4 +48,14 @@
 		<function-class>model.AdminDataContext</function-class>
 		<function-signature>int getOrdersPages( )</function-signature>
 	</function>
+	<function>
+		<name>getUsers</name>
+		<function-class>model.AdminDataContext</function-class>
+		<function-signature>java.util.ArrayList getUsers(int )</function-signature>
+	</function>
+	<function>
+		<name>getUsersPages</name>
+		<function-class>model.AdminDataContext</function-class>
+		<function-signature>int getUsersPages( )</function-signature>
+	</function>
 </taglib>
