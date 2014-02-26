@@ -3,6 +3,7 @@ body {
 }
 
 .content {
+	padding-top: 20px;
 	background: #fff;
 	min-height: 400px;
 }

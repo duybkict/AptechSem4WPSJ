@@ -245,6 +245,24 @@ public class AdminDataContext
 		return pages;
 	}
 
+	public static boolean deleteCourse(int id) {
+		int r = 0;
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"DELETE FROM articles "
+					+ "WHERE id = ? ");
+			pst.setInt(1, id);
+
+			r = pst.executeUpdate();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return r > 0;
+	}
+
 	public static ArrayList<Order> getOrders(int page) {
 		ArrayList<Order> list = new ArrayList<Order>();
 

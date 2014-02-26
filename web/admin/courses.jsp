@@ -30,9 +30,27 @@
 		</c:choose>
 
 		<c:set var="courses" value="${datacontext:getCourses(page)}" />
+		<c:set var="error" value="${param.error}" />
+		<c:set var="success" value="${param.success}" />
 
 		<div class="container content">
 			<div class="col-xs-12">
+				<c:if test="${not empty success}">
+					<div class="alert alert-success">
+						<c:choose>
+							<c:when test="${success eq 'delete'}" >Delete successfully.</c:when>
+						</c:choose>
+					</div>
+				</c:if>
+
+				<c:if test="${not empty error}">
+					<div class="alert alert-danger">
+						<c:choose>
+							<c:when test="${error eq 'delete'}" >Delete failed.</c:when>
+						</c:choose>
+					</div>
+				</c:if>
+
 				<h3>Courses Management</h3>
 
 				<c:choose>
@@ -46,8 +64,9 @@
 									<th>Price</th>
 									<th>Status</th>
 									<th>Published</th>
-									<th>Created Date</th>
-									<th>Modified Date</th>
+									<th>Created</th>
+									<th>Modified</th>
+									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -77,6 +96,14 @@
 										</td>
 										<td><fmt:formatDate value="${i.createdDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 										<td><fmt:formatDate value="${i.modifiedDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+										<td width="125px">
+											<a class="btn btn-primary btn-sm" href="course.jsp?id=${i.id}">Edit</a>
+											<form action="AdminCourses" method="post" style="display:inline-block">
+												<input type="hidden" name="action" value="delete" />
+												<input type="hidden" name="id" value="${i.id}" />
+												<button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</button>
+											</form>
+										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
