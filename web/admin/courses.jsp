@@ -38,7 +38,9 @@
 				<c:if test="${not empty success}">
 					<div class="alert alert-success">
 						<c:choose>
+							<c:when test="${success eq 'insert'}" >Insert successfully.</c:when>
 							<c:when test="${success eq 'delete'}" >Delete successfully.</c:when>
+							<c:when test="${success eq 'update'}" >Edit successfully.</c:when>
 						</c:choose>
 					</div>
 				</c:if>
@@ -46,12 +48,17 @@
 				<c:if test="${not empty error}">
 					<div class="alert alert-danger">
 						<c:choose>
+							<c:when test="${error eq 'insert'}" >Insert failed.</c:when>
 							<c:when test="${error eq 'delete'}" >Delete failed.</c:when>
+							<c:when test="${error eq 'update'}" >Edit failed.</c:when>
 						</c:choose>
 					</div>
 				</c:if>
 
 				<h3>Courses Management</h3>
+				<a class="btn btn-primary" href="course.jsp?id=0" style="margin-bottom: 10px">
+					<span class="glyphicon glyphicon-plus"></span>&nbsp;New Course
+				</a>
 
 				<c:choose>
 					<c:when test="${not empty courses}">

@@ -245,6 +245,91 @@ public class AdminDataContext
 		return pages;
 	}
 
+	public static Article getCourseById(int id) {
+		Article course = null;
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"SELECT id, image, title, short_description, content, published, published_date, created_date, modified_date, status, price "
+					+ "FROM articles "
+					+ "WHERE category = 2 AND id = ? "
+					+ "LIMIT 1 OFFSET 0");
+			pst.setInt(1, id);
+
+			ResultSet rs = pst.executeQuery();
+			if (rs.next()) {
+				course = new Article();
+				course.setId(rs.getInt(1));
+				course.setImage(rs.getString(2));
+				course.setTitle(rs.getString(3));
+				course.setShortDescription(rs.getString(4));
+				course.setContent(rs.getString(5));
+				course.setPublished(rs.getBoolean(6));
+				course.setPublishedDate(rs.getDate(7));
+				course.setCreatedDate(getFormatedDate(rs, 8));
+				course.setModifiedDate(getFormatedDate(rs, 9));
+				course.setStatus(rs.getInt(10));
+				course.setPrice(rs.getFloat(11));
+			}
+			rs.close();
+		} catch (SQLException ex) {
+			return null;
+		}
+
+		return course;
+	}
+
+	public static boolean insertCourse(String image, String title, String shortDescription, String content, boolean published, int status, float price) {
+		int r = 0;
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"INSERT INTO articles(image, title, short_description, content, published, status, price, category) "
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?, 2) ");
+			pst.setString(1, image);
+			pst.setString(2, title);
+			pst.setString(3, shortDescription);
+			pst.setString(4, content);
+			pst.setBoolean(5, published);
+			pst.setInt(6, status);
+			pst.setFloat(7, price);
+
+			r = pst.executeUpdate();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return r > 0;
+	}
+
+	public static boolean updareCourse(int id, String image, String title, String shortDescription, String content, boolean published, int status, float price) {
+		int r = 0;
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"UPDATE articles "
+					+ "SET image = ?, title = ?, short_description = ?, content = ?, published = ?, status = ?, price = ?, category = 2 "
+					+ "WHERE id = ? ");
+			pst.setString(1, image);
+			pst.setString(2, title);
+			pst.setString(3, shortDescription);
+			pst.setString(4, content);
+			pst.setBoolean(5, published);
+			pst.setInt(6, status);
+			pst.setFloat(7, price);
+			pst.setInt(8, id);
+
+			r = pst.executeUpdate();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return r > 0;
+	}
+
 	public static boolean deleteCourse(int id) {
 		int r = 0;
 

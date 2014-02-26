@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.AdminDataContext;
+import model.Article;
 import model.User;
 
 /**
@@ -79,22 +80,43 @@ public class AdminCourses extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
-		int id = 0;
+		boolean result = true;
+
 		try {
-			id = Integer.parseInt(request.getParameter("id"));
+			if (action.equals("insert")) {
+				String image = request.getParameter("image");
+				String title = request.getParameter("title");
+				String shortDescription = request.getParameter("short_description");
+				String content = request.getParameter("content");
+				boolean published = Boolean.parseBoolean(request.getParameter("published"));
+				int status = Integer.parseInt(request.getParameter("status"));
+				float price = Float.parseFloat(request.getParameter("price"));
+
+				result = AdminDataContext.insertCourse(image, title, shortDescription, content, published, status, price);
+			} else if (action.equals("update")) {
+				int id = Integer.parseInt(request.getParameter("id"));
+				String image = request.getParameter("image");
+				String title = request.getParameter("title");
+				String shortDescription = request.getParameter("short_description");
+				String content = request.getParameter("content");
+				boolean published = Boolean.parseBoolean(request.getParameter("published"));
+				int status = Integer.parseInt(request.getParameter("status"));
+				float price = Float.parseFloat(request.getParameter("price"));
+
+				result = AdminDataContext.updareCourse(id, image, title, shortDescription, content, published, status, price);
+			} else if (action.equals("delete")) {
+				int id = Integer.parseInt(request.getParameter("id"));
+
+				result = AdminDataContext.deleteCourse(id);
+			}
 		} catch (Exception e) {
+			result = false;
 		}
 
-		if (action.equals("insert")) {
-		} else if (action.equals("edit")) {
-			request.getSession().removeAttribute("adminUser");
-			response.sendRedirect("index.jsp");
-		} else if (action.equals("delete")) {
-			if (AdminDataContext.deleteCourse(id)) {
-				response.sendRedirect("courses.jsp?success=delete");
-			} else {
-				response.sendRedirect("courses.jsp?error=delete");
-			}
+		if (result) {
+			response.sendRedirect("courses.jsp?success=" + action);
+		} else {
+			response.sendRedirect("courses.jsp?error=" + action);
 		}
 
 		processRequest(request, response);

@@ -28,6 +28,7 @@
 				<li <c:if test="${active eq 'events'}"> class="active"</c:if>><a href="events.jsp">News & Events</a></li>
 				<li <c:if test="${active eq 'orders'}"> class="active"</c:if>><a href="orders.jsp">Orders</a></li>
 				<li <c:if test="${active eq 'feedback'}"> class="active"</c:if> ><a href="feedback.jsp" >Feedback</a></li>
+				<li <c:if test="${active eq 'users'}"> class="active"</c:if> ><a href="users.jsp" >Users</a></li>
 			</ul>
 			<form action="AdminLogin" method="post">
 				<input type="hidden" name="action" value="logout" />

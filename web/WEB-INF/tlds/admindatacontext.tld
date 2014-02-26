@@ -34,6 +34,11 @@
 		<function-signature>int getCoursesPages( )</function-signature>
 	</function>
 	<function>
+		<name>getCourseById</name>
+		<function-class>model.AdminDataContext</function-class>
+		<function-signature>model.Article getCourseById(int )</function-signature>
+	</function>
+	<function>
 		<name>getOrders</name>
 		<function-class>model.AdminDataContext</function-class>
 		<function-signature>java.util.ArrayList getOrders(int )</function-signature>
