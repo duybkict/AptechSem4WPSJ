@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.AdminDataContext;
+import model.User;
 
 /**
  *
@@ -78,7 +79,7 @@ public class AdminUsers extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
-		boolean result = true;
+		boolean result = false;
 
 		try {
 			if (action.equals("reset")) {
@@ -91,8 +92,11 @@ public class AdminUsers extends HttpServlet
 				result = AdminDataContext.setAdmin(id);
 			} else if (action.equals("unsetadmin")) {
 				int id = Integer.parseInt(request.getParameter("id"));
+				User user = (User) request.getSession().getAttribute("adminUser");
 
-				result = AdminDataContext.unsetAdmin(id);
+				if (user.getId() != id) {
+					result = AdminDataContext.unsetAdmin(id);
+				}
 			}
 		} catch (Exception e) {
 			result = false;

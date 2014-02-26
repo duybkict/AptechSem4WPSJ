@@ -49,8 +49,8 @@
 					<div class="alert alert-danger">
 						<c:choose>
 							<c:when test="${error eq 'reset'}" >Reset password failed.</c:when>
-							<c:when test="${success eq 'setadmin'}" >Set admin failed.</c:when>
-							<c:when test="${success eq 'unsetadmin'}" >Unset admin failed.</c:when>
+							<c:when test="${error eq 'setadmin'}" >Unset admin failed.</c:when>
+							<c:when test="${error eq 'unsetadmin'}" >Unset admin failed.</c:when>
 						</c:choose>
 					</div>
 				</c:if>
