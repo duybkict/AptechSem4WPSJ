@@ -514,13 +514,13 @@ public class AdminDataContext
 		return r > 0;
 	}
 
-	private static User getUserById(int id) {
+	public static User getUserById(int id) {
 		User user = null;
 
 		try {
 			Connection con = getConnection();
 			PreparedStatement pst = con.prepareStatement(
-					"SELECT id, full_name, email, password "
+					"SELECT id, full_name, email, password, type "
 					+ "FROM users "
 					+ "WHERE id = ? "
 					+ "LIMIT 1 OFFSET 0");
@@ -533,6 +533,7 @@ public class AdminDataContext
 				user.setFullName(rs.getString(2));
 				user.setEmail(rs.getString(3));
 				user.setPassword(rs.getString(4));
+				user.setType(rs.getInt(5));
 			}
 
 			rs.close();
@@ -541,6 +542,47 @@ public class AdminDataContext
 		}
 
 		return user;
+	}
+
+	public static boolean updateUser(int id, String password) {
+		int r = 0;
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"UPDATE users "
+					+ "SET password = ? "
+					+ "WHERE id = ? ");
+			pst.setString(1, password);
+			pst.setInt(2, id);
+
+			r = pst.executeUpdate();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return r > 0;
+	}
+
+	public static boolean insertUser(String fullName, String email, String password, int type) {
+		int r = 0;
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"INSERT INTO users(full_name, email, password, type) "
+					+ "VALUES(?, ?, ?, ?) ");
+			pst.setString(1, fullName);
+			pst.setString(2, email);
+			pst.setString(3, password);
+			pst.setInt(4, type);
+
+			r = pst.executeUpdate();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return r > 0;
 	}
 
 	private static Date getFormatedDate(ResultSet rs, int colIndex) throws SQLException {

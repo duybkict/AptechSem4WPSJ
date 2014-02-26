@@ -41,6 +41,8 @@
 							<c:when test="${success eq 'reset'}" >Reset password successfully.</c:when>
 							<c:when test="${success eq 'setadmin'}" >Set admin successfully.</c:when>
 							<c:when test="${success eq 'unsetadmin'}" >Unset admin successfully.</c:when>
+							<c:when test="${success eq 'update'}" >Edit user successfully.</c:when>
+							<c:when test="${success eq 'insert'}" >Create new user successfully.</c:when>
 						</c:choose>
 					</div>
 				</c:if>
@@ -51,6 +53,8 @@
 							<c:when test="${error eq 'reset'}" >Reset password failed.</c:when>
 							<c:when test="${error eq 'setadmin'}" >Unset admin failed.</c:when>
 							<c:when test="${error eq 'unsetadmin'}" >Unset admin failed.</c:when>
+							<c:when test="${error eq 'update'}" >Edit user failed.</c:when>
+							<c:when test="${error eq 'insert'}" >Create new user failed.</c:when>
 						</c:choose>
 					</div>
 				</c:if>

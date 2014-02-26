@@ -58,4 +58,9 @@
 		<function-class>model.AdminDataContext</function-class>
 		<function-signature>int getUsersPages( )</function-signature>
 	</function>
+	<function>
+		<name>getUserById</name>
+		<function-class>model.AdminDataContext</function-class>
+		<function-signature>model.User getUserById(int )</function-signature>
+	</function>
 </taglib>
