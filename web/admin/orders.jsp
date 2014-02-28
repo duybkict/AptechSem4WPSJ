@@ -45,6 +45,7 @@
 									<th class="col-xs-1 text-center">Status</th>
 									<th>Created Date</th>
 									<th>Modified Date</th>
+									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -67,6 +68,14 @@
 										</td>
 										<td><fmt:formatDate value="${i.createdDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 										<td><fmt:formatDate value="${i.modifiedDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+										<td>
+											<a class="btn btn-primary btn-sm" href="order.jsp?id=${i.id}">Edit</a>
+											<form action="AdminOrders" method="post" style="display:inline-block">
+												<input type="hidden" name="action" value="delete" />
+												<input type="hidden" name="id" value="${i.id}" />
+												<button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</button>
+											</form>
+										</td>
 									</tr>
 								</c:forEach>
 							</tbody>

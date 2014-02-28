@@ -402,6 +402,74 @@ public class AdminDataContext
 		return pages;
 	}
 
+	public static Order getOrderById(int id) {
+		Order order = null;
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"SELECT id, user_id, status, created_date, modified_date "
+					+ "FROM orders "
+					+ "WHERE id = ? "
+					+ "LIMIT 1 OFFSET 0");
+			pst.setInt(1, id);
+
+			ResultSet rs = pst.executeQuery();
+			if (rs.next()) {
+				order = new Order();
+				order.setId(rs.getInt(1));
+				order.setUserId(rs.getInt(2));
+				order.setStatus(rs.getInt(3));
+				order.setCreatedDate(getFormatedDate(rs, 4));
+				order.setModifiedDate(getFormatedDate(rs, 5));
+				order.setUser(getUserById(order.getId()));
+			}
+			rs.close();
+		} catch (SQLException ex) {
+			return null;
+		}
+
+		return order;
+	}
+
+	public static boolean updateOrder(int id, int status) {
+		int r = 0;
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"UPDATE orders "
+					+ "SET status = ? "
+					+ "WHERE id = ? ");
+			pst.setInt(1, status);
+			pst.setInt(2, id);
+
+			r = pst.executeUpdate();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return r > 0;
+	}
+
+	public static boolean deleteOrder(int id) {
+		int r = 0;
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"DELETE FROM orders "
+					+ "WHERE id = ? ");
+			pst.setInt(1, id);
+
+			r = pst.executeUpdate();
+		} catch (SQLException ex) {
+			// TODO
+		}
+
+		return r > 0;
+	}
+
 	public static ArrayList<User> getUsers(int page) {
 		ArrayList<User> list = new ArrayList<User>();
 

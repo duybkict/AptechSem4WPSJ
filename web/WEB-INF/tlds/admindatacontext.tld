@@ -49,6 +49,11 @@
 		<function-signature>int getOrdersPages( )</function-signature>
 	</function>
 	<function>
+		<name>getOrderById</name>
+		<function-class>model.AdminDataContext</function-class>
+		<function-signature>model.Order getOrderById(int )</function-signature>
+	</function>
+	<function>
 		<name>getUsers</name>
 		<function-class>model.AdminDataContext</function-class>
 		<function-signature>java.util.ArrayList getUsers(int )</function-signature>

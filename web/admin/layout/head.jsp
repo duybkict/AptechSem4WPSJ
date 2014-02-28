@@ -32,7 +32,14 @@
 	<script src="../js/tms-0.3.js" type="text/javascript"></script>
 	<script src="../js/tms_presets.js" type="text/javascript"></script>
 	<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="../js/tinymce/tinymce.min.js"></script>
 	<script type="text/javascript">
 		$.noConflict();
+
+		jQuery(document).ready(function () {
+            tinymce.init({
+                selector: ".mceEditor"
+            });
+        })
 	</script>
 </head>

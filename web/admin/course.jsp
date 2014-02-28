@@ -67,13 +67,13 @@
 					<div class="form-group">
 						<label for="short_description" class="col-xs-3 control-label">Description</label>
 						<div class="col-xs-9">
-							<textarea required="required" class="form-control" rows="5" id="short_description" name="short_description" ><c:if test="${not empty course}">${course.shortDescription}</c:if></textarea>
+							<textarea class="form-control mceEditor" rows="5" id="short_description" name="short_description" ><c:if test="${not empty course}">${course.shortDescription}</c:if></textarea>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="content" class="col-xs-3 control-label">Content</label>
 						<div class="col-xs-9">
-							<textarea required="required" class="form-control" rows="15" id="content" name="content" ><c:if test="${not empty course}">${course.content}</c:if></textarea>
+							<textarea class="form-control mceEditor" rows="15" id="content" name="content" ><c:if test="${not empty course}">${course.content}</c:if></textarea>
 						</div>
 					</div>
 					<div class="form-group">
