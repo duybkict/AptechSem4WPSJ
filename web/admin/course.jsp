@@ -37,7 +37,7 @@
 			<div class="col-xs-12">
 				<h3>${title}</h3>
 
-				<form class="form-horizontal col-xs-6" action="AdminCourses" method="post">
+				<form class="form-horizontal col-xs-6" action="AdminCourses" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<label class="col-xs-3 control-label">ID</label>
 						<div class="col-xs-9">
@@ -50,53 +50,62 @@
 						<label for="published" class="col-xs-3 control-label">Published</label>
 						<div class="checkbox col-xs-9">
 							<input type="checkbox" id="published" name="published" value="true" <c:if test="${not empty course && course.published eq true}">checked="checked"</c:if> style="margin-left: 0px">
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="image" class="col-xs-3 control-label">Image</label>
-						<div class="col-xs-9">
-							<input type="text" required="required" class="form-control" id="image" name="image" value="<c:if test="${not empty course}">${course.image}</c:if>">
+						<div class="form-group form-group-file">
+							<label for="image" class="col-xs-3 control-label">Image</label>
+							<div class="col-xs-9">
+								<!--<input type="file" required="required" class="form-control" id="image" name="image" value="<c:if test="${not empty course}">${course.image}</c:if>">-->
+								<div class="col-xs-4" style="position:relative;">
+									<a class="btn btn-primary" href='javascript:;'>
+										Choose File...
+										<input type="file" class="input-file" required="required" name="image" id="image" onchange='jQuery("#upload-file-info").html(jQuery(this).val());' value="<c:if test="${not empty course}">${course.image}</c:if>" />
+									</a>
+								</div>
+								<div class="col-xs-8">
+									<span class="label label-info" id="upload-file-info"><c:if test="${not empty course}">${course.image}</c:if></span>
+								</div>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="title" class="col-xs-3 control-label">Title</label>
-						<div class="col-xs-9">
-							<input type="text" required="required" class="form-control" id="title" name="title" value="<c:if test="${not empty course}">${course.title}</c:if>">
+						<div class="form-group">
+							<label for="title" class="col-xs-3 control-label">Title</label>
+							<div class="col-xs-9">
+								<input type="text" required="required" class="form-control" id="title" name="title" value="<c:if test="${not empty course}">${course.title}</c:if>">
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="short_description" class="col-xs-3 control-label">Description</label>
-						<div class="col-xs-9">
-							<textarea class="form-control mceEditor" rows="5" id="short_description" name="short_description" ><c:if test="${not empty course}">${course.shortDescription}</c:if></textarea>
+						<div class="form-group">
+							<label for="short_description" class="col-xs-3 control-label">Description</label>
+							<div class="col-xs-9">
+								<textarea class="form-control mceEditor" rows="5" id="short_description" name="short_description" ><c:if test="${not empty course}">${course.shortDescription}</c:if></textarea>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="content" class="col-xs-3 control-label">Content</label>
-						<div class="col-xs-9">
-							<textarea class="form-control mceEditor" rows="15" id="content" name="content" ><c:if test="${not empty course}">${course.content}</c:if></textarea>
+						<div class="form-group">
+							<label for="content" class="col-xs-3 control-label">Content</label>
+							<div class="col-xs-9">
+								<textarea class="form-control mceEditor" rows="15" id="content" name="content" ><c:if test="${not empty course}">${course.content}</c:if></textarea>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="price" class="col-xs-3 control-label">Price</label>
-						<div class="col-xs-9">
-							<input required="required" type="text" class="form-control" id="price" name="price" value="<c:if test="${not empty course}">${course.price}</c:if>">
+						<div class="form-group">
+							<label for="price" class="col-xs-3 control-label">Price</label>
+							<div class="col-xs-9">
+								<input required="required" type="text" class="form-control" id="price" name="price" value="<c:if test="${not empty course}">${course.price}</c:if>">
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="status" class="col-xs-3 control-label">Status</label>
-						<div class="col-xs-9">
-							<select name="status" id="status" class="form-control">
-								<option value="1" <c:if test="${not empty course && course.status eq 1}">selected="selected"</c:if> >Available</option>
+						<div class="form-group">
+							<label for="status" class="col-xs-3 control-label">Status</label>
+							<div class="col-xs-9">
+								<select name="status" id="status" class="form-control">
+									<option value="1" <c:if test="${not empty course && course.status eq 1}">selected="selected"</c:if> >Available</option>
 								<option value="2" <c:if test="${not empty course && course.status eq 2}">selected="selected"</c:if> >Coming soon</option>
 							</select>
 						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-offset-3 col-xs-10">
+							<button type="submit" class="btn btn-primary">Submit</button>
+							<a href="courses.jsp" class="btn btn-default">Cancel</a>
 						</div>
-						<div class="form-group">
-							<div class="col-xs-offset-3 col-xs-10">
-								<button type="submit" class="btn btn-primary">Submit</button>
-								<a href="courses.jsp" class="btn btn-default">Cancel</a>
-							</div>
-						</div>
+					</div>
 
 				</form>
 			</div>

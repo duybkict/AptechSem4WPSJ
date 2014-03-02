@@ -18,3 +18,18 @@ body {
 	font-weight: normal;
 	cursor: pointer;
 }
+
+.form-group-file .input-file {
+	position: absolute;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	filter: alpha(opacity=0);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	opacity: 0;
+	background-color: transparent;
+	color:transparent;
+	height: 100%;
+	width: 100%;
+	cursor: pointer;
+}

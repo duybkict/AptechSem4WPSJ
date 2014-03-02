@@ -1,7 +1,7 @@
 <%--
-    Document   : about
-    Created on : Feb 16, 2014, 5:55:01 PM
-    Author     : Duy
+Document   : about
+Created on : Feb 16, 2014, 5:55:01 PM
+Author : Duy
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -24,13 +24,13 @@
 		<jsp:param name="title" value="${article.title} | GoodCook" />
 	</jsp:include>
 
-    <body>
+	<body>
 		<c:set var="active" value="articles" />
 		<c:if test="${article.category eq 2}">
 			<c:set var="active" value="courses" />
 		</c:if>
 
-        <jsp:include page="layout/navigation.jsp">
+		<jsp:include page="layout/navigation.jsp">
 			<jsp:param name="active" value="${active}" />
 		</jsp:include>
 
@@ -147,5 +147,5 @@
 		</div>
 
 		<jsp:include page="layout/footer.jsp" />
-    </body>
+	</body>
 </html>

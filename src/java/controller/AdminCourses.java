@@ -4,19 +4,35 @@
  */
 package controller;
 
+import java.awt.AlphaComposite;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.AdminDataContext;
+import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import util.ImageResizer;
 
 /**
  *
  * @author Duy
  */
-public class AdminCourses extends HttpServlet
-{
+public class AdminCourses extends HttpServlet {
 
 	/**
 	 * Processes requests for both HTTP
@@ -32,7 +48,7 @@ public class AdminCourses extends HttpServlet
 			throws ServletException, IOException {
 	}
 
-	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 	/**
 	 * Handles the HTTP
 	 * <code>GET</code> method.
@@ -60,34 +76,65 @@ public class AdminCourses extends HttpServlet
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String action = request.getParameter("action");
 		boolean result = false;
 
+		String action = null;
+		int id = 0;
+		FileItem imageFileItem = null;
+		String title = null;
+		String shortDescription = null;
+		String content = null;
+		boolean published = false;
+		int status = 0;
+		float price = 0;
+
 		try {
+			List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
+			for (FileItem item : items) {
+				if (item.isFormField()) {
+					if ("action".equals(item.getFieldName())) {
+						action = item.getString();
+					} else if ("id".equals(item.getFieldName())) {
+						try {
+							id = Integer.parseInt(item.getString());
+						} catch (NumberFormatException e) {
+							continue;
+						}
+					} else if ("title".equals(item.getFieldName())) {
+						title = item.getString();
+					} else if ("short_description".equals(item.getFieldName())) {
+						shortDescription = item.getString();
+					} else if ("content".equals(item.getFieldName())) {
+						content = item.getString();
+					} else if ("published".equals(item.getFieldName())) {
+						published = Boolean.parseBoolean(item.getString());
+					} else if ("status".equals(item.getFieldName())) {
+						status = Integer.parseInt(item.getString());
+					} else if ("price".equals(item.getFieldName())) {
+						price = Float.parseFloat(item.getString());
+					}
+				} else {
+					if ("image".equals(item.getFieldName())) {
+						imageFileItem = item;
+					}
+				}
+			}
+
+			String imageName = "images/" + imageFileItem.getName();
 			if (action.equals("insert")) {
-				String image = request.getParameter("image");
-				String title = request.getParameter("title");
-				String shortDescription = request.getParameter("short_description");
-				String content = request.getParameter("content");
-				boolean published = Boolean.parseBoolean(request.getParameter("published"));
-				int status = Integer.parseInt(request.getParameter("status"));
-				float price = Float.parseFloat(request.getParameter("price"));
+				String path = getServletContext().getRealPath("/") + imageName;
+				File uploadedFile = new File(path);
+				if (!uploadedFile.exists()) {
+					uploadedFile.createNewFile();
+				}
+				imageFileItem.write(uploadedFile);
 
-				result = AdminDataContext.insertCourse(image, title, shortDescription, content, published, status, price);
+				ImageResizer.resize(path, path, 200, 160);
+
+				result = AdminDataContext.insertCourse(imageName, title, shortDescription, content, published, status, price);
 			} else if (action.equals("update")) {
-				int id = Integer.parseInt(request.getParameter("id"));
-				String image = request.getParameter("image");
-				String title = request.getParameter("title");
-				String shortDescription = request.getParameter("short_description");
-				String content = request.getParameter("content");
-				boolean published = Boolean.parseBoolean(request.getParameter("published"));
-				int status = Integer.parseInt(request.getParameter("status"));
-				float price = Float.parseFloat(request.getParameter("price"));
-
-				result = AdminDataContext.updareCourse(id, image, title, shortDescription, content, published, status, price);
+				result = AdminDataContext.updareCourse(id, imageName, title, shortDescription, content, published, status, price);
 			} else if (action.equals("delete")) {
-				int id = Integer.parseInt(request.getParameter("id"));
-
 				result = AdminDataContext.deleteCourse(id);
 			}
 		} catch (Exception e) {
@@ -113,4 +160,12 @@ public class AdminCourses extends HttpServlet
 		return "Short description";
 	}// </editor-fold>
 
+	private BufferedImage createResizedCopy(Image originalImage, int scaledWidth, int scaledHeight) {
+		BufferedImage scaledBI = new BufferedImage(scaledWidth, scaledHeight, BufferedImage.TYPE_INT_RGB);
+		Graphics2D g = scaledBI.createGraphics();
+		g.setComposite(AlphaComposite.Src);
+		g.drawImage(originalImage, 0, 0, scaledWidth, scaledHeight, null);
+		g.dispose();
+		return scaledBI;
+	}
 }

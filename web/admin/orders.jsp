@@ -30,9 +30,31 @@
 		</c:choose>
 
 		<c:set var="orders" value="${datacontext:getOrders(page)}" />
+		<c:set var="error" value="${param.error}" />
+		<c:set var="success" value="${param.success}" />
 
 		<div class="container content">
 			<div class="col-xs-12">
+				<c:if test="${not empty success}">
+					<div class="alert alert-success">
+						<c:choose>
+							<c:when test="${success eq 'insert'}" >Insert successfully.</c:when>
+							<c:when test="${success eq 'delete'}" >Delete successfully.</c:when>
+							<c:when test="${success eq 'update'}" >Edit successfully.</c:when>
+						</c:choose>
+					</div>
+				</c:if>
+
+				<c:if test="${not empty error}">
+					<div class="alert alert-danger">
+						<c:choose>
+							<c:when test="${error eq 'insert'}" >Insert failed.</c:when>
+							<c:when test="${error eq 'delete'}" >Delete failed.</c:when>
+							<c:when test="${error eq 'update'}" >Edit failed.</c:when>
+						</c:choose>
+					</div>
+				</c:if>
+				
 				<h3>Orders Management</h3>
 
 				<c:choose>
