@@ -122,15 +122,15 @@
 									<li class="disabled" ><a>Prev</a></li>
 									</c:when>
 									<c:otherwise>
-									<li><a href="events.jsp?page=${page - 1}">Prev</a></li>
+									<li><a href="courses.jsp?page=${page - 1}">Prev</a></li>
 									</c:otherwise>
 								</c:choose>
 								<c:choose>
-									<c:when test="${page gt datacontext:getEventsPages()}">
+									<c:when test="${page gt datacontext:getCoursesPages()}">
 									<li class="disabled" ><a>Next</a></li>
 									</c:when>
 									<c:otherwise>
-									<li><a href="events.jsp?page=${page + 1}">Next</a></li>
+									<li><a href="courses.jsp?page=${page + 1}">Next</a></li>
 									</c:otherwise>
 								</c:choose>
 						</ul>

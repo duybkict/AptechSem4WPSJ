@@ -24,7 +24,7 @@ public class AdminDataContext
 	private static String URL = "jdbc:mysql://localhost:3306/aptechsem4wpsj";
 	private static String USER = "root";
 	private static String PASSWORD = "";
-	private static int PAGE_LIMIT = 10;
+	private static int PAGE_LIMIT = 5;
 
 	private static Connection getConnection() {
 		try {
@@ -369,7 +369,7 @@ public class AdminDataContext
 				order.setStatus(rs.getInt(3));
 				order.setCreatedDate(getFormatedDate(rs, 4));
 				order.setModifiedDate(getFormatedDate(rs, 5));
-				order.setUser(getUserById(order.getId()));
+				order.setUser(getUserById(order.getUserId()));
 
 				list.add(order);
 			}
@@ -422,7 +422,7 @@ public class AdminDataContext
 				order.setStatus(rs.getInt(3));
 				order.setCreatedDate(getFormatedDate(rs, 4));
 				order.setModifiedDate(getFormatedDate(rs, 5));
-				order.setUser(getUserById(order.getId()));
+				order.setUser(getUserById(order.getUserId()));
 			}
 			rs.close();
 		} catch (SQLException ex) {
@@ -468,6 +468,36 @@ public class AdminDataContext
 		}
 
 		return r > 0;
+	}
+	
+	public static ArrayList<OrderItem> getOrderItemsByOrderId(int id) {
+		ArrayList<OrderItem> orderItems = new ArrayList<OrderItem>();
+
+		try {
+			Connection con = getConnection();
+			PreparedStatement pst = con.prepareStatement(
+					"SELECT item_id, order_id, item_num, price "
+					+ "FROM order_items "
+					+ "WHERE order_id = ? ");
+			pst.setInt(1, id);
+
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				OrderItem item = new OrderItem();
+				item.setItemId(rs.getInt(1));
+				item.setOrderId(rs.getInt(2));
+				item.setItemNum(rs.getInt(3));
+				item.setPrice(rs.getFloat(4));
+				item.setItem(getCourseById(item.getItemId()));
+				
+				orderItems.add(item);
+			}
+			rs.close();
+		} catch (SQLException ex) {
+			return null;
+		}
+
+		return orderItems;
 	}
 
 	public static ArrayList<User> getUsers(int page) {

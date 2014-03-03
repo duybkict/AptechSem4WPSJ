@@ -68,4 +68,9 @@
 		<function-class>model.AdminDataContext</function-class>
 		<function-signature>model.User getUserById(int )</function-signature>
 	</function>
+	<function>
+		<name>getOrderItemsByOrderId</name>
+		<function-class>model.AdminDataContext</function-class>
+		<function-signature>java.util.ArrayList getOrderItemsByOrderId(int )</function-signature>
+	</function>
 </taglib>
