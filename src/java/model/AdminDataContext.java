@@ -245,15 +245,15 @@ public class AdminDataContext
 		return pages;
 	}
 
-	public static Article getCourseById(int id) {
+	public static Article getArticleById(int id) {
 		Article course = null;
 
 		try {
 			Connection con = getConnection();
 			PreparedStatement pst = con.prepareStatement(
-					"SELECT id, image, title, short_description, content, published, published_date, created_date, modified_date, status, price "
+					"SELECT id, image, title, short_description, content, published, published_date, created_date, modified_date, status, price, category "
 					+ "FROM articles "
-					+ "WHERE category = 2 AND id = ? "
+					+ "WHERE id = ? "
 					+ "LIMIT 1 OFFSET 0");
 			pst.setInt(1, id);
 
@@ -271,6 +271,7 @@ public class AdminDataContext
 				course.setModifiedDate(getFormatedDate(rs, 9));
 				course.setStatus(rs.getInt(10));
 				course.setPrice(rs.getFloat(11));
+				course.setCategory(rs.getInt(12));
 			}
 			rs.close();
 		} catch (SQLException ex) {
@@ -281,13 +282,21 @@ public class AdminDataContext
 	}
 
 	public static boolean insertCourse(String image, String title, String shortDescription, String content, boolean published, int status, float price) {
+		return insertArticle(image, title, shortDescription, content, published, status, price, 2);
+	}
+	
+	public static boolean insertEvent(String image, String title, String shortDescription, String content, boolean published) {
+		return insertArticle(image, title, shortDescription, content, published, 0, 0, 1);
+	}
+	
+	public static boolean insertArticle(String image, String title, String shortDescription, String content, boolean published, int status, float price, int category) {
 		int r = 0;
 
 		try {
 			Connection con = getConnection();
 			PreparedStatement pst = con.prepareStatement(
 					"INSERT INTO articles(image, title, short_description, content, published, status, price, category) "
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?, 2) ");
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?) ");
 			pst.setString(1, image);
 			pst.setString(2, title);
 			pst.setString(3, shortDescription);
@@ -295,6 +304,7 @@ public class AdminDataContext
 			pst.setBoolean(5, published);
 			pst.setInt(6, status);
 			pst.setFloat(7, price);
+			pst.setInt(8, category);
 
 			r = pst.executeUpdate();
 		} catch (SQLException ex) {
@@ -304,7 +314,7 @@ public class AdminDataContext
 		return r > 0;
 	}
 
-	public static boolean updareCourse(int id, String image, String title, String shortDescription, String content, boolean published, int status, float price) {
+	public static boolean updateArticle(int id, String image, String title, String shortDescription, String content, boolean published, int status, float price) {
 		int r = 0;
 
 		try {
@@ -330,7 +340,7 @@ public class AdminDataContext
 		return r > 0;
 	}
 
-	public static boolean deleteCourse(int id) {
+	public static boolean deleteArticle(int id) {
 		int r = 0;
 
 		try {
@@ -488,7 +498,7 @@ public class AdminDataContext
 				item.setOrderId(rs.getInt(2));
 				item.setItemNum(rs.getInt(3));
 				item.setPrice(rs.getFloat(4));
-				item.setItem(getCourseById(item.getItemId()));
+				item.setItem(getArticleById(item.getItemId()));
 				
 				orderItems.add(item);
 			}

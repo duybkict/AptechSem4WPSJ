@@ -14,8 +14,9 @@
 <c:if test="${empty id}"><c:redirect url="courses.jsp?error=update" /></c:if>
 
 <c:set var="action" value="update" />
-<c:set var="course" value="${datacontext:getCourseById(id)}" />
+<c:set var="course" value="${datacontext:getArticleById(id)}" />
 <c:if test="${empty course}"><c:set var="action" value="insert" /></c:if>
+<c:if test="${not empty course && course.category eq 1}"><c:redirect url="event.jsp?id=${event.id}" /></c:if>
 
 	<html>
 
@@ -55,11 +56,10 @@
 						<div class="form-group form-group-file">
 							<label for="image" class="col-xs-3 control-label">Image</label>
 							<div class="col-xs-9">
-								<!--<input type="file" required="required" class="form-control" id="image" name="image" value="<c:if test="${not empty course}">${course.image}</c:if>">-->
 								<div class="col-xs-4" style="position:relative;">
 									<a class="btn btn-primary" href='javascript:;'>
 										Choose File...
-										<input type="file" class="input-file" required="required" name="image" id="image" onchange='jQuery("#upload-file-info").html(jQuery(this).val());' value="<c:if test="${not empty course}">${course.image}</c:if>" />
+										<input type="file" class="input-file" name="image" id="image" onchange='jQuery("#upload-file-info").html(jQuery(this).val());' />
 									</a>
 								</div>
 								<div class="col-xs-8">

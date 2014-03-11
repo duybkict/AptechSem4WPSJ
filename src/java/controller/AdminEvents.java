@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.AdminDataContext;
-import model.DataContext;
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
@@ -26,7 +25,7 @@ import util.ImageResizer;
  *
  * @author Duy
  */
-public class AdminCourses extends HttpServlet {
+public class AdminEvents extends HttpServlet {
 
 	/**
 	 * Processes requests for both HTTP
@@ -79,8 +78,6 @@ public class AdminCourses extends HttpServlet {
 		String shortDescription = null;
 		String content = null;
 		boolean published = false;
-		int status = 0;
-		float price = 0;
 
 		try {
 			List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
@@ -102,10 +99,6 @@ public class AdminCourses extends HttpServlet {
 						content = item.getString();
 					} else if ("published".equals(item.getFieldName())) {
 						published = Boolean.parseBoolean(item.getString());
-					} else if ("status".equals(item.getFieldName())) {
-						status = Integer.parseInt(item.getString());
-					} else if ("price".equals(item.getFieldName())) {
-						price = Float.parseFloat(item.getString());
 					}
 				} else {
 					if ("image".equals(item.getFieldName())) {
@@ -114,8 +107,8 @@ public class AdminCourses extends HttpServlet {
 				}
 			}
 
-			if ("insert".equals(action)) {
-				String imageName = "images/courses/" + id + "-" + imageFileItem.getName();
+			String imageName = "images/" + imageFileItem.getName();
+			if (action.equals("insert")) {
 				String path = getServletContext().getRealPath("/") + imageName;
 				File uploadedFile = new File(path);
 				if (!uploadedFile.exists()) {
@@ -125,25 +118,10 @@ public class AdminCourses extends HttpServlet {
 
 				ImageResizer.resize(path, path, 200, 160);
 
-				result = AdminDataContext.insertCourse(imageName, title, shortDescription, content, published, status, price);
-			} else if ("update".equals(action)) {
-				String imageName = "";
-				if (imageFileItem.getName().equals("")) {
-					imageName = AdminDataContext.getArticleById(id).getImage();
-				} else {
-					imageName = "images/courses/" + id + "-" + imageFileItem.getName();
-					String path = getServletContext().getRealPath("/") + imageName;
-					File uploadedFile = new File(path);
-					if (!uploadedFile.exists()) {
-						uploadedFile.createNewFile();
-					}
-					imageFileItem.write(uploadedFile);
-
-					ImageResizer.resize(path, path, 200, 160);
-				}
-
-				result = AdminDataContext.updateArticle(id, imageName, title, shortDescription, content, published, status, price);
-			} else if ("delete".equals(action)) {
+				result = AdminDataContext.insertEvent(imageName, title, shortDescription, content, published);
+			} else if (action.equals("update")) {
+				result = AdminDataContext.updateArticle(id, imageName, title, shortDescription, content, published, 0, 0);
+			} else if (action.equals("delete")) {
 				result = AdminDataContext.deleteArticle(id);
 			}
 		} catch (Exception e) {
@@ -151,9 +129,9 @@ public class AdminCourses extends HttpServlet {
 		}
 
 		if (result) {
-			response.sendRedirect("courses.jsp?success=" + action);
+			response.sendRedirect("events.jsp?success=" + action);
 		} else {
-			response.sendRedirect("courses.jsp?error=" + action);
+			response.sendRedirect("events.jsp?error=" + action);
 		}
 
 		processRequest(request, response);
@@ -168,4 +146,13 @@ public class AdminCourses extends HttpServlet {
 	public String getServletInfo() {
 		return "Short description";
 	}// </editor-fold>
+
+	private BufferedImage createResizedCopy(Image originalImage, int scaledWidth, int scaledHeight) {
+		BufferedImage scaledBI = new BufferedImage(scaledWidth, scaledHeight, BufferedImage.TYPE_INT_RGB);
+		Graphics2D g = scaledBI.createGraphics();
+		g.setComposite(AlphaComposite.Src);
+		g.drawImage(originalImage, 0, 0, scaledWidth, scaledHeight, null);
+		g.dispose();
+		return scaledBI;
+	}
 }

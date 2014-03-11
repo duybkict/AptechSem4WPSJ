@@ -105,7 +105,7 @@
 										<td><fmt:formatDate value="${i.modifiedDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 										<td width="125px">
 											<a class="btn btn-primary btn-sm" href="course.jsp?id=${i.id}">Edit</a>
-											<form action="AdminCourses" method="post" style="display:inline-block">
+											<form action="AdminCourses" method="post" style="display:inline-block" enctype="multipart/form-data">
 												<input type="hidden" name="action" value="delete" />
 												<input type="hidden" name="id" value="${i.id}" />
 												<button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</button>

@@ -32,7 +32,7 @@
 			</ul>
 			<form action="AdminLogin" method="post">
 				<input type="hidden" name="action" value="logout" />
-				<p class="navbar-text navbar-right">Signed in as ${user.fullName}&nbsp;&nbsp;|&nbsp;&nbsp;<button class="btn-primary" style="border: none;">Logout</button></p>
+				<p class="navbar-text navbar-right">Signed in as <a href="user.jsp?id=${user.id}">${user.fullName}</a>&nbsp;&nbsp;|&nbsp;&nbsp;<button class="btn-primary" style="border: none;">Logout</button></p>
 			</form>
 		</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->
