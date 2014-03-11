@@ -115,15 +115,20 @@ public class AdminCourses extends HttpServlet {
 			}
 
 			if ("insert".equals(action)) {
-				String imageName = "images/courses/" + id + "-" + imageFileItem.getName();
-				String path = getServletContext().getRealPath("/") + imageName;
-				File uploadedFile = new File(path);
-				if (!uploadedFile.exists()) {
-					uploadedFile.createNewFile();
-				}
-				imageFileItem.write(uploadedFile);
+				String imageName = "";
+				if (imageFileItem.getName().equals("")) {
+					imageName = "";
+				} else {
+					imageName = "images/courses/" + id + "-" + imageFileItem.getName();
+					String path = getServletContext().getRealPath("/") + imageName;
+					File uploadedFile = new File(path);
+					if (!uploadedFile.exists()) {
+						uploadedFile.createNewFile();
+					}
+					imageFileItem.write(uploadedFile);
 
-				ImageResizer.resize(path, path, 200, 160);
+					ImageResizer.resize(path, path, 200, 160);
+				}
 
 				result = AdminDataContext.insertCourse(imageName, title, shortDescription, content, published, status, price);
 			} else if ("update".equals(action)) {
@@ -142,7 +147,7 @@ public class AdminCourses extends HttpServlet {
 					ImageResizer.resize(path, path, 200, 160);
 				}
 
-				result = AdminDataContext.updateArticle(id, imageName, title, shortDescription, content, published, status, price);
+				result = AdminDataContext.updateArticle(id, imageName, title, shortDescription, content, published, status, price, 2);
 			} else if ("delete".equals(action)) {
 				result = AdminDataContext.deleteArticle(id);
 			}

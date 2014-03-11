@@ -16,6 +16,10 @@
         <servlet-name>AdminCourses</servlet-name>
         <servlet-class>controller.AdminCourses</servlet-class>
     </servlet>
+	<servlet>
+        <servlet-name>AdminEvents</servlet-name>
+        <servlet-class>controller.AdminEvents</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>AdminUsers</servlet-name>
         <servlet-class>controller.AdminUsers</servlet-class>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>AdminCourses</servlet-name>
         <url-pattern>/admin/AdminCourses</url-pattern>
+    </servlet-mapping>
+	<servlet-mapping>
+        <servlet-name>AdminEvents</servlet-name>
+        <url-pattern>/admin/AdminEvents</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminUsers</servlet-name>

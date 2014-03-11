@@ -59,7 +59,7 @@
 								<div class="col-xs-4" style="position:relative;">
 									<a class="btn btn-primary" href='javascript:;'>
 										Choose File...
-										<input type="file" class="input-file" required="required" name="image" id="image" onchange='jQuery("#upload-file-info").html(jQuery(this).val());' value="<c:if test="${not empty course}">${course.image}</c:if>" />
+										<input type="file" class="input-file" name="image" id="image" onchange='jQuery("#upload-file-info").html(jQuery(this).val());' value="<c:if test="${not empty course}">${course.image}</c:if>" />
 									</a>
 								</div>
 								<div class="col-xs-8">

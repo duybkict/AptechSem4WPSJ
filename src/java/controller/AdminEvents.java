@@ -107,21 +107,41 @@ public class AdminEvents extends HttpServlet {
 				}
 			}
 
-			String imageName = "images/" + imageFileItem.getName();
-			if (action.equals("insert")) {
-				String path = getServletContext().getRealPath("/") + imageName;
-				File uploadedFile = new File(path);
-				if (!uploadedFile.exists()) {
-					uploadedFile.createNewFile();
-				}
-				imageFileItem.write(uploadedFile);
+			if ("insert".equals(action)) {
+				String imageName = "";
+				if (imageFileItem.getName().equals("")) {
+					imageName = "";
+				} else {
+					imageName = "images/events/" + id + "-" + imageFileItem.getName();
+					String path = getServletContext().getRealPath("/") + imageName;
+					File uploadedFile = new File(path);
+					if (!uploadedFile.exists()) {
+						uploadedFile.createNewFile();
+					}
+					imageFileItem.write(uploadedFile);
 
-				ImageResizer.resize(path, path, 200, 160);
+					ImageResizer.resize(path, path, 200, 160);
+				}
 
 				result = AdminDataContext.insertEvent(imageName, title, shortDescription, content, published);
-			} else if (action.equals("update")) {
-				result = AdminDataContext.updateArticle(id, imageName, title, shortDescription, content, published, 0, 0);
-			} else if (action.equals("delete")) {
+			} else if ("update".equals(action)) {
+				String imageName = "";
+				if (imageFileItem.getName().equals("")) {
+					imageName = AdminDataContext.getArticleById(id).getImage();
+				} else {
+					imageName = "images/events/" + id + "-" + imageFileItem.getName();
+					String path = getServletContext().getRealPath("/") + imageName;
+					File uploadedFile = new File(path);
+					if (!uploadedFile.exists()) {
+						uploadedFile.createNewFile();
+					}
+					imageFileItem.write(uploadedFile);
+
+					ImageResizer.resize(path, path, 200, 160);
+				}
+
+				result = AdminDataContext.updateArticle(id, imageName, title, shortDescription, content, published, 0, 0, 1);
+			} else if ("delete".equals(action)) {
 				result = AdminDataContext.deleteArticle(id);
 			}
 		} catch (Exception e) {
@@ -147,12 +167,4 @@ public class AdminEvents extends HttpServlet {
 		return "Short description";
 	}// </editor-fold>
 
-	private BufferedImage createResizedCopy(Image originalImage, int scaledWidth, int scaledHeight) {
-		BufferedImage scaledBI = new BufferedImage(scaledWidth, scaledHeight, BufferedImage.TYPE_INT_RGB);
-		Graphics2D g = scaledBI.createGraphics();
-		g.setComposite(AlphaComposite.Src);
-		g.drawImage(originalImage, 0, 0, scaledWidth, scaledHeight, null);
-		g.dispose();
-		return scaledBI;
-	}
 }

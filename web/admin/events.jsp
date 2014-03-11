@@ -54,7 +54,7 @@
 						</c:choose>
 					</div>
 				</c:if>
-				
+
 				<h3>News & Events Management</h3>
 				<a class="btn btn-primary" href="event.jsp?id=0" style="margin-bottom: 10px">
 					<span class="glyphicon glyphicon-plus"></span>&nbsp;New Event
@@ -70,8 +70,9 @@
 									<th>Title</th>
 									<th>Short Description</th>
 									<th>Published</th>
-									<th>Created Date</th>
-									<th>Modified Date</th>
+									<th>Created</th>
+									<th>Modified</th>
+									<th>Action</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -92,6 +93,14 @@
 										</td>
 										<td><fmt:formatDate value="${i.createdDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 										<td><fmt:formatDate value="${i.modifiedDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+										<td width="125px">
+											<a class="btn btn-primary btn-sm" href="event.jsp?id=${i.id}">Edit</a>
+											<form action="AdminEvents" method="post" style="display:inline-block" enctype="multipart/form-data">
+												<input type="hidden" name="action" value="delete" />
+												<input type="hidden" name="id" value="${i.id}" />
+												<button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?');">Delete</button>
+											</form>
+										</td>
 									</tr>
 								</c:forEach>
 							</tbody>

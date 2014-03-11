@@ -314,14 +314,14 @@ public class AdminDataContext
 		return r > 0;
 	}
 
-	public static boolean updateArticle(int id, String image, String title, String shortDescription, String content, boolean published, int status, float price) {
+	public static boolean updateArticle(int id, String image, String title, String shortDescription, String content, boolean published, int status, float price, int category) {
 		int r = 0;
 
 		try {
 			Connection con = getConnection();
 			PreparedStatement pst = con.prepareStatement(
 					"UPDATE articles "
-					+ "SET image = ?, title = ?, short_description = ?, content = ?, published = ?, status = ?, price = ?, category = 2 "
+					+ "SET image = ?, title = ?, short_description = ?, content = ?, published = ?, status = ?, price = ?, category = ? "
 					+ "WHERE id = ? ");
 			pst.setString(1, image);
 			pst.setString(2, title);
@@ -330,7 +330,8 @@ public class AdminDataContext
 			pst.setBoolean(5, published);
 			pst.setInt(6, status);
 			pst.setFloat(7, price);
-			pst.setInt(8, id);
+			pst.setInt(8, category);
+			pst.setInt(9, id);
 
 			r = pst.executeUpdate();
 		} catch (SQLException ex) {
